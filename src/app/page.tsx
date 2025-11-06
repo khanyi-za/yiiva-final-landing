@@ -5,35 +5,50 @@ import FeaturesSection from "@/components/FeaturesSection";
 import FeatureCarousel from "@/components/FeatureCarousel";
 import ContentSection from "@/components/ContentSection";
 import PlatformHighlights from "@/components/PlatformHighlights";
-import Footer from "@/components/Footer";
+import StickyFooterReveal from "@/components/StickyFooterReveal";
 
 export default function Home() {
   return (
-    <div className="min-h-screen" style={{backgroundColor: '#FAF9F6'}}>
-      {/* Navigation Bar */}
+    <>
+      {/* Navigation Bar - Outside StickyFooterReveal so it stays fixed */}
       <Navbar />
 
-      {/* Hero Section */}
-      <Hero />
+      <StickyFooterReveal>
+        <div className="min-h-screen relative" style={{backgroundColor: '#FAF9F6'}}>
+          {/* Dark Green Background - Covers Navbar + 98.5% of Hero */}
+          <div
+            className="absolute top-0 left-0 right-0 z-0"
+            style={{
+              backgroundColor: '#030f02',
+              height: 'calc(80px + 98.5vh - 60px)', // navbar height + 98.5% of hero height
+              borderBottomLeftRadius: '4rem',
+              borderBottomRightRadius: '4rem',
+              borderBottom: '4px solid #ffffff'
+            }}
+          ></div>
 
-      {/* Features Section */}
-      <FeaturesSection />
+        {/* Hero Section */}
+        <div className="relative z-10">
+          <Hero />
+        </div>
 
-      {/* Feature Carousel */}
-      <FeatureCarousel 
-        words={["Redirects", "Fraud", "Commission", "Brainer"]}
-        interval={1700}
-        animationDuration={500}
-      />
+        {/* Features Section */}
+        <FeaturesSection />
 
-      {/* Content Section */}
-      <ContentSection />
+        {/* Feature Carousel */}
+        <FeatureCarousel
+          words={["Delivery Friction", "Friction From Discovery To Purchase", "Confusing DM Orders", "Fragmented WhatsApp Orders", "Lost Leads", "Extra Costs"]}
+          interval={1700}
+          animationDuration={500}
+        />
 
-      {/* Platform Highlights */}
-      <PlatformHighlights />
+        {/* Content Section */}
+        <ContentSection />
 
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Platform Highlights */}
+        <PlatformHighlights />
+      </div>
+    </StickyFooterReveal>
+    </>
   );
 }

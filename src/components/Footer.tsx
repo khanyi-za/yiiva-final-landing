@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="py-16 px-6" style={{backgroundColor: '#FAF9F6'}}>
+    <footer className="pt-24 pb-16 px-6" style={{backgroundColor: '#FAF9F6'}}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center space-y-8">
           {/* Brand Name */}

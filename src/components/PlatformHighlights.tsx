@@ -1,87 +1,116 @@
+"use client";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function PlatformHighlights() {
   return (
-    <section style={{
-      backgroundColor: '#030f02',
-      borderTopLeftRadius: '3rem',
-      borderTopRightRadius: '3rem'
-    }}>
-      <div className="max-w-7xl mx-auto px-6 py-16">
+    <section
+      data-platform-highlights
+      style={{
+        backgroundColor: '#030f02',
+        borderTopLeftRadius: '3rem',
+        borderTopRightRadius: '3rem'
+      }}>
+      <div className="max-w-7xl mx-auto px-4 lg:px-6 py-8 lg:py-16">
         {/* Heading */}
-        <div className="text-white text-center mb-16">
-          <h2 className="text-6xl mb-6" style={{fontFamily: 'Roboto Thin, sans-serif', fontWeight: 100}}>The one commerce platform behind it all</h2>
-        </div>
+        <motion.div
+          className="text-white text-center mb-6 lg:mb-8"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <h2 className="text-3xl lg:text-6xl mb-4 lg:mb-6" style={{fontFamily: 'Roboto Thin, sans-serif', fontWeight: 100}}>The one platform converting your brands content into sales.</h2>
+        </motion.div>
 
         {/* Main Content */}
-        <div className="text-white space-y-16">
+        <div className="text-white space-y-8 lg:space-y-16">
           {/* Sell text section */}
-          <div className="text-left max-w-4xl">
-            <h3 className="text-3xl lg:text-4xl leading-relaxed" style={{fontFamily: 'Roboto, sans-serif', fontWeight: 300}}>
-              <span className="text-white">Sell online and in person. </span>
-              <span className="text-gray-400">Sell locally and globally. </span>
-              <span className="text-gray-400">Sell direct and wholesale. </span>
-              <span className="text-gray-400">Sell on desktop and mobile.</span>
+          <motion.div
+            className="text-left"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h3 className="text-xl lg:text-4xl leading-relaxed" style={{fontFamily: 'Roboto, sans-serif', fontWeight: 300}}>
+              <span className="text-white">Your content tells your brand's story, we provide the audience. </span>
+              <span className="text-gray-400">Reach customers with ease. </span>
+              <span className="text-gray-400">Sell effortlessly on our mobile platform, while we handle the rest.</span>
             </h3>
-          </div>
+          </motion.div>
 
           {/* Product showcase grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {/* Glossier card */}
-            <div className="relative bg-white rounded-2xl overflow-hidden h-64">
-              <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-pink-50">
-                <div className="flex items-center justify-center h-full">
-                  <h4 className="text-6xl font-bold text-pink-300" style={{fontFamily: 'Georgia, serif'}}>
-                    Glossier
-                  </h4>
-                </div>
+          <motion.div
+            className="mt-8 lg:mt-12"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            {/* Mobile: Horizontal scroll, Desktop: Grid */}
+            <div className="flex md:grid md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none scrollbar-hide">
+              {/* Card 1 */}
+              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 w-64 md:w-auto snap-center">
+                <Image
+                  src="/YIIVA 12.png"
+                  alt="Platform showcase"
+                  width={294}
+                  height={633}
+                  className="w-full h-auto"
+                />
               </div>
-            </div>
 
-            {/* Teal book/magazine card */}
-            <div className="relative bg-teal-400 rounded-2xl overflow-hidden h-64">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center text-white">
-                  <h4 className="text-2xl font-bold mb-2">Make</h4>
-                  <h4 className="text-2xl font-bold mb-2">People</h4>
-                  <h4 className="text-2xl font-bold">Care</h4>
-                  <p className="text-sm mt-4 opacity-80">The Art of Marketing</p>
-                </div>
+              {/* Card 2 */}
+              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 w-64 md:w-auto snap-center">
+                <Image
+                  src="/YIIVA 12.png"
+                  alt="Platform showcase"
+                  width={294}
+                  height={633}
+                  className="w-full h-auto"
+                />
               </div>
-            </div>
 
-            {/* Vacation sunscreen card */}
-            <div className="relative bg-gradient-to-br from-orange-400 to-orange-500 rounded-2xl overflow-hidden h-64">
-              <div className="flex items-center justify-center h-full">
-                <div className="text-center text-white">
-                  <h4 className="text-4xl font-bold mb-2" style={{fontFamily: 'cursive'}}>Vacation</h4>
-                  <p className="text-sm">The World's Best-Smelling</p>
-                  <p className="text-sm">Sunscreen</p>
-                </div>
+              {/* Card 3 */}
+              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 w-64 md:w-auto snap-center">
+                <Image
+                  src="/YIIVA 12.png"
+                  alt="Platform showcase"
+                  width={294}
+                  height={633}
+                  className="w-full h-auto"
+                />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Crops section */}
-          <div className="text-center max-w-5xl mx-auto">
-            <h3 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight">
+          <motion.div
+            className="text-center max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h3 className="text-3xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight">
               Easily source, trade, and contract crops
             </h3>
-            <p className="text-xl lg:text-2xl text-gray-300 leading-relaxed mb-8 max-w-4xl mx-auto">
+            <p className="text-base lg:text-2xl text-gray-300 leading-relaxed mb-6 lg:mb-8 max-w-4xl mx-auto">
               Meet your sourcing targets and requirements effortlessly—whether through contracting, trading, or BBBEE sourcing. Secure the stock you need, when you need it, with reliable and consistent delivery.
             </p>
-            <p className="text-base text-gray-400 leading-relaxed mb-12 max-w-3xl mx-auto">
+            <p className="text-sm lg:text-base text-gray-400 leading-relaxed mb-8 lg:mb-12 max-w-3xl mx-auto">
               Acquire new customers and keep them coming back for more with integrated marketing tools and insightful analytics. Do it all right from your pocket with the full-featured Shopify mobile app.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-              <button className="px-8 py-4 bg-green-500 text-white rounded-full text-lg font-medium hover:bg-green-600 transition-colors">
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center mb-8 lg:mb-12">
+              <button className="px-6 lg:px-8 py-3 lg:py-4 bg-green-500 text-white rounded-full text-base lg:text-lg font-medium hover:bg-green-600 transition-colors">
                 Trader app
               </button>
-              <button className="px-8 py-4 bg-green-500 text-white rounded-full text-lg font-medium hover:bg-green-600 transition-colors">
+              <button className="px-6 lg:px-8 py-3 lg:py-4 bg-green-500 text-white rounded-full text-base lg:text-lg font-medium hover:bg-green-600 transition-colors">
                 Dashboard
               </button>
             </div>
-            
+
             {/* Dashboard Image */}
             <div className="max-w-4xl mx-auto">
               <Image
@@ -92,7 +121,7 @@ export default function PlatformHighlights() {
                 className="w-full h-auto rounded-2xl shadow-2xl"
               />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

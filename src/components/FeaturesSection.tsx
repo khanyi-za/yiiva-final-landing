@@ -2,125 +2,156 @@
 
 export default function FeaturesSection() {
   return (
-    <section className="px-8 py-16" style={{backgroundColor: '#FAF9F6'}}>
-      <div className="max-w-8xl mx-auto space-y-12">
+    <section className="pt-16 pb-0" style={{backgroundColor: '#FAF9F6'}}>
+      {/* Horizontal line across full width */}
+      <div className="w-full border-t border-gray-300 mb-12"></div>
+
+      <div className="max-w-8xl mx-auto space-y-12 px-4 lg:px-8">
         {/* Centered Title */}
-        <div className="text-center">
-          <h2 className="text-4xl lg:text-5xl font-semibold text-black leading-tight">
-            Where your brand becomes a business.
+        <div className="flex justify-center lg:justify-start lg:pl-20">
+          <h2 className="text-2xl lg:text-5xl font-semibold text-black leading-tight px-6">
+            The Mobile Commerce Platform <br className="lg:hidden" />Built For S.A. Brands
           </h2>
         </div>
 
-        <div className="grid grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-12 gap-6 lg:gap-12 items-start">
           {/* Left Content */}
-          <div className="col-span-12 lg:col-span-4 space-y-8">
-            <div className="space-y-6">
-              <p className="text-xl text-gray-600 leading-relaxed">
-                Create content that inspires.
+          <div className="col-span-12 lg:col-span-4 space-y-6 lg:space-y-8 px-2 lg:px-0">
+            <div className="space-y-4 lg:space-y-6">
+              <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
+                Turn your brands's Instagram content & catalog into a mobile app store
               </p>
-            </div>
-
-            <div className="space-y-6">
-              <p className="text-lg text-gray-700 font-medium">
-                Sign up with your email to get a free demo
+              <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
+                Scale your brand, make more sales - 1 Post at a time, 1 Product at a time.
               </p>
-              <button className="flex items-center gap-3 px-8 py-3 border-2 border-orange-500 text-black rounded-full font-medium hover:bg-orange-50 transition-colors mt-[0.6rem]">
-                Sign Up
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
             </div>
           </div>
 
           {/* Right Cards Grid */}
           <div className="col-span-12 lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {/* Card 1 */}
-              <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-center space-y-4 transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden" 
-                   style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                   onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
-                   onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
-                {/* Video Background */}
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  <source src="/images/card_videos/6.mp4" type="video/mp4" />
-                </video>
-                {/* Gradient Overlay */}
-                <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
-                {/* Content */}
-                <div className="relative z-10 space-y-4">
-                  <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
-                    Sign up with
-                  </h3>
-                  <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                    Create content that inspires. page when looking at its layout
-                  </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-[4%] lg:px-0">
+              {/* Card 1 with description */}
+              <div>
+                <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+                     style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
+                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
+                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
+                  {/* Video Background */}
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    <source src="/images/card_videos/6.mp4" type="video/mp4" />
+                  </video>
+                  {/* Gradient Overlay */}
+                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
+                  {/* Title at top */}
+                  <div className="relative z-10 pt-4">
+                    <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
+                      Order Management
+                    </h3>
+                  </div>
+                  {/* Description at bottom */}
+                  <div className="relative z-10 pb-4">
+                    <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
+                      Create content that inspires. page when looking at its layout
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Card 2 */}
-              <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-center space-y-4 transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden" 
-                   style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                   onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
-                   onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
-                {/* Video Background */}
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  <source src="/images/card_videos/7.mp4" type="video/mp4" />
-                </video>
-                {/* Gradient Overlay */}
-                <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
-                {/* Content */}
-                <div className="relative z-10 space-y-4">
-                  <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
-                    Sign up with
-                  </h3>
-                  <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                    Create content that inspires. page when looking at its layout
-                  </p>
+              {/* Card 2 with description */}
+              <div>
+                <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+                     style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
+                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
+                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
+                  {/* Video Background */}
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    <source src="/images/card_videos/7.mp4" type="video/mp4" />
+                  </video>
+                  {/* Gradient Overlay */}
+                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
+                  {/* Title at top */}
+                  <div className="relative z-10 pt-4">
+                    <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
+                      Delivery & Shipping
+                    </h3>
+                  </div>
+                  {/* Description at bottom */}
+                  <div className="relative z-10 pb-4">
+                    <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
+                      Create content that inspires. page when looking at its layout
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              {/* Card 3 */}
-              <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-center space-y-4 transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden" 
-                   style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                   onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
-                   onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
-                {/* Video Background */}
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="absolute inset-0 w-full h-full object-cover"
-                >
-                  <source src="/images/card_videos/8.mp4" type="video/mp4" />
-                </video>
-                {/* Gradient Overlay */}
-                <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
-                {/* Content */}
-                <div className="relative z-10 space-y-4">
-                  <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
-                    Sign up with
-                  </h3>
-                  <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                    Create content that inspires. page when looking at its layout
-                  </p>
+              {/* Card 3 with description */}
+              <div>
+                <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
+                     style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
+                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
+                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
+                  {/* Video Background */}
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    <source src="/images/card_videos/8.mp4" type="video/mp4" />
+                  </video>
+                  {/* Gradient Overlay */}
+                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
+                  {/* Title at top */}
+                  <div className="relative z-10 pt-4">
+                    <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
+                      Real-time leads & sales trends
+                    </h3>
+                  </div>
+                  {/* Description at bottom */}
+                  <div className="relative z-10 pb-4">
+                    <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
+                      Create content that inspires. page when looking at its layout
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Horizontal line across full width */}
+      <div className="w-full border-t border-gray-300 mt-12"></div>
+
+      {/* Spacer to extend vertical distance by additional 20% */}
+      <div className="h-12"></div>
+      
+      {/* How It Works text and description - positioned at bottom edge with no margin/padding */}
+      <div className="px-8 space-y-4">
+        <div className="max-w-8xl mx-auto flex justify-center lg:justify-start lg:pl-20">
+          <h3 className="text-4xl lg:text-5xl font-semibold text-black px-6 py-3" style={{fontFamily: 'Geist, sans-serif'}}>
+            So, What Is YIIVA?
+          </h3>
+        </div>
+        
+        {/* Paragraph text */}
+        <div className="max-w-8xl mx-auto flex justify-center lg:justify-start lg:pl-20">
+          <p className="text-xl lg:text-2xl text-black px-6 leading-relaxed font-medium" style={{fontFamily: 'Roboto, sans-serif'}}>
+            A mobile app online retailer that bridges the connection between Brand and customer. Think of YIIVA as Superbalist, but for homegrown South African Brands.
+          </p>
         </div>
       </div>
     </section>

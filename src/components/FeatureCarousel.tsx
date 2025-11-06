@@ -7,21 +7,32 @@ interface FeatureCarouselProps {
   animationDuration?: number;
 }
 
-export default function FeatureCarousel({ 
+export default function FeatureCarousel({
   words: propWords,
   interval = 1700,
   animationDuration = 500
 }: FeatureCarouselProps = {}) {
-  const defaultWords = ["Redirects", "Fraud", "Commission", "Brainer"];
+  const defaultWords = ["No Delivery Friction", "No Friction From Discovery To Purchase", "No Confusing DM Orders", "No Fragmented WhatsApp Orders", "No Lost Leads", "No Extra Costs"];
   const words = propWords || defaultWords;
-  
+
   const [scrollOffset, setScrollOffset] = useState(0);
   const scrollOffsetRef = useRef(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Height of each item - reduced by 40% to accommodate smaller text
-  const ITEM_HEIGHT = 84;
-  // Gap between items (18% of item height - reduced by 20% from 22.5%)
-  const ITEM_GAP = Math.round(ITEM_HEIGHT * 0.18); // ~15px
+  // Detect mobile viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Height of each item - responsive
+  const ITEM_HEIGHT = isMobile ? 50 : 84;
+  // Gap between items - responsive (reduced on mobile)
+  const ITEM_GAP = isMobile ? 8 : Math.round(84 * 0.18); // 8px mobile, ~15px desktop
   const ITEM_TOTAL_HEIGHT = ITEM_HEIGHT + ITEM_GAP;
 
   // Keep ref in sync with state
@@ -34,7 +45,7 @@ export default function FeatureCarousel({
 
     const startAnimation = () => {
       if (isAnimating) return;
-      
+
       isAnimating = true;
       const startOffset = scrollOffsetRef.current;
       const targetOffset = startOffset + ITEM_TOTAL_HEIGHT;
@@ -44,7 +55,7 @@ export default function FeatureCarousel({
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / animationDuration, 1);
         const easeProgress = 0.5 - 0.5 * Math.cos(progress * Math.PI); // Smooth ease-in-out
-        
+
         const newOffset = startOffset + (targetOffset - startOffset) * easeProgress;
         scrollOffsetRef.current = newOffset;
         setScrollOffset(newOffset);
@@ -60,7 +71,17 @@ export default function FeatureCarousel({
     };
 
     const timer = setInterval(startAnimation, interval);
-    return () => clearInterval(timer);
+
+    // Reset to starting position every 20 seconds
+    const resetTimer = setInterval(() => {
+      scrollOffsetRef.current = 0;
+      setScrollOffset(0);
+    }, 20000);
+
+    return () => {
+      clearInterval(timer);
+      clearInterval(resetTimer);
+    };
   }, [interval, animationDuration, ITEM_TOTAL_HEIGHT]);
 
   // Calculate current middle word index for screen reader
@@ -86,13 +107,13 @@ export default function FeatureCarousel({
   const infiniteWords = createInfiniteWords();
 
   return (
-    <section className="py-[2.48rem]">
+    <section className="py-6 lg:py-[2.48rem]">
       <div className="relative rounded-3xl overflow-hidden mx-auto border-[1.2px] border-white w-[95%]" style={{backgroundColor: '#030f02'}}>
-        <div className="px-8 py-[2.7rem] mx-auto">
-          <div className="flex items-center justify-start gap-8">
+        <div className="px-4 lg:px-8 py-4 lg:py-[2.7rem] mx-auto">
+          <div className="flex items-center justify-start gap-4 lg:gap-8">
             {/* Fixed "No" text - stays on the left */}
             <div className="flex-shrink-0">
-              <span className="text-6xl md:text-7xl lg:text-[7.2rem] font-bold text-cyan-400 leading-none">
+              <span className="text-3xl lg:text-7xl font-bold text-cyan-400 leading-none">
                 No
               </span>
             </div>
@@ -133,8 +154,8 @@ export default function FeatureCarousel({
                       height: `${ITEM_HEIGHT}px`,
                     }}
                   >
-                    <span 
-                      className="whitespace-nowrap leading-none text-5xl md:text-6xl lg:text-[6rem] font-bold text-gray-400 opacity-100"
+                    <span
+                      className="whitespace-nowrap leading-none text-xl lg:text-5xl font-bold text-gray-400 opacity-100"
                     >
                       {item.word}
                     </span>
