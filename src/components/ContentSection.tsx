@@ -11,7 +11,7 @@ export default function ContentSection() {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-4xl lg:text-5xl font-light text-black">
-            It's easy to start selling
+            It&apos;s easy to start selling
           </h2>
         </div>
 

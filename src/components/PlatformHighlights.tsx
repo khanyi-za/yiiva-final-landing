@@ -34,7 +34,7 @@ export default function PlatformHighlights() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <h3 className="text-xl lg:text-4xl leading-relaxed" style={{fontFamily: 'Roboto, sans-serif', fontWeight: 300}}>
-              <span className="text-white">Your content tells your brand's story, we provide the audience. </span>
+              <span className="text-white">Your content tells your brand&apos;s story, we provide the audience. </span>
               <span className="text-gray-400">Reach customers with ease. </span>
               <span className="text-gray-400">Sell effortlessly on our mobile platform, while we handle the rest.</span>
             </h3>

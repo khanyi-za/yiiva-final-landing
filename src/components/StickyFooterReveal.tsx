@@ -7,7 +7,6 @@ interface RevealFooterProps {
 }
 
 export default function StickyFooterReveal({ children }: RevealFooterProps) {
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [contentTransform, setContentTransform] = useState(0);
 
   // Footer height (should match actual footer height)
@@ -24,7 +23,6 @@ export default function StickyFooterReveal({ children }: RevealFooterProps) {
       
       // Calculate scroll progress (0 to 1)
       const progress = Math.min(scrollTop / maxScroll, 1);
-      setScrollProgress(progress);
       
       // Calculate how much to move the main content up
       // Start revealing when 70% scrolled

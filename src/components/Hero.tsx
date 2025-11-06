@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -16,7 +15,7 @@ export default function Hero() {
                   Sell On YIIVA
                 </h1>
                 <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-md">
-                  Transform your social media content into shoppable catalogs, manage orders, and enjoy fast delivery with YIIVA's local power.
+                  Transform your social media content into shoppable catalogs, manage orders, and enjoy fast delivery with YIIVA&apos;s local power.
                 </p>
               </div>
 

@@ -19,7 +19,7 @@ export default function FeaturesSection() {
           <div className="col-span-12 lg:col-span-4 space-y-6 lg:space-y-8 px-2 lg:px-0">
             <div className="space-y-4 lg:space-y-6">
               <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
-                Turn your brands's Instagram content & catalog into a mobile app store
+                Turn your brands&apos;s Instagram content & catalog into a mobile app store
               </p>
               <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
                 Scale your brand, make more sales - 1 Post at a time, 1 Product at a time.
