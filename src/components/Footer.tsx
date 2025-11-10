@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="text-center space-y-8">
           {/* Brand Name */}
           <h2 className="text-6xl font-bold text-black">YIIVA</h2>
-          
+
           {/* Social Media Icons */}
           <div className="flex justify-center gap-4">
             <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center cursor-pointer hover:bg-gray-800 transition-colors">

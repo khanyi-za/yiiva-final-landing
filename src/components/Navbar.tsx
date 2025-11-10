@@ -18,7 +18,7 @@ export default function Navbar() {
           Contact
         </button>
         <button className="px-6 py-2 text-white rounded-full font-medium transition-colors border-2 border-white" style={{backgroundColor: '#030f02'}} onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#051103'} onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#030f02'}>
-          Get Demo
+          SignUp
         </button>
       </div>
     </nav>
