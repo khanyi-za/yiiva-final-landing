@@ -49,37 +49,40 @@ export default function PlatformHighlights() {
             viewport={{ once: true, amount: 0.3 }}
           >
             {/* Mobile: Horizontal scroll, Desktop: Grid */}
-            <div className="flex md:grid md:grid-cols-3 gap-4 lg:gap-6 max-w-4xl mx-auto overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none scrollbar-hide">
+            <div className="flex md:flex md:flex-row gap-3 mx-auto overflow-x-auto md:overflow-x-visible snap-x snap-mandatory md:snap-none scrollbar-hide justify-center items-center">
               {/* Card 1 */}
-              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 w-64 md:w-auto snap-center">
+              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 snap-center" style={{width: '194px', height: '417px', minHeight: '417px', maxHeight: '417px'}}>
                 <Image
-                  src="/YIIVA 12.png"
-                  alt="Platform showcase"
-                  width={294}
-                  height={633}
-                  className="w-full h-auto"
+                  src="/shop.png"
+                  alt="Shop showcase"
+                  fill
+                  sizes="194px"
+                  className="object-cover"
+                  style={{objectFit: 'cover', objectPosition: 'center'}}
                 />
               </div>
 
               {/* Card 2 */}
-              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 w-64 md:w-auto snap-center">
+              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 snap-center" style={{width: '194px', height: '417px', minHeight: '417px', maxHeight: '417px'}}>
                 <Image
-                  src="/YIIVA 12.png"
-                  alt="Platform showcase"
-                  width={294}
-                  height={633}
-                  className="w-full h-auto"
+                  src="/product.png"
+                  alt="Product showcase"
+                  fill
+                  sizes="194px"
+                  className="object-cover"
+                  style={{objectFit: 'cover', objectPosition: 'center'}}
                 />
               </div>
 
               {/* Card 3 */}
-              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 w-64 md:w-auto snap-center">
+              <div className="relative rounded-2xl overflow-hidden flex-shrink-0 snap-center" style={{width: '223px', height: '417px', minHeight: '417px', maxHeight: '417px'}}>
                 <Image
-                  src="/YIIVA 12.png"
-                  alt="Platform showcase"
-                  width={294}
-                  height={633}
-                  className="w-full h-auto"
+                  src="/track.png"
+                  alt="Track showcase"
+                  fill
+                  sizes="223px"
+                  className="object-cover"
+                  style={{objectFit: 'cover', objectPosition: 'left center'}}
                 />
               </div>
             </div>
@@ -94,17 +97,14 @@ export default function PlatformHighlights() {
             viewport={{ once: true, amount: 0.3 }}
           >
             <h3 className="text-3xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight">
-              Easily source, trade, and contract crops
+              Post your products, automate your sales, and scale with ease
             </h3>
             <p className="text-base lg:text-2xl text-gray-300 leading-relaxed mb-6 lg:mb-8 max-w-4xl mx-auto">
-              Meet your sourcing targets and requirements effortlessly—whether through contracting, trading, or BBBEE sourcing. Secure the stock you need, when you need it, with reliable and consistent delivery.
-            </p>
-            <p className="text-sm lg:text-base text-gray-400 leading-relaxed mb-8 lg:mb-12 max-w-3xl mx-auto">
-              Acquire new customers and keep them coming back for more with integrated marketing tools and insightful analytics. Do it all right from your pocket with the full-featured Shopify mobile app.
+              YIIVA connects every part of your business: from AI-powered product tagging to payments, delivery, and customer care. One platform that automates your sales so you can focus on growing your brand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center mb-8 lg:mb-12">
               <button className="px-6 lg:px-8 py-3 lg:py-4 bg-green-500 text-white rounded-full text-base lg:text-lg font-medium hover:bg-green-600 transition-colors">
-                Trader app
+                Customer Mobile App
               </button>
               <button className="px-6 lg:px-8 py-3 lg:py-4 bg-green-500 text-white rounded-full text-base lg:text-lg font-medium hover:bg-green-600 transition-colors">
                 Dashboard
@@ -114,7 +114,7 @@ export default function PlatformHighlights() {
             {/* Dashboard Image */}
             <div className="max-w-4xl mx-auto">
               <Image
-                src="/dashboard.png"
+                src="/dashboard_2.png"
                 alt="Dashboard interface"
                 width={800}
                 height={500}

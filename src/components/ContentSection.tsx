@@ -71,7 +71,7 @@ export default function ContentSection() {
             {/* Button */}
             <div className="flex justify-end pt-4">
               <button className="px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
-                Take your shot
+                Join waitinglist for first access
               </button>
             </div>
           </div>

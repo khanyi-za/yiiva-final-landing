@@ -19,10 +19,10 @@ export default function FeaturesSection() {
           <div className="col-span-12 lg:col-span-4 space-y-6 lg:space-y-8 px-2 lg:px-0">
             <div className="space-y-4 lg:space-y-6">
               <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
-                Turn your brands&apos;s Instagram content & catalog into a mobile app store
+                From streetwear to skincare, YIIVA helps South African brands sell smarter with AI-powered discovery and reach to audience, seamless payments, and fast nationwide delivery.
               </p>
               <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
-                Scale your brand, make more sales - 1 Post at a time, 1 Product at a time.
+                We believe brands should focus more on growing and creating, not handling orders and deliveries.
               </p>
             </div>
           </div>
@@ -57,7 +57,7 @@ export default function FeaturesSection() {
                   {/* Description at bottom */}
                   <div className="relative z-10 pb-4">
                     <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                      Create content that inspires. page when looking at its layout
+                      Track, manage, and fulfill every order in one simple dashboard.
                     </p>
                   </div>
                 </div>
@@ -90,7 +90,7 @@ export default function FeaturesSection() {
                   {/* Description at bottom */}
                   <div className="relative z-10 pb-4">
                     <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                      Create content that inspires. page when looking at its layout
+                      Fast, reliable nationwide delivery. We handle logistics so you don&apos;t have to.
                     </p>
                   </div>
                 </div>
@@ -123,7 +123,7 @@ export default function FeaturesSection() {
                   {/* Description at bottom */}
                   <div className="relative z-10 pb-4">
                     <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                      Create content that inspires. page when looking at its layout
+                      See what&apos;s selling, who&apos;s buying, and what&apos;s trending all in real time.
                     </p>
                   </div>
                 </div>

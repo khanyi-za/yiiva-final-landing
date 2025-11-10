@@ -15,14 +15,14 @@ export default function Hero() {
                   Sell On YIIVA
                 </h1>
                 <p className="text-base lg:text-lg text-gray-600 leading-relaxed max-w-md">
-                  Transform your social media content into shoppable catalogs, manage orders, and enjoy fast delivery with YIIVA&apos;s local power.
+                  Reach more customers! YIIVA helps creative brands get discovered and sell effortlessly. Automate your operations, with built-in payments, delivery, and customer care so you can focus on creating, not managing.
                 </p>
               </div>
 
               {/* Email Signup */}
               <div className="space-y-3 lg:space-y-4">
                 <p className="text-gray-700 font-medium text-sm lg:text-base">
-                  Sign up with your email to get a free demo
+                  Sign up with your email to get product demo & join the waitlist
                 </p>
                 {/* Horizontal row layout for all screen sizes */}
                 <div className="flex flex-row gap-3 lg:gap-4 max-w-lg">
