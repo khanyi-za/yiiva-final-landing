@@ -8,9 +8,23 @@ interface RevealFooterProps {
 
 export default function StickyFooterReveal({ children }: RevealFooterProps) {
   const [contentTransform, setContentTransform] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(450);
 
-  // Footer height (should match actual footer height)
-  const footerHeight = 400; // Increased to accommodate all footer content
+  // Update footer height based on screen size
+  useEffect(() => {
+    const updateFooterHeight = () => {
+      // Mobile gets taller footer due to stacked layout
+      if (window.innerWidth < 1024) {
+        setFooterHeight(900); // Increased height for mobile with stacked columns and extra top padding
+      } else {
+        setFooterHeight(450); // Desktop with side-by-side columns
+      }
+    };
+
+    updateFooterHeight();
+    window.addEventListener('resize', updateFooterHeight);
+    return () => window.removeEventListener('resize', updateFooterHeight);
+  }, []);
 
   useEffect(() => {
     const updateScrollEffect = () => {

@@ -1,6 +1,69 @@
 "use client";
+import { useState } from "react";
 
 export default function Hero() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Reset states
+    setError("");
+    setShowSuccess(false);
+
+    // Validate email
+    if (!email.trim()) {
+      setError("Email is required");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    // Call API
+    fetch('/api/waitlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, source: 'hero' }),
+    })
+      .then(async (response) => {
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || 'Failed to join waitlist');
+        }
+
+        // Success - Show success message
+        setIsSubmitting(false);
+        setShowSuccess(true);
+        setEmail("");
+
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error('Hero signup error:', error);
+        setIsSubmitting(false);
+        setError('Failed to join waitlist. Please try again.');
+      });
+  };
+
   return (
     <section className="relative min-h-[calc(100vh-80px)] px-4 lg:px-6 py-8 lg:py-12 overflow-hidden pt-[calc(80px+2rem)] lg:pt-[calc(80px+3rem)]">
       <div className="max-w-7xl mx-auto relative h-full">
@@ -21,20 +84,89 @@ export default function Hero() {
 
               {/* Email Signup */}
               <div className="space-y-3 lg:space-y-4">
-                <p className="text-gray-700 font-medium text-sm lg:text-base">
-                  Sign up with your email to get product demo & join the waitlist
+                <p className="text-white font-medium text-sm lg:text-base">
+                  Sign up with your email to access the app demo & join the waitlist
                 </p>
                 {/* Horizontal row layout for all screen sizes */}
-                <div className="flex flex-row gap-3 lg:gap-4 max-w-lg">
+                <form onSubmit={handleSubmit} className="flex flex-row gap-3 lg:gap-4 max-w-lg">
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (error) setError("");
+                    }}
                     placeholder="Enter your email address"
-                    className="flex-1 px-4 lg:px-6 py-2.5 lg:py-3 border-2 border-gray-300 rounded-full focus:border-black focus:outline-none transition-colors text-sm lg:text-base"
+                    className={`flex-1 px-4 lg:px-6 py-2.5 lg:py-3 border-2 rounded-full focus:outline-none transition-colors text-sm lg:text-base text-white placeholder:text-gray-400 ${
+                      error ? "border-red-500" : "border-white focus:border-white"
+                    }`}
+                    disabled={isSubmitting}
                   />
-                  <button className="px-6 lg:px-8 py-2.5 lg:py-3 bg-white border-2 border-orange-500 text-orange-500 rounded-full font-medium hover:bg-orange-50 transition-colors text-sm lg:text-base whitespace-nowrap">
-                    Sign Up
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-6 lg:px-8 py-2.5 lg:py-3 bg-white border-2 border-orange-500 text-orange-500 rounded-full font-medium hover:bg-orange-50 transition-colors text-sm lg:text-base whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg
+                          className="animate-spin h-4 w-4"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        <span className="hidden sm:inline">Joining...</span>
+                      </>
+                    ) : (
+                      "Sign Up"
+                    )}
                   </button>
-                </div>
+                </form>
+
+                {/* Error Message */}
+                {error && (
+                  <p className="text-red-400 text-sm flex items-center gap-1">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    {error}
+                  </p>
+                )}
+
+                {/* Success Message */}
+                {showSuccess && (
+                  <div className="bg-green-50 border-2 border-green-500 rounded-xl p-4 flex items-start gap-3">
+                    <svg className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <div>
+                      <p className="text-green-800 font-semibold text-sm lg:text-base">Thank you for signing up!</p>
+                      <p className="text-green-700 text-xs lg:text-sm mt-1">We&apos;ll get back to you soon with access to the demo.</p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* Feature Point */}
