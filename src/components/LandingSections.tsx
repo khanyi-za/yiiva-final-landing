@@ -10,6 +10,7 @@ import PreLaunchTrust from "./PreLaunchTrust";
 import WhyShopYiiva from "./WhyShopYiiva";
 import HowDiscoveryWorks from "./HowDiscoveryWorks";
 import VideoFeature from "./VideoFeature";
+import PhoneFeature from "./PhoneFeature";
 import CategoryTiles from "./CategoryTiles";
 import AppShowcase from "./AppShowcase";
 import ShopperFAQ from "./ShopperFAQ";
@@ -71,8 +72,16 @@ export default function LandingSections() {
             body="Every post is a storefront. Watch a reel, tap what catches your eye, and buy it shipped to your door — like and save the pieces you're not ready to check out yet."
             video="/images/hero_media/7.mp4"
           />
-          <VideoFeature
+          <PhoneFeature
             side="right"
+            eyebrow="Every piece has a story"
+            heading="See the detail behind every piece"
+            body="Tap through to the full story — from limited-run art with a certificate of authenticity to one-of-a-kind fashion, with the details that matter."
+            image="/app-product.png"
+            alt="Yiiva app product page — a limited-run art piece"
+          />
+          <VideoFeature
+            side="left"
             eyebrow="Delivery"
             heading="Shipped to your door, nationwide"
             body="Secure checkout in-app and reliable delivery across South Africa — we handle the rest so your order just arrives."
