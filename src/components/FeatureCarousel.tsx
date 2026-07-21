@@ -125,9 +125,9 @@ export default function FeatureCarousel({
             </div>
             
             {/* Vertical carousel container - separate stack to the right */}
-            <div 
-              className="relative flex-1"
-              style={{ 
+            <div
+              className="relative flex-1 min-w-0 overflow-hidden"
+              style={{
                 height: `${ITEM_HEIGHT * 3 + ITEM_GAP * 2}px`, // 3 items + 2 gaps between them
                 maskImage: `linear-gradient(to bottom, 
                   transparent 0%, 

@@ -138,7 +138,7 @@ export default function Hero() {
                       if (error) setError("");
                     }}
                     placeholder="Enter your email address"
-                    className={`flex-1 px-4 lg:px-6 py-2.5 lg:py-3 border-2 rounded-full bg-transparent focus:outline-none transition-colors text-sm lg:text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink-60)] ${
+                    className={`flex-1 min-w-0 px-4 lg:px-6 py-2.5 lg:py-3 border-2 rounded-full bg-transparent focus:outline-none transition-colors text-sm lg:text-base text-[var(--color-ink)] placeholder:text-[var(--color-ink-60)] ${
                       error
                         ? "border-red-500"
                         : "border-[var(--color-ink)]/20 focus:border-[var(--color-accent)]"
