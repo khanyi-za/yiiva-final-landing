@@ -10,6 +10,10 @@ import PreLaunchTrust from "./PreLaunchTrust";
 import WhyShopYiiva from "./WhyShopYiiva";
 import HowDiscoveryWorks from "./HowDiscoveryWorks";
 import VideoFeature from "./VideoFeature";
+import CategoryTiles from "./CategoryTiles";
+import AppShowcase from "./AppShowcase";
+import ShopperFAQ from "./ShopperFAQ";
+import ShopperCTA from "./ShopperCTA";
 
 export default function LandingSections() {
   const { audience } = useAudience();
@@ -50,6 +54,7 @@ export default function LandingSections() {
             body="Streetwear, skincare, art and more — discover niche South African brands and one-of-a-kind pieces, all in one app."
             video="/images/hero_media/6.mp4"
           />
+          <CategoryTiles />
           <VideoFeature
             side="right"
             eyebrow="Support local"
@@ -58,6 +63,7 @@ export default function LandingSections() {
             video="/images/hero_media/1.mp4"
           />
           <WhyShopYiiva />
+          <AppShowcase />
           <VideoFeature
             side="left"
             eyebrow="Shop"
@@ -73,6 +79,8 @@ export default function LandingSections() {
             video="/images/hero_media/10.mp4"
           />
           <HowDiscoveryWorks />
+          <ShopperFAQ />
+          <ShopperCTA />
         </>
       )}
     </div>

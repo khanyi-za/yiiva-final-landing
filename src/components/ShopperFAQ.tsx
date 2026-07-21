@@ -1,0 +1,49 @@
+"use client";
+
+// Pre-launch shopper FAQ. Native <details> accordion (accessible, no JS).
+// Copy is honest pre-launch framing; refine later.
+const FAQS = [
+  {
+    q: "Is Yiiva free to use?",
+    a: "Yes — browsing and buying on Yiiva is free. You only pay for the items you order.",
+  },
+  {
+    q: "When does Yiiva launch?",
+    a: "We're in pre-launch. Join the waitlist to get early access to the app as soon as it's ready.",
+  },
+  {
+    q: "How does delivery work?",
+    a: "Orders are delivered nationwide across South Africa, arranged for you through the app.",
+  },
+  {
+    q: "What kind of brands are on Yiiva?",
+    a: "Small, homegrown South African brands — streetwear, skincare, art and more.",
+  },
+];
+
+export default function ShopperFAQ() {
+  return (
+    <section className="bg-[var(--color-paper)] py-16 lg:py-24">
+      <div className="max-w-3xl mx-auto px-6">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)] text-center mb-10">
+          Good to know
+        </h2>
+        <div className="border-t border-[var(--color-sage)]">
+          {FAQS.map((f) => (
+            <details key={f.q} className="group border-b border-[var(--color-sage)] py-5">
+              <summary className="flex items-center justify-between cursor-pointer list-none [&::-webkit-details-marker]:hidden font-[family-name:var(--font-display)] text-lg lg:text-xl font-semibold text-[var(--color-ink)]">
+                {f.q}
+                <span className="ml-4 shrink-0 text-2xl leading-none text-[var(--color-ink-60)] transition-transform duration-200 group-open:rotate-45">
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-base text-[var(--color-ink-60)] leading-relaxed">
+                {f.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
