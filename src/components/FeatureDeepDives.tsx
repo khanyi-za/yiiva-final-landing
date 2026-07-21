@@ -6,18 +6,25 @@ import { motion } from "framer-motion";
 // Copy reuses the original site's product copy.
 const DIVES = [
   {
-    heading: "One dashboard for every order",
-    body: "Track, manage and fulfil every order in one simple dashboard. See what's selling, who's buying and what's trending — right where you run your store.",
-    image: "/dashboard_2.png",
-    alt: "Yiiva seller dashboard",
+    heading: "Run your whole store from one dashboard",
+    body: "Products, orders, collections, earnings and analytics — everything you need to run your brand, in one place.",
+    image: "/yiiva-dashboard.png",
+    alt: "Yiiva merchant dashboard overview",
     ratio: "landscape" as const,
   },
   {
-    heading: "A storefront that feels like your brand",
-    body: "Your content tells your brand's story — we provide the audience. Sell effortlessly on our mobile platform while we handle payments, delivery and customer care.",
-    image: "/shop.png",
-    alt: "Yiiva mobile storefront",
-    ratio: "phone" as const,
+    heading: "Manage every order, start to finish",
+    body: "Follow each order from payment to delivery — confirmed, in transit, delivered — with returns handled in the same place.",
+    image: "/dash-orders.png",
+    alt: "Order management in the Yiiva merchant dashboard",
+    ratio: "landscape" as const,
+  },
+  {
+    heading: "See what's working, and get paid out",
+    body: "Watch your sales trend and receive your earnings, minus one simple fee — the clear numbers you need to grow your brand.",
+    image: "/dash-revenue.png",
+    alt: "Revenue and earnings in the Yiiva merchant dashboard",
+    ratio: "landscape" as const,
   },
 ];
 

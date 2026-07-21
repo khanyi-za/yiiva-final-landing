@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 // Dark band showing the real shopping app screenshots as phones.
 const SHOTS = [
-  { src: "/shop.png", label: "Browse", offset: "lg:mt-8" },
-  { src: "/product.png", label: "Discover", offset: "lg:mt-0" },
+  { src: "/app-explore.png", label: "Browse", offset: "lg:mt-8" },
+  { src: "/app-brand.png", label: "Discover brands", offset: "lg:mt-0" },
   { src: "/track.png", label: "Track", offset: "lg:mt-8" },
 ];
 
