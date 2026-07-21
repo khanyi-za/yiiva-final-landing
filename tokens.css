@@ -4,17 +4,17 @@
  */
 
 :root {
-  /* Core palette */
+  /* Core palette — monochrome on warm-bone paper (no green/orange) */
   --color-paper: oklch(0.965 0.011 85);       /* #F8F4EC warm bone page bg */
-  --color-paper-2: oklch(0.93 0.014 85);      /* slightly deeper card fill */
-  --color-ink: oklch(0.19 0.008 80);          /* #16130F warm near-black text */
-  --color-ink-60: oklch(0.44 0.008 80);       /* muted body text on paper (AA) */
-  --color-accent: oklch(0.68 0.185 42);       /* #F5602B coral-burnt orange */
-  --color-accent-hover: oklch(0.62 0.185 42);
-  --color-anchor: oklch(0.24 0.03 160);       /* #0F1E16 deep pine dark band */
-  --color-sage: oklch(0.85 0.03 150);         /* cards/dividers/hairlines on paper */
-  --color-on-anchor: oklch(0.95 0.012 85);    /* paper-tint text on dark bands */
-  --color-on-anchor-60: oklch(0.78 0.012 85); /* muted text on dark bands (AA) */
+  --color-paper-2: oklch(0.93 0.008 85);      /* slightly deeper card fill */
+  --color-ink: oklch(0.19 0.006 80);          /* warm near-black text */
+  --color-ink-60: oklch(0.44 0.005 80);       /* muted body text on paper (AA) */
+  --color-accent: oklch(0.19 0.006 80);       /* = ink; CTAs are black on light */
+  --color-accent-hover: oklch(0.33 0.005 80); /* lighter black for hover */
+  --color-anchor: oklch(0.16 0.005 80);       /* near-black dark band */
+  --color-sage: oklch(0.86 0.004 80);         /* neutral hairlines/dividers on paper */
+  --color-on-anchor: oklch(0.96 0.006 85);    /* paper-tint text on dark bands */
+  --color-on-anchor-60: oklch(0.75 0.006 85); /* muted text on dark bands (AA) */
 
   /* Spacing scale (4pt) */
   --space-xs: 0.5rem;

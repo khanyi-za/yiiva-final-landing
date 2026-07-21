@@ -34,7 +34,7 @@ export default function FeaturesSection() {
               <div>
                 <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
                      style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
+                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.35)'}
                      onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
                   {/* Video Background */}
                   <video
@@ -67,7 +67,7 @@ export default function FeaturesSection() {
               <div>
                 <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
                      style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
+                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.35)'}
                      onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
                   {/* Video Background */}
                   <video
@@ -100,7 +100,7 @@ export default function FeaturesSection() {
               <div>
                 <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
                      style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
+                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.35)'}
                      onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
                   {/* Video Background */}
                   <video

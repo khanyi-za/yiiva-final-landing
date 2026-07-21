@@ -253,9 +253,9 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ duration: 0.5, type: "spring" }}
-                    className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+                    className="w-20 h-20 bg-[var(--color-paper-2)] border border-[var(--color-sage)] rounded-full flex items-center justify-center mx-auto mb-6"
                   >
-                    <svg className="w-10 h-10 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-10 h-10 text-[var(--color-ink)]" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"
                         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"

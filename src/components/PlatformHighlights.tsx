@@ -107,7 +107,7 @@ export default function PlatformHighlights() {
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center mb-8 lg:mb-12">
               <button
                 onClick={openSignup}
-                className="px-6 lg:px-8 py-3 lg:py-4 bg-[var(--color-accent)] text-white rounded-full text-base lg:text-lg font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
+                className="px-6 lg:px-8 py-3 lg:py-4 bg-[var(--color-paper)] text-[var(--color-anchor)] rounded-full text-base lg:text-lg font-medium hover:bg-[var(--color-on-anchor-60)] transition-colors"
               >
                 Customer Mobile App
               </button>

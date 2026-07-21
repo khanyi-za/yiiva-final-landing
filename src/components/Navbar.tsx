@@ -37,7 +37,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={openSignup}
-            className="px-5 py-2 text-white rounded-full font-medium bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] transition-colors"
+            className="px-5 py-2 rounded-full font-medium bg-[var(--color-paper)] text-[var(--color-anchor)] hover:bg-[var(--color-on-anchor-60)] transition-colors"
           >
             SignUp
           </button>

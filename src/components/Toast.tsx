@@ -27,7 +27,7 @@ export default function Toast({ message, type, isVisible, onClose, duration = 50
     switch (type) {
       case "success":
         return {
-          bg: "bg-gradient-to-r from-green-500 to-green-600",
+          bg: "bg-[var(--color-ink)]",
           icon: (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

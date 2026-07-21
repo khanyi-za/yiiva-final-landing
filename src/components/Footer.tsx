@@ -111,7 +111,7 @@ export default function Footer() {
                   </p>
                 )}
                 {showSuccess && (
-                  <p className="text-green-600 text-sm mt-2 flex items-center gap-1 font-medium">
+                  <p className="text-[var(--color-ink)] text-sm mt-2 flex items-center gap-1 font-medium">
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path
                         fillRule="evenodd"

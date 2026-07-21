@@ -19,7 +19,7 @@ export default function HowDiscoveryWorks() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {STEPS.map((s) => (
             <div key={s.n} className="space-y-3 border-t border-[var(--color-on-anchor-60)]/25 pt-5">
-              <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--color-accent)]">{s.n}</span>
+              <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--color-on-anchor)]">{s.n}</span>
               <h3 className="font-[family-name:var(--font-display)] text-xl lg:text-2xl font-semibold text-[var(--color-on-anchor)]">
                 {s.title}
               </h3>
@@ -32,7 +32,7 @@ export default function HowDiscoveryWorks() {
         <div className="mt-12 lg:mt-16">
           <button
             onClick={openSignup}
-            className="px-8 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
+            className="px-8 py-3 bg-[var(--color-paper)] text-[var(--color-anchor)] rounded-full font-medium hover:bg-[var(--color-on-anchor-60)] transition-colors"
           >
             Get early access
           </button>

@@ -119,7 +119,7 @@ export default function FeatureCarousel({
           <div className="flex items-center justify-start gap-4 lg:gap-8">
             {/* Fixed "No" text - stays on the left */}
             <div className="flex-shrink-0">
-              <span className="font-[family-name:var(--font-display)] text-3xl lg:text-7xl font-extrabold text-[var(--color-accent)] leading-none">
+              <span className="font-[family-name:var(--font-display)] text-3xl lg:text-7xl font-extrabold text-[var(--color-on-anchor)] leading-none">
                 No
               </span>
             </div>
