@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 
 // Dark band showing the real shopping app screenshots as phones.
 const SHOTS = [
-  { src: "/app-explore.png", label: "Browse", offset: "lg:mt-8" },
-  { src: "/app-brand.png", label: "Discover brands", offset: "lg:mt-0" },
-  { src: "/track.png", label: "Track", offset: "lg:mt-8" },
+  { src: "/app-explore.png", label: "Browse", offset: "lg:mt-10" },
+  { src: "/app-feed.png", label: "Shop the feed", offset: "lg:mt-2" },
+  { src: "/app-brand.png", label: "Discover brands", offset: "lg:mt-10" },
+  { src: "/track.png", label: "Track", offset: "lg:mt-2" },
 ];
 
 export default function AppShowcase() {
