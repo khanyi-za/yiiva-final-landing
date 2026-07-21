@@ -26,9 +26,6 @@ const FEATURES = [
 export default function FeaturesSection() {
   return (
     <section className="pt-16 pb-0 bg-[var(--color-paper)]">
-      {/* Horizontal line across full width */}
-      <div className="w-full border-t border-[var(--color-sage)] mb-12"></div>
-
       <div className="max-w-6xl mx-auto px-6">
         {/* Centered title + intro */}
         <div className="max-w-3xl mx-auto text-center space-y-5">
@@ -65,11 +62,8 @@ export default function FeaturesSection() {
         </div>
       </div>
 
-      {/* Horizontal line across full width */}
-      <div className="w-full border-t border-[var(--color-sage)] mt-16"></div>
-
       {/* Positioning line (centered) */}
-      <div className="px-6 pt-14 pb-2">
+      <div className="px-6 pt-20 pb-2">
         <div className="max-w-3xl mx-auto text-center space-y-5">
           <h3 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] tracking-tight">
             So, What Is YIIVA?

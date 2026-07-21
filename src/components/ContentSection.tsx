@@ -6,9 +6,6 @@ export default function ContentSection() {
   const { openSignup } = useSignupModal();
   return (
     <section className="py-16 bg-[var(--color-paper)]">
-      {/* Horizontal line across full width */}
-      <div className="w-full border-t border-[var(--color-sage)] mb-12"></div>
-
       <div className="max-w-7xl mx-auto px-8">
         {/* Heading */}
         <div className="text-center mb-12">

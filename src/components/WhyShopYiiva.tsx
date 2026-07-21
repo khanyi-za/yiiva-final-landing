@@ -19,7 +19,6 @@ const REASONS = [
 export default function WhyShopYiiva() {
   return (
     <section className="bg-[var(--color-paper)] py-16 lg:py-24">
-      <div className="w-full border-t border-[var(--color-sage)] mb-12"></div>
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)] mb-10 lg:mb-14 max-w-2xl">
           Why shop <span className="text-[var(--color-accent)]">Yiiva</span>
