@@ -66,9 +66,9 @@ export default function LandingSections() {
           <AppShowcase />
           <VideoFeature
             side="left"
-            eyebrow="Shop"
+            eyebrow="Shoppable reels"
             heading="Shop straight from the content you love"
-            body="Every post is a storefront. See something you like in a video — tap, discover the brand behind it, and buy it shipped to your door."
+            body="Every post is a storefront. Watch a reel, tap what catches your eye, and buy it shipped to your door — like and save the pieces you're not ready to check out yet."
             video="/images/hero_media/7.mp4"
           />
           <VideoFeature

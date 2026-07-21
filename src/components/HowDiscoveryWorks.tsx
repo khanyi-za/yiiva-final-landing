@@ -4,7 +4,7 @@ import { useSignupModal } from "./SignupModalProvider";
 // Shoppers-view section. Placeholder copy to refine later.
 const STEPS = [
   { n: "01", title: "Browse homegrown brands", body: "Explore a curated feed of South African makers and their latest drops." },
-  { n: "02", title: "Follow what you love", body: "Save the brands and pieces that catch your eye and get notified when they restock." },
+  { n: "02", title: "Subscribe to what you love", body: "Subscribe to the brands you love and wishlist the pieces that catch your eye." },
   { n: "03", title: "Buy, shipped to your door", body: "Check out securely in-app and we handle delivery nationwide." },
 ];
 
