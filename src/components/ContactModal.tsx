@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import Toast, { type ToastType } from "./Toast";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -9,6 +10,11 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const [toast, setToast] = useState<{ visible: boolean; message: string; type: ToastType }>({
+    visible: false,
+    message: "",
+    type: "success",
+  });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -124,13 +130,20 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           setIsSubmitting(false);
           onClose();
 
-          // You could show a success toast here if you add a toast component
-          alert('Message sent successfully! We\'ll get back to you soon.');
+          setToast({
+            visible: true,
+            message: "Message sent successfully! We'll get back to you soon.",
+            type: "success",
+          });
         })
         .catch((error) => {
           console.error('Contact form error:', error);
           setIsSubmitting(false);
-          alert('Failed to send message. Please try again.');
+          setToast({
+            visible: true,
+            message: "Failed to send message. Please try again.",
+            type: "error",
+          });
         });
     }
   };
@@ -170,7 +183,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-green-900 to-green-800 px-8 py-6 relative">
+              <div className="bg-[var(--color-anchor)] px-8 py-6 relative">
                 <button
                   onClick={handleClose}
                   className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
@@ -188,8 +201,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <path d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                 </button>
-                <h2 className="text-3xl font-bold text-white">Get In Touch</h2>
-                <p className="text-green-100 mt-2">
+                <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Get In Touch</h2>
+                <p className="text-[var(--color-on-anchor-60)] mt-2">
                   We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
                 </p>
               </div>
@@ -211,7 +224,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
                       errors.name && touched.name
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                        : "border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200"
+                        : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
                     } focus:outline-none`}
                     placeholder="John Doe"
                   />
@@ -248,7 +261,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
                       errors.email && touched.email
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                        : "border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200"
+                        : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
                     } focus:outline-none`}
                     placeholder="john@example.com"
                   />
@@ -285,7 +298,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
                       errors.subject && touched.subject
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                        : "border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200"
+                        : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
                     } focus:outline-none`}
                     placeholder="How can we help you?"
                   />
@@ -322,7 +335,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 resize-none ${
                       errors.message && touched.message
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                        : "border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200"
+                        : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
                     } focus:outline-none`}
                     placeholder="Tell us more about your inquiry..."
                   />
@@ -356,7 +369,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 px-6 py-3 bg-gradient-to-r from-green-900 to-green-800 text-white rounded-full font-medium hover:from-green-800 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="flex-1 px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -408,5 +421,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     </AnimatePresence>
   );
 
-  return createPortal(modalContent, document.body);
+  return createPortal(
+    <>
+      {modalContent}
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.visible}
+        onClose={() => setToast((t) => ({ ...t, visible: false }))}
+      />
+    </>,
+    document.body
+  );
 }

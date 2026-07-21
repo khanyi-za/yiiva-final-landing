@@ -111,7 +111,7 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
               {!showSuccess ? (
                 <>
                   {/* Header */}
-                  <div className="bg-gradient-to-r from-green-900 to-green-800 px-8 py-6 relative">
+                  <div className="bg-[var(--color-anchor)] px-8 py-6 relative">
                     <button
                       onClick={handleClose}
                       className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
@@ -129,8 +129,8 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                         <path d="M6 18L18 6M6 6l12 12"></path>
                       </svg>
                     </button>
-                    <h2 className="text-3xl font-bold text-white">Join The Waitlist</h2>
-                    <p className="text-green-100 mt-2">
+                    <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Join The Waitlist</h2>
+                    <p className="text-[var(--color-on-anchor-60)] mt-2">
                       Sign up to get early access to the YIIVA app demo
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                         className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
                           error
                             ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                            : "border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200"
+                            : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
                         } focus:outline-none`}
                         placeholder="your.email@example.com"
                         disabled={isSubmitting}
@@ -188,7 +188,7 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex-1 px-6 py-3 bg-gradient-to-r from-green-900 to-green-800 text-white rounded-full font-medium hover:from-green-800 hover:to-green-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                        className="flex-1 px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                       >
                         {isSubmitting ? (
                           <>
@@ -263,11 +263,11 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                       />
                     </svg>
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">Thank You!</h3>
-                  <p className="text-gray-600 text-lg">
+                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)] mb-3">Thank You!</h3>
+                  <p className="text-[var(--color-ink-60)] text-lg">
                     We&apos;ll get back to you soon with access to the demo.
                   </p>
-                  <p className="text-gray-500 text-sm mt-4">Check your inbox for updates.</p>
+                  <p className="text-[var(--color-ink-60)] text-sm mt-4">Check your inbox for updates.</p>
                 </div>
               )}
             </motion.div>
