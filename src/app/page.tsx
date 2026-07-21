@@ -4,6 +4,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import FeatureCarousel from "@/components/FeatureCarousel";
 import ContentSection from "@/components/ContentSection";
 import PlatformHighlights from "@/components/PlatformHighlights";
+import WhoItsFor from "@/components/WhoItsFor";
 import StickyFooterReveal from "@/components/StickyFooterReveal";
 import { AudienceProvider } from "@/components/AudienceContext";
 import { SignupModalProvider } from "@/components/SignupModalProvider";
@@ -34,6 +35,9 @@ export default function Home() {
 
           {/* Content Section */}
           <ContentSection />
+
+          {/* Who it's for */}
+          <WhoItsFor />
 
           {/* Platform Highlights */}
           <PlatformHighlights />
