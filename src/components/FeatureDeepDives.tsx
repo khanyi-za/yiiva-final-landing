@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 const DIVES = [
   {
     heading: "One dashboard for every order",
-    body: "Track, manage and fulfil every order in one simple dashboard. See what's selling, who's buying and what's trending — all in real time.",
+    body: "Track, manage and fulfil every order in one simple dashboard. See what's selling, who's buying and what's trending — right where you run your store.",
     image: "/dashboard_2.png",
     alt: "Yiiva seller dashboard",
     ratio: "landscape" as const,

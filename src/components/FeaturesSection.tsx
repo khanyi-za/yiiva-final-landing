@@ -16,8 +16,8 @@ const FEATURES = [
     offset: "lg:mt-12",
   },
   {
-    title: "Real-time leads & sales trends",
-    body: "See what's selling, who's buying, and what's trending all in real time.",
+    title: "Sales trends & insights",
+    body: "See what's selling, who's buying, and what's trending — right in your dashboard.",
     video: "/images/card_videos/8.mp4",
     offset: "lg:mt-0",
   },
@@ -33,7 +33,7 @@ export default function FeaturesSection() {
             The Mobile Commerce Platform Built For S.A. Brands
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
-            From streetwear to skincare, YIIVA helps South African brands sell smarter with AI-powered discovery and reach to audience, seamless payments, and fast nationwide delivery.
+            From streetwear to skincare, YIIVA helps South African brands sell smarter — get discovered by the right customers, take seamless payments, and ship fast nationwide.
           </p>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
             We believe brands should focus more on growing and creating, not handling orders and deliveries.
