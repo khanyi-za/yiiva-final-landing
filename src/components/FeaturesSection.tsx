@@ -2,14 +2,14 @@
 
 export default function FeaturesSection() {
   return (
-    <section className="pt-16 pb-0" style={{backgroundColor: '#FAF9F6'}}>
+    <section className="pt-16 pb-0 bg-[var(--color-paper)]">
       {/* Horizontal line across full width */}
-      <div className="w-full border-t border-gray-300 mb-12"></div>
+      <div className="w-full border-t border-[var(--color-sage)] mb-12"></div>
 
       <div className="max-w-8xl mx-auto space-y-12 px-4 lg:px-8">
         {/* Centered Title */}
         <div className="flex justify-center lg:justify-start lg:pl-20">
-          <h2 className="text-2xl lg:text-5xl font-semibold text-black leading-tight px-6">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl lg:text-5xl font-bold text-[var(--color-ink)] leading-tight tracking-tight px-6">
             The Mobile Commerce Platform <br className="lg:hidden" />Built For S.A. Brands
           </h2>
         </div>
@@ -18,10 +18,10 @@ export default function FeaturesSection() {
           {/* Left Content */}
           <div className="col-span-12 lg:col-span-4 space-y-6 lg:space-y-8 px-2 lg:px-0">
             <div className="space-y-4 lg:space-y-6">
-              <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
+              <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed break-words">
                 From streetwear to skincare, YIIVA helps South African brands sell smarter with AI-powered discovery and reach to audience, seamless payments, and fast nationwide delivery.
               </p>
-              <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
+              <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed break-words">
                 We believe brands should focus more on growing and creating, not handling orders and deliveries.
               </p>
             </div>
@@ -134,22 +134,22 @@ export default function FeaturesSection() {
       </div>
 
       {/* Horizontal line across full width */}
-      <div className="w-full border-t border-gray-300 mt-12"></div>
+      <div className="w-full border-t border-[var(--color-sage)] mt-12"></div>
 
       {/* Spacer to extend vertical distance by additional 20% */}
       <div className="h-12"></div>
-      
+
       {/* How It Works text and description - positioned at bottom edge with no margin/padding */}
       <div className="px-8 space-y-4">
         <div className="max-w-8xl mx-auto flex justify-center lg:justify-start lg:pl-20">
-          <h3 className="text-4xl lg:text-5xl font-semibold text-black px-6 py-3" style={{fontFamily: 'Geist, sans-serif'}}>
+          <h3 className="font-[family-name:var(--font-display)] text-4xl lg:text-5xl font-bold text-[var(--color-ink)] tracking-tight px-6 py-3">
             So, What Is YIIVA?
           </h3>
         </div>
-        
+
         {/* Paragraph text */}
         <div className="max-w-8xl mx-auto flex justify-center lg:justify-start lg:pl-20">
-          <p className="text-xl lg:text-2xl text-black px-6 leading-relaxed font-medium" style={{fontFamily: 'Roboto, sans-serif'}}>
+          <p className="text-xl lg:text-2xl text-[var(--color-ink)] px-6 leading-relaxed font-medium">
             A mobile app online retailer that bridges the connection between Brand and customer. Think of YIIVA as Superbalist, but for homegrown South African Brands.
           </p>
         </div>

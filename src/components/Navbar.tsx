@@ -2,12 +2,12 @@
 import Image from "next/image";
 import { useState } from "react";
 import ContactModal from "./ContactModal";
-import SignUpModal from "./SignUpModal";
 import AudienceToggle from "./AudienceToggle";
+import { useSignupModal } from "./SignupModalProvider";
 
 export default function Navbar() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const { openSignup } = useSignupModal();
 
   return (
     <>
@@ -36,7 +36,7 @@ export default function Navbar() {
             Contact
           </button>
           <button
-            onClick={() => setIsSignUpModalOpen(true)}
+            onClick={openSignup}
             className="px-5 py-2 text-white rounded-full font-medium bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] transition-colors"
           >
             SignUp
@@ -53,12 +53,6 @@ export default function Navbar() {
       <ContactModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
-      />
-
-      {/* SignUp Modal */}
-      <SignUpModal
-        isOpen={isSignUpModalOpen}
-        onClose={() => setIsSignUpModalOpen(false)}
       />
     </>
   );

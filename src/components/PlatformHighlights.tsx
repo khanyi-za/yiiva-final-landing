@@ -1,30 +1,32 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useSignupModal } from "./SignupModalProvider";
 
 export default function PlatformHighlights() {
+  const { openSignup } = useSignupModal();
   return (
     <section
       data-platform-highlights
+      className="bg-[var(--color-anchor)]"
       style={{
-        backgroundColor: '#030f02',
         borderTopLeftRadius: '3rem',
         borderTopRightRadius: '3rem'
       }}>
       <div className="max-w-7xl mx-auto px-4 lg:px-6 py-8 lg:py-16">
         {/* Heading */}
         <motion.div
-          className="text-white text-center mb-6 lg:mb-8"
+          className="text-[var(--color-on-anchor)] text-center mb-6 lg:mb-8"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-3xl lg:text-6xl mb-4 lg:mb-6" style={{fontFamily: 'Roboto Thin, sans-serif', fontWeight: 100}}>The one platform converting your brands content into sales.</h2>
+          <h2 className="font-[family-name:var(--font-display)] font-medium text-3xl lg:text-6xl mb-4 lg:mb-6 tracking-tight">The one platform converting your brands content into sales.</h2>
         </motion.div>
 
         {/* Main Content */}
-        <div className="text-white space-y-8 lg:space-y-16">
+        <div className="text-[var(--color-on-anchor)] space-y-8 lg:space-y-16">
           {/* Sell text section */}
           <motion.div
             className="text-left"
@@ -33,10 +35,10 @@ export default function PlatformHighlights() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h3 className="text-xl lg:text-4xl leading-relaxed" style={{fontFamily: 'Roboto, sans-serif', fontWeight: 300}}>
-              <span className="text-white">Your content tells your brand&apos;s story, we provide the audience. </span>
-              <span className="text-gray-400">Reach customers with ease. </span>
-              <span className="text-gray-400">Sell effortlessly on our mobile platform, while we handle the rest.</span>
+            <h3 className="font-[family-name:var(--font-display)] font-normal text-xl lg:text-4xl leading-relaxed">
+              <span className="text-[var(--color-on-anchor)]">Your content tells your brand&apos;s story, we provide the audience. </span>
+              <span className="text-[var(--color-on-anchor-60)]">Reach customers with ease. </span>
+              <span className="text-[var(--color-on-anchor-60)]">Sell effortlessly on our mobile platform, while we handle the rest.</span>
             </h3>
           </motion.div>
 
@@ -96,17 +98,23 @@ export default function PlatformHighlights() {
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <h3 className="text-3xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight">
+            <h3 className="font-[family-name:var(--font-display)] text-3xl lg:text-6xl font-bold mb-6 lg:mb-8 leading-tight tracking-tight">
               Post your products, automate your sales, and scale with ease
             </h3>
-            <p className="text-base lg:text-2xl text-gray-300 leading-relaxed mb-6 lg:mb-8 max-w-4xl mx-auto">
+            <p className="text-base lg:text-2xl text-[var(--color-on-anchor-60)] leading-relaxed mb-6 lg:mb-8 max-w-4xl mx-auto">
               YIIVA connects every part of your business: from AI-powered product tagging to payments, delivery, and customer care. One platform that automates your sales so you can focus on growing your brand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center mb-8 lg:mb-12">
-              <button className="px-6 lg:px-8 py-3 lg:py-4 bg-green-500 text-white rounded-full text-base lg:text-lg font-medium hover:bg-green-600 transition-colors">
+              <button
+                onClick={openSignup}
+                className="px-6 lg:px-8 py-3 lg:py-4 bg-[var(--color-accent)] text-white rounded-full text-base lg:text-lg font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
+              >
                 Customer Mobile App
               </button>
-              <button className="px-6 lg:px-8 py-3 lg:py-4 bg-green-500 text-white rounded-full text-base lg:text-lg font-medium hover:bg-green-600 transition-colors">
+              <button
+                onClick={openSignup}
+                className="px-6 lg:px-8 py-3 lg:py-4 border border-[var(--color-on-anchor-60)]/40 text-[var(--color-on-anchor)] rounded-full text-base lg:text-lg font-medium hover:border-[var(--color-on-anchor)] transition-colors"
+              >
                 Dashboard
               </button>
             </div>

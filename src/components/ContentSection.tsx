@@ -1,16 +1,18 @@
 "use client";
 import Image from "next/image";
+import { useSignupModal } from "./SignupModalProvider";
 
 export default function ContentSection() {
+  const { openSignup } = useSignupModal();
   return (
-    <section className="py-16" style={{backgroundColor: '#FAF9F6'}}>
+    <section className="py-16 bg-[var(--color-paper)]">
       {/* Horizontal line across full width */}
-      <div className="w-full border-t border-gray-300 mb-12"></div>
+      <div className="w-full border-t border-[var(--color-sage)] mb-12"></div>
 
       <div className="max-w-7xl mx-auto px-8">
         {/* Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl lg:text-5xl font-light text-black">
+          <h2 className="font-[family-name:var(--font-display)] text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)]">
             It&apos;s easy to start selling
           </h2>
         </div>
@@ -45,33 +47,36 @@ export default function ContentSection() {
           {/* Right side - Steps */}
           <div className="col-span-12 lg:col-span-7 space-y-8">
             {/* Step 01 */}
-            <div className="flex items-center gap-6 pb-4 border-b border-gray-700">
-              <span className="text-2xl font-bold text-green-500">01</span>
-              <h3 className="text-2xl lg:text-3xl font-light text-black">
+            <div className="flex items-center gap-6 pb-4 border-b border-[var(--color-sage)]">
+              <span className="font-[family-name:var(--font-mono)] text-2xl font-bold text-[var(--color-accent)]">01</span>
+              <h3 className="font-[family-name:var(--font-display)] text-2xl lg:text-3xl font-medium text-[var(--color-ink)]">
                 Add your first product
               </h3>
             </div>
 
             {/* Step 02 */}
-            <div className="flex items-center gap-6 pb-4 border-b border-gray-700">
-              <span className="text-2xl font-bold text-green-500">02</span>
-              <h3 className="text-2xl lg:text-3xl font-light text-black">
+            <div className="flex items-center gap-6 pb-4 border-b border-[var(--color-sage)]">
+              <span className="font-[family-name:var(--font-mono)] text-2xl font-bold text-[var(--color-accent)]">02</span>
+              <h3 className="font-[family-name:var(--font-display)] text-2xl lg:text-3xl font-medium text-[var(--color-ink)]">
                 Customize your store
               </h3>
             </div>
 
             {/* Step 03 */}
-            <div className="flex items-center gap-6 pb-4 border-b border-gray-700">
-              <span className="text-2xl font-bold text-green-500">03</span>
-              <h3 className="text-2xl lg:text-3xl font-light text-black">
+            <div className="flex items-center gap-6 pb-4 border-b border-[var(--color-sage)]">
+              <span className="font-[family-name:var(--font-mono)] text-2xl font-bold text-[var(--color-accent)]">03</span>
+              <h3 className="font-[family-name:var(--font-display)] text-2xl lg:text-3xl font-medium text-[var(--color-ink)]">
                 Set up payments
               </h3>
             </div>
 
             {/* Button */}
             <div className="flex justify-end pt-4">
-              <button className="px-8 py-3 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-colors">
-                Join waitinglist for first access
+              <button
+                onClick={openSignup}
+                className="px-8 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
+              >
+                Join waitlist for first access
               </button>
             </div>
           </div>

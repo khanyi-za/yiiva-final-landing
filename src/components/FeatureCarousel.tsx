@@ -41,6 +41,12 @@ export default function FeatureCarousel({
   }, [scrollOffset]);
 
   useEffect(() => {
+    // Respect reduced-motion: leave the first word centered, don't auto-scroll.
+    if (typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     let isAnimating = false;
 
     const startAnimation = () => {
@@ -108,12 +114,12 @@ export default function FeatureCarousel({
 
   return (
     <section className="py-6 lg:py-[2.48rem]">
-      <div className="relative rounded-3xl overflow-hidden mx-auto border-[1.2px] border-white w-[95%]" style={{backgroundColor: '#030f02'}}>
+      <div className="relative rounded-3xl overflow-hidden mx-auto border-[1.2px] border-[var(--color-on-anchor-60)]/30 w-[95%] bg-[var(--color-anchor)]">
         <div className="px-4 lg:px-8 py-4 lg:py-[2.7rem] mx-auto">
           <div className="flex items-center justify-start gap-4 lg:gap-8">
             {/* Fixed "No" text - stays on the left */}
             <div className="flex-shrink-0">
-              <span className="text-3xl lg:text-7xl font-bold text-cyan-400 leading-none">
+              <span className="font-[family-name:var(--font-display)] text-3xl lg:text-7xl font-extrabold text-[var(--color-accent)] leading-none">
                 No
               </span>
             </div>
@@ -155,7 +161,7 @@ export default function FeatureCarousel({
                     }}
                   >
                     <span
-                      className="whitespace-nowrap leading-none text-xl lg:text-5xl font-bold text-gray-400 opacity-100"
+                      className="font-[family-name:var(--font-display)] whitespace-nowrap leading-none text-xl lg:text-5xl font-bold text-[var(--color-on-anchor-60)] opacity-100"
                     >
                       {item.word}
                     </span>

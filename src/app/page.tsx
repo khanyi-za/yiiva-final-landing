@@ -6,10 +6,12 @@ import ContentSection from "@/components/ContentSection";
 import PlatformHighlights from "@/components/PlatformHighlights";
 import StickyFooterReveal from "@/components/StickyFooterReveal";
 import { AudienceProvider } from "@/components/AudienceContext";
+import { SignupModalProvider } from "@/components/SignupModalProvider";
 
 export default function Home() {
   return (
     <AudienceProvider>
+     <SignupModalProvider>
       {/* Navigation Bar - Outside StickyFooterReveal so it stays fixed */}
       <Navbar />
 
@@ -37,6 +39,7 @@ export default function Home() {
           <PlatformHighlights />
         </div>
       </StickyFooterReveal>
+     </SignupModalProvider>
     </AudienceProvider>
   );
 }
