@@ -79,6 +79,36 @@ img {
   height: auto;
 }
 
+/* Hero backdrop — soft mono wash + faint grid (CSS only, no asset) */
+.hero-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(55% 48% at 50% 32%, oklch(0.99 0.012 85 / 0.95), transparent 72%),
+    repeating-linear-gradient(to right, oklch(0.19 0.006 80 / 0.045) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(to bottom, oklch(0.19 0.006 80 / 0.045) 0 1px, transparent 1px 72px);
+  -webkit-mask-image: radial-gradient(72% 62% at 50% 38%, #000, transparent 88%);
+  mask-image: radial-gradient(72% 62% at 50% 38%, #000, transparent 88%);
+}
+
+/* Brand-video marquee (available for a single ambient band if needed) */
+@keyframes yiiva-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.yiiva-marquee {
+  animation: yiiva-marquee 45s linear infinite;
+}
+.yiiva-marquee:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .yiiva-marquee { animation: none; }
+}
+
 /* Hide scrollbar for horizontal scroll containers */
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
