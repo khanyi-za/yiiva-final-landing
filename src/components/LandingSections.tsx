@@ -50,13 +50,27 @@ export default function LandingSections() {
             body="Streetwear, skincare, art and more — discover niche South African brands and one-of-a-kind pieces, all in one app."
             video="/images/hero_media/6.mp4"
           />
-          <WhyShopYiiva />
           <VideoFeature
             side="right"
+            eyebrow="Support local"
+            heading="Every order backs a homegrown maker"
+            body="Shop with purpose — your purchases go straight to small South African brands and the people behind them."
+            video="/images/hero_media/1.mp4"
+          />
+          <WhyShopYiiva />
+          <VideoFeature
+            side="left"
             eyebrow="Shop"
             heading="Shop straight from the content you love"
             body="Every post is a storefront. See something you like in a video — tap, discover the brand behind it, and buy it shipped to your door."
             video="/images/hero_media/7.mp4"
+          />
+          <VideoFeature
+            side="right"
+            eyebrow="Delivery"
+            heading="Shipped to your door, nationwide"
+            body="Secure checkout in-app and reliable delivery across South Africa — we handle the rest so your order just arrives."
+            video="/images/hero_media/10.mp4"
           />
           <HowDiscoveryWorks />
         </>
