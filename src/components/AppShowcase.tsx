@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const SHOTS = [
   { src: "/app-explore.png", label: "Browse" },
   { src: "/app-brand.png", label: "Discover brands" },
-  { src: "/track.png", label: "Track" },
+  { src: "/app-track.png", label: "Track" },
 ];
 
 export default function AppShowcase() {
