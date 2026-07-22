@@ -130,7 +130,7 @@ export default function TermsConditionsPage() {
         </nav>
 
         {/* Sections */}
-        <div className="mt-6 divide-y divide-[var(--color-sage)]">
+        <div className="mt-6">
           <Section n={1} id="introduction" title="Introduction">
             <Clause n="1.1">
               These terms and conditions (&ldquo;Terms&rdquo;) govern your access

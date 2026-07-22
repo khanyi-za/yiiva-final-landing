@@ -129,7 +129,7 @@ export default function PrivacyPolicyPage() {
         </nav>
 
         {/* Sections */}
-        <div className="mt-6 divide-y divide-[var(--color-sage)]">
+        <div className="mt-6">
           <Section n={1} id="introduction" title="Introduction">
             <Clause n="1.1">
               This Privacy Policy explains how Khaziimla Technology (Pty) Ltd
