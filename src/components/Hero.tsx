@@ -25,7 +25,7 @@ const HERO_COPY = {
 } as const;
 
 const PHONES = [
-  { src: "/app-explore.png", alt: "YIIVA app — explore homegrown brands" },
+  { src: "/app-product.png", alt: "YIIVA app — a limited-run art piece" },
   { src: "/app-brand.png", alt: "YIIVA app — a brand's storefront" },
 ];
 
