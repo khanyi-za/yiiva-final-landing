@@ -233,7 +233,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden pointer-events-auto"
+              className="bg-[var(--color-paper)] rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden pointer-events-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -255,7 +255,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <path d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                 </button>
-                <h2 id="contact-modal-title" className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Get In Touch</h2>
+                <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-on-anchor-60)]">
+                  Contact
+                </span>
+                <h2 id="contact-modal-title" className="mt-2 font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Get In Touch</h2>
                 <p className="text-[var(--color-on-anchor-60)] mt-2">
                   We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
                 </p>
@@ -289,7 +292,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <button
                       type="button"
                       onClick={handleSendAnother}
-                      className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-50 transition-colors"
+                      className="px-6 py-3 border border-[var(--color-sage)] text-[var(--color-ink)] rounded-full font-medium hover:bg-[var(--color-paper-2)] transition-colors"
                     >
                       Send another
                     </button>
@@ -316,10 +319,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   aria-hidden="true"
                   className="hidden"
                 />
+                <div className="grid sm:grid-cols-2 gap-6">
                 {/* Name Field */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Name <span className="text-red-500">*</span>
+                  <label htmlFor="name" className="block text-sm font-medium text-[var(--color-ink)] mb-2">
+                    Name <span className="text-[var(--color-ink-60)]">*</span>
                   </label>
                   <input
                     type="text"
@@ -328,7 +332,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     value={formData.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
+                    className={`w-full px-4 py-3 rounded-xl border bg-[var(--color-paper-2)] placeholder:text-[var(--color-ink)]/40 transition-all duration-200 ${
                       errors.name && touched.name
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                         : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
@@ -355,8 +359,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 {/* Email Field */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email <span className="text-red-500">*</span>
+                  <label htmlFor="email" className="block text-sm font-medium text-[var(--color-ink)] mb-2">
+                    Email <span className="text-[var(--color-ink-60)]">*</span>
                   </label>
                   <input
                     type="email"
@@ -365,7 +369,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     value={formData.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
+                    className={`w-full px-4 py-3 rounded-xl border bg-[var(--color-paper-2)] placeholder:text-[var(--color-ink)]/40 transition-all duration-200 ${
                       errors.email && touched.email
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                         : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
@@ -389,11 +393,12 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     </motion.p>
                   )}
                 </div>
+                </div>
 
                 {/* Subject Field */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject <span className="text-red-500">*</span>
+                  <label htmlFor="subject" className="block text-sm font-medium text-[var(--color-ink)] mb-2">
+                    Subject <span className="text-[var(--color-ink-60)]">*</span>
                   </label>
                   <input
                     type="text"
@@ -402,7 +407,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     value={formData.subject}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 ${
+                    className={`w-full px-4 py-3 rounded-xl border bg-[var(--color-paper-2)] placeholder:text-[var(--color-ink)]/40 transition-all duration-200 ${
                       errors.subject && touched.subject
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                         : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
@@ -429,8 +434,8 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
                 {/* Message Field */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message <span className="text-red-500">*</span>
+                  <label htmlFor="message" className="block text-sm font-medium text-[var(--color-ink)] mb-2">
+                    Message <span className="text-[var(--color-ink-60)]">*</span>
                   </label>
                   <textarea
                     id="message"
@@ -439,7 +444,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     rows={5}
-                    className={`w-full px-4 py-3 rounded-xl border-2 transition-all duration-200 resize-none ${
+                    className={`w-full px-4 py-3 rounded-xl border bg-[var(--color-paper-2)] placeholder:text-[var(--color-ink)]/40 transition-all duration-200 resize-none ${
                       errors.message && touched.message
                         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                         : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
@@ -465,18 +470,11 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </div>
 
                 {/* Submit Button */}
-                <div className="flex gap-4 pt-4">
-                  <button
-                    type="button"
-                    onClick={handleClose}
-                    className="flex-1 px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-50 transition-colors"
-                  >
-                    Cancel
-                  </button>
+                <div className="pt-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="w-full px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -519,6 +517,15 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                       </>
                     )}
                   </button>
+                  <p className="mt-4 text-center text-sm text-[var(--color-ink-60)]">
+                    Prefer email?{" "}
+                    <a
+                      href="mailto:hello@yiiva.co.za"
+                      className="text-[var(--color-accent)] hover:underline"
+                    >
+                      hello@yiiva.co.za
+                    </a>
+                  </p>
                 </div>
               </form>
               )}
