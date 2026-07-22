@@ -361,7 +361,7 @@ export default function TermsConditionsPage() {
                 </a>
               </p>
               <p className="mt-1 text-[var(--color-ink-60)]">
-                Address: [registered business address]
+                Address: 12 Spring Road, Oaklands, Johannesburg, Gauteng, 2192
               </p>
             </div>
           </Section>
