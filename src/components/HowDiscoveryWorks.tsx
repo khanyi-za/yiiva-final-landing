@@ -1,5 +1,4 @@
 "use client";
-import AppStoreButtons from "./AppStoreButtons";
 
 const STEPS = [
   { n: "01", title: "Browse homegrown brands", body: "Explore a curated feed of South African makers and their latest drops." },
@@ -9,26 +8,23 @@ const STEPS = [
 
 export default function HowDiscoveryWorks() {
   return (
-    <section className="bg-[var(--color-anchor)] py-16 lg:py-24" style={{ borderTopLeftRadius: "3rem", borderTopRightRadius: "3rem" }}>
+    <section className="bg-[var(--color-paper)] py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-on-anchor)] mb-10 lg:mb-14 max-w-2xl">
+        <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)] mb-10 lg:mb-14 max-w-2xl">
           How discovery works
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {STEPS.map((s) => (
-            <div key={s.n} className="space-y-3 border-t border-[var(--color-on-anchor-60)]/25 pt-5">
-              <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--color-on-anchor)]">{s.n}</span>
-              <h3 className="font-[family-name:var(--font-display)] text-xl lg:text-2xl font-semibold text-[var(--color-on-anchor)]">
+            <div key={s.n} className="space-y-3 border-t border-[var(--color-sage)] pt-5">
+              <span className="font-[family-name:var(--font-mono)] text-sm text-[var(--color-accent)]">{s.n}</span>
+              <h3 className="font-[family-name:var(--font-display)] text-xl lg:text-2xl font-semibold text-[var(--color-ink)]">
                 {s.title}
               </h3>
-              <p className="text-base lg:text-lg text-[var(--color-on-anchor-60)] leading-relaxed">
+              <p className="text-base lg:text-lg text-[var(--color-ink-60)] leading-relaxed">
                 {s.body}
               </p>
             </div>
           ))}
-        </div>
-        <div className="mt-12 lg:mt-16">
-          <AppStoreButtons variant="light-text" />
         </div>
       </div>
     </section>
