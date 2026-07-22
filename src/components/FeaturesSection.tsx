@@ -46,7 +46,7 @@ export default function FeaturesSection() {
             So, What Is YIIVA?
           </h3>
           <p className="text-xl lg:text-2xl text-[var(--color-ink)] leading-relaxed font-medium">
-            YIIVA is where a brand becomes a business: a mobile commerce platform built for South Africa&apos;s creative economy. Think of it as Superbalist, but purpose-built for homegrown South African brands.
+            YIIVA is where a brand becomes a business. Think of it as Superbalist, but purpose-built for homegrown South African brands.
           </p>
         </div>
       </div>
