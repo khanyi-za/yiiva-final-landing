@@ -2,8 +2,8 @@
 import { useAudience, type Audience } from "./AudienceContext";
 
 const OPTIONS: { value: Audience; label: string }[] = [
-  { value: "brands", label: "For Brands" },
-  { value: "shoppers", label: "For Shoppers" },
+  { value: "brands", label: "Brands" },
+  { value: "shoppers", label: "Shoppers" },
 ];
 
 export default function AudienceToggle() {
@@ -23,7 +23,7 @@ export default function AudienceToggle() {
             role="tab"
             aria-selected={active}
             onClick={() => setAudience(opt.value)}
-            className={`relative rounded-full px-4 py-1.5 font-medium tracking-wide transition-colors duration-200 ${
+            className={`relative rounded-full px-3 sm:px-4 py-1.5 font-medium tracking-wide transition-colors duration-200 ${
               active
                 ? "bg-[var(--color-paper)] text-[var(--color-anchor)]"
                 : "text-[var(--color-on-anchor-60)] hover:text-[var(--color-on-anchor)]"

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import AppStoreButtons from "./AppStoreButtons";
 
 // Dark band showing the real shopping app screenshots as phones.
 // All phones render in a uniform fixed-ratio frame (object-cover, top-aligned)
@@ -13,7 +14,7 @@ const SHOTS = [
 
 export default function AppShowcase() {
   return (
-    <section className="bg-[var(--color-paper)] py-8">
+    <section id="the-app" className="bg-[var(--color-paper)] py-8 scroll-mt-24">
       <div
         className="bg-[var(--color-anchor)] px-6 py-16 lg:py-24"
         style={{ borderRadius: "3rem" }}
@@ -49,6 +50,10 @@ export default function AppShowcase() {
                 </span>
               </motion.div>
             ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <AppStoreButtons variant="light-text" />
           </div>
         </div>
       </div>
