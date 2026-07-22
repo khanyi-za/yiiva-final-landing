@@ -14,7 +14,7 @@ const SHOTS = [
 
 export default function AppShowcase() {
   return (
-    <section id="the-app" className="bg-[var(--color-paper)] py-8 scroll-mt-24">
+    <section id="the-app" className="bg-[var(--color-paper)] py-8 px-4 sm:px-6 lg:px-8 scroll-mt-24">
       <div
         className="bg-[var(--color-anchor)] px-6 py-16 lg:py-24"
         style={{ borderRadius: "3rem" }}
