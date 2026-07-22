@@ -6,7 +6,7 @@ import FeatureCarousel from "./FeatureCarousel";
 import ContentSection from "./ContentSection";
 import WhoItsFor from "./WhoItsFor";
 import FeatureDeepDives from "./FeatureDeepDives";
-import PreLaunchTrust from "./PreLaunchTrust";
+import BrandsCTA from "./BrandsCTA";
 import WhyShopYiiva from "./WhyShopYiiva";
 import HowDiscoveryWorks from "./HowDiscoveryWorks";
 import VideoFeature from "./VideoFeature";
@@ -44,7 +44,7 @@ export default function LandingSections() {
           <FeatureDeepDives />
           <ContentSection />
           <WhoItsFor />
-          <PreLaunchTrust />
+          <BrandsCTA />
         </>
       ) : (
         <>

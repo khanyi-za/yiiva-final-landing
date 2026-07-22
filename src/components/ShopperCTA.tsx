@@ -1,9 +1,8 @@
 "use client";
-import { useSignupModal } from "./SignupModalProvider";
+import AppStoreButtons from "./AppStoreButtons";
 
-// Shoppers closing CTA band — mirrors the Brands founding-brands closer.
+// Shoppers closing CTA band — get the app.
 export default function ShopperCTA() {
-  const { openSignup } = useSignupModal();
   return (
     <section className="bg-[var(--color-paper)] pt-8">
       <div
@@ -12,22 +11,17 @@ export default function ShopperCTA() {
       >
         <div className="max-w-3xl mx-auto text-center space-y-6">
           <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-on-anchor-60)]">
-            Founding shoppers
+            For shoppers
           </span>
           <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-6xl font-bold tracking-tight text-[var(--color-on-anchor)] leading-[1.05]">
-            Be first to shop homegrown.
+            Shop homegrown, on YIIVA.
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-on-anchor-60)] leading-relaxed max-w-xl mx-auto">
-            We&apos;re in pre-launch. Join the waitlist for early access to the app &mdash;
-            and the brands you won&apos;t find anywhere else.
+            Discover and buy from South Africa&apos;s best homegrown brands &mdash;
+            download the app and start shopping.
           </p>
-          <div className="pt-2">
-            <button
-              onClick={openSignup}
-              className="px-8 py-3 bg-[var(--color-paper)] text-[var(--color-anchor)] rounded-full font-medium hover:bg-[var(--color-on-anchor-60)] transition-colors"
-            >
-              Join the waitlist
-            </button>
+          <div className="pt-2 flex justify-center">
+            <AppStoreButtons variant="light-text" />
           </div>
         </div>
       </div>

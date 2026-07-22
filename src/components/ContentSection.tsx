@@ -73,7 +73,7 @@ export default function ContentSection() {
                 onClick={openSignup}
                 className="px-8 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
               >
-                Join waitlist for first access
+                Start selling
               </button>
             </div>
           </div>

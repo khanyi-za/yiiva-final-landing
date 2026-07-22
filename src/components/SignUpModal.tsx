@@ -129,9 +129,9 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                         <path d="M6 18L18 6M6 6l12 12"></path>
                       </svg>
                     </button>
-                    <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Join The Waitlist</h2>
+                    <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Start selling on YIIVA</h2>
                     <p className="text-[var(--color-on-anchor-60)] mt-2">
-                      Sign up to get early access to the YIIVA app demo
+                      Create your store and start reaching customers today.
                     </p>
                   </div>
 
@@ -212,11 +212,11 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                               ></path>
                             </svg>
-                            Joining...
+                            Creating…
                           </>
                         ) : (
                           <>
-                            Join Waitlist
+                            Create account
                             <svg
                               className="w-5 h-5"
                               fill="none"
@@ -263,11 +263,10 @@ export default function SignUpModal({ isOpen, onClose }: SignUpModalProps) {
                       />
                     </svg>
                   </motion.div>
-                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)] mb-3">Thank You!</h3>
+                  <h3 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)] mb-3">Welcome to YIIVA!</h3>
                   <p className="text-[var(--color-ink-60)] text-lg">
-                    We&apos;ll get back to you soon with access to the demo.
+                    You&apos;re all set — check your inbox to finish setting up your store.
                   </p>
-                  <p className="text-[var(--color-ink-60)] text-sm mt-4">Check your inbox for updates.</p>
                 </div>
               )}
             </motion.div>

@@ -8,8 +8,8 @@ const FAQS = [
     a: "Yes — browsing and buying on Yiiva is free. You only pay for the items you order.",
   },
   {
-    q: "When does Yiiva launch?",
-    a: "We're in pre-launch. Join the waitlist to get early access to the app as soon as it's ready.",
+    q: "How do I start shopping?",
+    a: "Download the YIIVA app on iOS or Android, browse homegrown brands, and check out securely in-app.",
   },
   {
     q: "How does delivery work?",

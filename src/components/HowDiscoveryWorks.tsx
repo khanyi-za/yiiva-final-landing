@@ -1,7 +1,6 @@
 "use client";
-import { useSignupModal } from "./SignupModalProvider";
+import AppStoreButtons from "./AppStoreButtons";
 
-// Shoppers-view section. Placeholder copy to refine later.
 const STEPS = [
   { n: "01", title: "Browse homegrown brands", body: "Explore a curated feed of South African makers and their latest drops." },
   { n: "02", title: "Subscribe to what you love", body: "Subscribe to the brands you love and wishlist the pieces that catch your eye." },
@@ -9,7 +8,6 @@ const STEPS = [
 ];
 
 export default function HowDiscoveryWorks() {
-  const { openSignup } = useSignupModal();
   return (
     <section className="bg-[var(--color-anchor)] py-16 lg:py-24" style={{ borderTopLeftRadius: "3rem", borderTopRightRadius: "3rem" }}>
       <div className="max-w-6xl mx-auto px-6">
@@ -30,12 +28,7 @@ export default function HowDiscoveryWorks() {
           ))}
         </div>
         <div className="mt-12 lg:mt-16">
-          <button
-            onClick={openSignup}
-            className="px-8 py-3 bg-[var(--color-paper)] text-[var(--color-anchor)] rounded-full font-medium hover:bg-[var(--color-on-anchor-60)] transition-colors"
-          >
-            Get early access
-          </button>
+          <AppStoreButtons variant="light-text" />
         </div>
       </div>
     </section>

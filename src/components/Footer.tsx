@@ -74,10 +74,10 @@ export default function Footer() {
           {/* Right Column - Signup Form (Shows first on mobile, second on desktop) */}
           <div className="lg:col-span-5 lg:order-2 space-y-4">
             <h3 className="font-[family-name:var(--font-display)] text-2xl lg:text-3xl font-bold text-[var(--color-ink)]">
-              Join The Waitlist
+              Stay in the loop
             </h3>
             <p className="text-[var(--color-ink-60)] text-sm lg:text-base">
-              Get early access and exclusive updates about YIIVA
+              New brands and drops, straight to your inbox.
             </p>
 
             {/* Signup Form */}
@@ -119,7 +119,7 @@ export default function Footer() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Successfully joined the waitlist!
+                    You&apos;re subscribed!
                   </p>
                 )}
               </div>
@@ -151,11 +151,11 @@ export default function Footer() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       ></path>
                     </svg>
-                    Joining...
+                    Subscribing…
                   </>
                 ) : (
                   <>
-                    Join Waitlist
+                    Subscribe
                     <svg
                       className="w-5 h-5"
                       fill="none"
