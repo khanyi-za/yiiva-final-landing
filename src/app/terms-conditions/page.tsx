@@ -134,10 +134,11 @@ export default function TermsConditionsPage() {
           <Section n={1} id="introduction" title="Introduction">
             <Clause n="1.1">
               These terms and conditions (&ldquo;Terms&rdquo;) govern your access
-              to and use of the YIIVA mobile application, website and related
-              services (together, the &ldquo;Platform&rdquo;), operated by
-              [YIIVA legal entity name] ([registration number]) (&ldquo;YIIVA&rdquo;,
-              &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;).
+              to and use of YIIVA, a mobile application and related services
+              (together, the &ldquo;Platform&rdquo; or &ldquo;YIIVA&rdquo;). YIIVA
+              is owned and operated by Khaziimla Technology (Pty) Ltd (registration
+              number 2026/314534/07) (&ldquo;Khaziimla&rdquo;, &ldquo;we&rdquo;,
+              &ldquo;us&rdquo; or &ldquo;our&rdquo;).
             </Clause>
             <Clause n="1.2">
               YIIVA is a mobile commerce platform that connects small, homegrown
@@ -177,7 +178,7 @@ export default function TermsConditionsPage() {
             <Clause n="2.4">
               Payments, commission, delivery and returns are handled in accordance
               with the arrangements made available on the Platform at the time of
-              a transaction. Where YIIVA charges a commission on a sale, the
+              a transaction. Where we charge a commission on a sale, the
               applicable rate is shown to the Brand before a sale is completed.
             </Clause>
             <Clause n="2.5">
@@ -230,15 +231,15 @@ export default function TermsConditionsPage() {
           <Section n={5} id="liability" title="Liability">
             <Clause n="5.1">
               The Platform is provided on an &ldquo;as is&rdquo; and &ldquo;as
-              available&rdquo; basis. To the extent permitted by law, YIIVA does
+              available&rdquo; basis. To the extent permitted by law, we do
               not accept liability for any indirect, incidental or consequential
               loss arising from your use of, or inability to use, the Platform.
             </Clause>
             <Clause n="5.2">
-              YIIVA facilitates transactions between Brands and Shoppers. A
-              contract of sale for any product is concluded between the Brand and
-              the Shopper. Nothing in these Terms limits any rights you may have
-              under the Consumer Protection Act, 2008.
+              We facilitate transactions between Brands and Shoppers through the
+              Platform. A contract of sale for any product is concluded between the
+              Brand and the Shopper. Nothing in these Terms limits any rights you
+              may have under the Consumer Protection Act, 2008.
             </Clause>
             <Clause n="5.3">
               Nothing in these Terms excludes or limits liability that cannot be
@@ -250,10 +251,10 @@ export default function TermsConditionsPage() {
             <Clause n="6.1">
               All intellectual property rights in the Platform, including its
               design, text, graphics, logos and software, are owned by or licensed
-              to YIIVA and are protected by law.
+              to us and are protected by law.
             </Clause>
             <Clause n="6.2">
-              Brands retain ownership of the content they upload but grant YIIVA a
+              Brands retain ownership of the content they upload but grant us a
               non-exclusive, royalty-free licence to host, display and promote that
               content for the purpose of operating and marketing the Platform.
             </Clause>
@@ -346,8 +347,11 @@ export default function TermsConditionsPage() {
               contact us:
             </Clause>
             <div className="ml-8 rounded-2xl border border-[var(--color-sage)] bg-[var(--color-paper-2)] p-5 text-[var(--color-ink)]">
-              <p className="font-semibold">YIIVA</p>
-              <p className="mt-1 text-[var(--color-ink-60)]">
+              <p className="font-semibold">Khaziimla Technology (Pty) Ltd</p>
+              <p className="mt-0.5 text-sm text-[var(--color-ink-60)]">
+                Operator of the YIIVA app · Registration number 2026/314534/07
+              </p>
+              <p className="mt-2 text-[var(--color-ink-60)]">
                 Email:{" "}
                 <a
                   href="mailto:hello@yiiva.co.za"
