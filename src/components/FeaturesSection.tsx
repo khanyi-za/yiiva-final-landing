@@ -1,26 +1,11 @@
 "use client";
 
-// Centered intro + the three original brand videos, placed cleanly (no cards,
-// no overlays) with captions below. Copy is the original site's verbatim.
-const FEATURES = [
-  {
-    title: "Order Management",
-    body: "Track, manage, and fulfill every order in one simple dashboard.",
-    video: "/images/card_videos/6.mp4",
-    offset: "lg:mt-0",
-  },
-  {
-    title: "Delivery & Shipping",
-    body: "Fast, reliable nationwide delivery. We handle logistics so you don't have to.",
-    video: "/images/card_videos/7.mp4",
-    offset: "lg:mt-12",
-  },
-  {
-    title: "Sales trends & insights",
-    body: "See what's selling, who's buying, and what's trending, right in your dashboard.",
-    video: "/images/card_videos/8.mp4",
-    offset: "lg:mt-0",
-  },
+// Centered intro + a brand-energy strip (three homegrown-brand videos, no
+// operational labels) that illustrates who Yiiva is built for. Copy verbatim.
+const BRAND_CLIPS = [
+  { video: "/images/card_videos/6.mp4", offset: "lg:mt-0" },
+  { video: "/images/card_videos/7.mp4", offset: "lg:mt-12" },
+  { video: "/images/card_videos/8.mp4", offset: "lg:mt-0" },
 ];
 
 export default function FeaturesSection() {
@@ -40,22 +25,14 @@ export default function FeaturesSection() {
           </p>
         </div>
 
-        {/* Three brand videos, clean + captioned (subtle stagger) */}
+        {/* Brand-energy strip — the kind of homegrown brands Yiiva is built for */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-          {FEATURES.map((f) => (
-            <div key={f.title} className={`flex flex-col ${f.offset}`}>
+          {BRAND_CLIPS.map((c) => (
+            <div key={c.video} className={c.offset}>
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src={f.video} type="video/mp4" />
+                  <source src={c.video} type="video/mp4" />
                 </video>
-              </div>
-              <div className="mt-5 text-center px-2">
-                <h3 className="font-[family-name:var(--font-display)] text-lg lg:text-xl font-semibold text-[var(--color-ink)]">
-                  {f.title}
-                </h3>
-                <p className="mt-2 text-sm text-[var(--color-ink-60)] leading-relaxed">
-                  {f.body}
-                </p>
               </div>
             </div>
           ))}
