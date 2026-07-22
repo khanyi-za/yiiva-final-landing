@@ -15,9 +15,9 @@ export default function StickyFooterReveal({ children }: RevealFooterProps) {
     const updateFooterHeight = () => {
       // Mobile gets taller footer due to stacked layout
       if (window.innerWidth < 1024) {
-        setFooterHeight(900); // Increased height for mobile with stacked columns and extra top padding
+        setFooterHeight(1000); // Mobile: stacked columns + oversized wordmark + extra top padding
       } else {
-        setFooterHeight(450); // Desktop with side-by-side columns
+        setFooterHeight(700); // Desktop: 3-column layout + oversized wordmark
       }
     };
 
