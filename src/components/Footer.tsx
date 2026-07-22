@@ -214,11 +214,11 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Navigation Links — TODO: link real About / Terms pages */}
+            {/* Navigation Links — TODO: link real About page */}
             <div className="flex flex-wrap items-center gap-4 lg:gap-6 text-[var(--color-ink-60)]">
               <a href="#" className="hover:text-[var(--color-ink)] transition-colors">About</a>
               <span className="text-[var(--color-sage)]">|</span>
-              <a href="#" className="hover:text-[var(--color-ink)] transition-colors">Terms &amp; Conditions</a>
+              <a href="/terms-conditions" className="hover:text-[var(--color-ink)] transition-colors">Terms &amp; Conditions</a>
               <span className="text-[var(--color-sage)]">|</span>
               <button
                 onClick={() => setIsContactModalOpen(true)}
