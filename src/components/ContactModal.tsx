@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 import Toast, { type ToastType } from "./Toast";
 
@@ -20,6 +20,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     email: "",
     subject: "",
     message: "",
+    website: "", // honeypot — must stay empty for real users
   });
 
   const [errors, setErrors] = useState({
@@ -37,7 +38,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -124,17 +127,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             throw new Error(data.error || 'Failed to send message');
           }
 
-          // Success - Reset form and close modal
-          setFormData({ name: "", email: "", subject: "", message: "" });
+          // Success - show inline confirmation inside the modal
           setTouched({ name: false, email: false, subject: false, message: false });
           setIsSubmitting(false);
-          onClose();
-
-          setToast({
-            visible: true,
-            message: "Message sent successfully! We'll get back to you soon.",
-            type: "success",
-          });
+          setSubmitted(true);
         })
         .catch((error) => {
           console.error('Contact form error:', error);
@@ -150,17 +146,45 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
 
   const handleClose = useCallback(() => {
     // Reset form state when closing
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setFormData({ name: "", email: "", subject: "", message: "", website: "" });
     setErrors({ name: "", email: "", subject: "", message: "" });
     setTouched({ name: false, email: false, subject: false, message: false });
+    setSubmitted(false);
     onClose();
   }, [onClose]);
 
-  // Close on Escape and lock body scroll while the modal is open
+  const handleSendAnother = () => {
+    setFormData({ name: "", email: "", subject: "", message: "", website: "" });
+    setErrors({ name: "", email: "", subject: "", message: "" });
+    setTouched({ name: false, email: false, subject: false, message: false });
+    setSubmitted(false);
+  };
+
+  // Close on Escape, trap Tab focus, and lock body scroll while the modal is open
   useEffect(() => {
     if (!isOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
+      if (e.key === "Escape") {
+        handleClose();
+        return;
+      }
+      if (e.key === "Tab" && modalRef.current) {
+        const focusables = Array.from(
+          modalRef.current.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input, textarea, select, [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((el) => el.tabIndex !== -1 && el.offsetParent !== null);
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
     document.addEventListener("keydown", onKey);
     const prevOverflow = document.body.style.overflow;
@@ -170,6 +194,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       document.body.style.overflow = prevOverflow;
     };
   }, [isOpen, handleClose]);
+
+  // Autofocus the first field when the modal opens (after the enter animation mounts)
+  useEffect(() => {
+    if (!isOpen || submitted) return;
+    const t = setTimeout(() => {
+      modalRef.current
+        ?.querySelector<HTMLInputElement>('input[name="name"]')
+        ?.focus();
+    }, 60);
+    return () => clearTimeout(t);
+  }, [isOpen, submitted]);
 
   if (!mounted) return null;
 
@@ -190,6 +225,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {/* Modal */}
           <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
+              ref={modalRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby="contact-modal-title"
@@ -225,8 +261,61 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 </p>
               </div>
 
-              {/* Form */}
+              {submitted ? (
+                /* Inline success state */
+                <div className="px-8 py-14 text-center">
+                  <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[var(--color-accent)]/10">
+                    <svg
+                      className="h-8 w-8 text-[var(--color-accent)]"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)]">
+                    Message sent
+                  </h3>
+                  <p className="mt-2 text-[var(--color-ink-60)] max-w-sm mx-auto">
+                    Thanks for reaching out. We&apos;ll reply to{" "}
+                    <span className="font-medium text-[var(--color-ink)]">{formData.email}</span>{" "}
+                    as soon as we can.
+                  </p>
+                  <div className="mt-8 flex gap-4 justify-center">
+                    <button
+                      type="button"
+                      onClick={handleSendAnother}
+                      className="px-6 py-3 border-2 border-gray-300 text-gray-700 rounded-full font-medium hover:bg-gray-50 transition-colors"
+                    >
+                      Send another
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleClose}
+                      className="px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
+                    >
+                      Done
+                    </button>
+                  </div>
+                </div>
+              ) : (
+              /* Form */
               <form onSubmit={handleSubmit} className="px-8 py-6 space-y-6 overflow-y-auto max-h-[calc(90vh-180px)]">
+                {/* Honeypot — visually hidden, kept empty by real users */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
                 {/* Name Field */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -432,6 +521,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                   </button>
                 </div>
               </form>
+              )}
             </motion.div>
           </div>
         </>
