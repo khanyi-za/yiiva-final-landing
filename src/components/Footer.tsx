@@ -217,8 +217,6 @@ export default function Footer() {
 
             {/* Navigation Links — TODO: link real About page */}
             <div className="flex flex-wrap items-center gap-4 lg:gap-6 text-[var(--color-ink-60)]">
-              <a href="#" className="hover:text-[var(--color-ink)] transition-colors">About</a>
-              <span className="text-[var(--color-sage)]">|</span>
               <a href="/privacy-policy" className="hover:text-[var(--color-ink)] transition-colors">Privacy Policy</a>
               <span className="text-[var(--color-sage)]">|</span>
               <a href="/terms-conditions" className="hover:text-[var(--color-ink)] transition-colors">Terms &amp; Conditions</a>
