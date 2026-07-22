@@ -26,7 +26,7 @@ const DIVES = [
   },
   {
     heading: "See what you earn, and get paid out",
-    body: "A clear statement per order: sales, YIIVA's 5.5% commission, and your payout. Shipping is on us, never your margin.",
+    body: "A clear statement per order: sales and your payout. Shipping is on us, never your margin.",
     image: "/merchant-earnings.png",
     alt: "Earnings and payouts in the Yiiva merchant dashboard",
   },
