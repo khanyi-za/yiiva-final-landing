@@ -24,7 +24,7 @@ export default function Navbar() {
         <nav
           className={`w-full max-w-5xl flex items-center gap-2 rounded-full border border-white/10 px-3 sm:px-4 py-2 transition-all duration-300 ${
             scrolled
-              ? "bg-[var(--color-anchor)]/90 backdrop-blur-lg shadow-lg shadow-black/25"
+              ? "bg-[var(--color-anchor)]/70 backdrop-blur-2xl shadow-lg shadow-black/25"
               : "bg-[var(--color-anchor)]"
           }`}
         >
