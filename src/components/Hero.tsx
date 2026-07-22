@@ -9,14 +9,12 @@ const HERO_COPY = {
     paragraph:
       "Reach more customers! YIIVA helps creative brands get discovered and sell effortlessly. Automate your operations, with built-in payments, delivery, and customer care so you can focus on creating, not managing.",
     ctaNote: "Set up your store and start selling on YIIVA today.",
-    featurePoint: "Monetize your content, drive sales",
   },
   shoppers: {
     heading: "Discover homegrown SA brands",
     paragraph:
       "Find the niche South African brands you won't see anywhere else: streetwear, skincare, art and more, shipped nationwide. Shop local, discover something new.",
     appNote: "Free to download, available on iOS & Android.",
-    featurePoint: "Support local, discover the undiscovered",
   },
 } as const;
 
@@ -61,14 +59,6 @@ export default function Hero() {
             <span className="text-sm text-[var(--color-ink-60)]">{HERO_COPY.shoppers.appNote}</span>
           </div>
         )}
-
-        {/* Feature Point */}
-        <div className="flex items-center gap-3">
-          <div className="w-2.5 h-2.5 bg-[var(--color-accent)] rounded-full"></div>
-          <span className="text-[var(--color-ink-60)] font-medium text-sm lg:text-base">
-            {copy.featurePoint}
-          </span>
-        </div>
       </div>
     </section>
   );
