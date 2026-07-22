@@ -4,7 +4,7 @@
 // operational labels) that illustrates who Yiiva is built for. Copy verbatim.
 const BRAND_CLIPS = [
   { video: "/images/card_videos/6.mp4", offset: "lg:mt-0" },
-  { video: "/images/card_videos/7.mp4", offset: "lg:mt-12" },
+  { video: "/images/hero_media/3.mp4", offset: "lg:mt-12" },
   { video: "/images/card_videos/8.mp4", offset: "lg:mt-0" },
 ];
 
