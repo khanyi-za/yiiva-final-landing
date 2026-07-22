@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useSignupModal } from "./SignupModalProvider";
+import { MERCHANT_SIGNUP_URL } from "@/lib/links";
 
 export default function ContentSection() {
-  const { openSignup } = useSignupModal();
   return (
     <section className="py-16 bg-[var(--color-paper)]">
       <div className="max-w-7xl mx-auto px-8">
@@ -69,12 +68,12 @@ export default function ContentSection() {
 
             {/* Button */}
             <div className="flex justify-end pt-4">
-              <button
-                onClick={openSignup}
-                className="px-8 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
+              <a
+                href={MERCHANT_SIGNUP_URL}
+                className="inline-block px-8 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors"
               >
                 Start selling
-              </button>
+              </a>
             </div>
           </div>
         </div>

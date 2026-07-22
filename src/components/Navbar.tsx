@@ -3,11 +3,12 @@ import Image from "next/image";
 import { useState } from "react";
 import ContactModal from "./ContactModal";
 import AudienceToggle from "./AudienceToggle";
-import { useSignupModal } from "./SignupModalProvider";
+import { useAudience } from "./AudienceContext";
+import { MERCHANT_SIGNUP_URL } from "@/lib/links";
 
 export default function Navbar() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const { openSignup } = useSignupModal();
+  const { audience } = useAudience();
 
   return (
     <>
@@ -35,12 +36,14 @@ export default function Navbar() {
           >
             Contact
           </button>
-          <button
-            onClick={openSignup}
-            className="px-5 py-2 rounded-full font-medium bg-[var(--color-paper)] text-[var(--color-anchor)] hover:bg-[var(--color-on-anchor-60)] transition-colors"
-          >
-            SignUp
-          </button>
+          {audience === "brands" && (
+            <a
+              href={MERCHANT_SIGNUP_URL}
+              className="px-5 py-2 rounded-full font-medium bg-[var(--color-paper)] text-[var(--color-anchor)] hover:bg-[var(--color-on-anchor-60)] transition-colors"
+            >
+              Sign Up
+            </a>
+          )}
         </div>
       </nav>
 

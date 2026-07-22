@@ -1,10 +1,8 @@
 "use client";
-import { useSignupModal } from "./SignupModalProvider";
+import { MERCHANT_SIGNUP_URL } from "@/lib/links";
 
 // Brands closing CTA band.
-// Honest pre-launch framing — no fabricated metrics or logos.
 export default function BrandsCTA() {
-  const { openSignup } = useSignupModal();
   return (
     <section className="bg-[var(--color-paper)] pt-8">
       <div
@@ -23,12 +21,12 @@ export default function BrandsCTA() {
             Africa &mdash; with payments, delivery and customer care handled for you.
           </p>
           <div className="pt-2">
-            <button
-              onClick={openSignup}
-              className="px-8 py-3 bg-[var(--color-paper)] text-[var(--color-anchor)] rounded-full font-medium hover:bg-[var(--color-on-anchor-60)] transition-colors"
+            <a
+              href={MERCHANT_SIGNUP_URL}
+              className="inline-block px-8 py-3 bg-[var(--color-paper)] text-[var(--color-anchor)] rounded-full font-medium hover:bg-[var(--color-on-anchor-60)] transition-colors"
             >
               Start selling
-            </button>
+            </a>
           </div>
         </div>
       </div>
