@@ -45,7 +45,7 @@ export default function FeaturesSection() {
           <h3 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] tracking-tight">
             So, What Is YIIVA?
           </h3>
-          <p className="text-xl lg:text-2xl text-[var(--color-ink)] leading-relaxed font-medium">
+          <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
             YIIVA is where a brand becomes a business. Think of it as Superbalist, but purpose-built for homegrown South African brands.
           </p>
         </div>
