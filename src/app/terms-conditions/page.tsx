@@ -115,7 +115,7 @@ export default function TermsConditionsPage() {
           <ol className="mt-4 grid sm:grid-cols-2 gap-x-8 gap-y-2">
             {SECTIONS.map((s, i) => (
               <li key={s.id} className="flex gap-3 text-[15px]">
-                <span className="font-[family-name:var(--font-mono)] text-[var(--color-ink-60)] tabular-nums">
+                <span className="w-7 shrink-0 text-right font-[family-name:var(--font-mono)] text-[var(--color-ink-60)] tabular-nums">
                   {i + 1}.
                 </span>
                 <a
