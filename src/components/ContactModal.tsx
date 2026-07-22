@@ -1,6 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Toast, { type ToastType } from "./Toast";
 
@@ -148,13 +148,28 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   };
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     // Reset form state when closing
     setFormData({ name: "", email: "", subject: "", message: "" });
     setErrors({ name: "", email: "", subject: "", message: "" });
     setTouched({ name: false, email: false, subject: false, message: false });
     onClose();
-  };
+  }, [onClose]);
+
+  // Close on Escape and lock body scroll while the modal is open
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [isOpen, handleClose]);
 
   if (!mounted) return null;
 
@@ -175,6 +190,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
           {/* Modal */}
           <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 pointer-events-none">
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="contact-modal-title"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -201,7 +219,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                     <path d="M6 18L18 6M6 6l12 12"></path>
                   </svg>
                 </button>
-                <h2 className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Get In Touch</h2>
+                <h2 id="contact-modal-title" className="font-[family-name:var(--font-display)] text-3xl font-bold text-[var(--color-on-anchor)]">Get In Touch</h2>
                 <p className="text-[var(--color-on-anchor-60)] mt-2">
                   We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
                 </p>

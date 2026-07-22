@@ -28,7 +28,8 @@ export async function POST(request: NextRequest) {
     // Send email using Resend
     const data = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
-      to: process.env.RESEND_TO_EMAIL!,
+      to: process.env.RESEND_TO_EMAIL || 'hello@yiiva.co.za',
+      replyTo: email,
       subject: `Contact Form: ${subject}`,
       html: `
         <!DOCTYPE html>
@@ -46,7 +47,7 @@ export async function POST(request: NextRequest) {
                 padding: 20px;
               }
               .header {
-                background: linear-gradient(to right, #065f46, #047857);
+                background: #16130f;
                 color: white;
                 padding: 20px;
                 border-radius: 8px 8px 0 0;
@@ -61,7 +62,7 @@ export async function POST(request: NextRequest) {
               }
               .label {
                 font-weight: bold;
-                color: #065f46;
+                color: #6d28d9;
                 display: block;
                 margin-bottom: 5px;
               }
