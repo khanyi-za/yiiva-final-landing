@@ -8,7 +8,7 @@ const REASONS = [
   },
   {
     title: "Support homegrown",
-    body: "Every order backs a small local maker — streetwear, skincare, art and more, straight from the source.",
+    body: "Every order backs a small local maker: streetwear, skincare, art and more, straight from the source.",
   },
   {
     title: "Shipped nationwide",

@@ -14,8 +14,8 @@ const HERO_COPY = {
   shoppers: {
     heading: "Discover homegrown SA brands",
     paragraph:
-      "Find the niche South African brands you won't see anywhere else — streetwear, skincare, art and more, shipped nationwide. Shop local, discover something new.",
-    appNote: "Free to download — available on iOS & Android.",
+      "Find the niche South African brands you won't see anywhere else: streetwear, skincare, art and more, shipped nationwide. Shop local, discover something new.",
+    appNote: "Free to download, available on iOS & Android.",
     featurePoint: "Support local, discover the undiscovered",
   },
 } as const;

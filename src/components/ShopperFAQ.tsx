@@ -5,7 +5,7 @@
 const FAQS = [
   {
     q: "Is Yiiva free to use?",
-    a: "Yes — browsing and buying on Yiiva is free. You only pay for the items you order.",
+    a: "Yes, browsing and buying on Yiiva is free. You only pay for the items you order.",
   },
   {
     q: "How do I start shopping?",
@@ -17,7 +17,7 @@ const FAQS = [
   },
   {
     q: "What kind of brands are on Yiiva?",
-    a: "Small, homegrown South African brands — streetwear, skincare, art and more.",
+    a: "Small, homegrown South African brands: streetwear, skincare, art and more.",
   },
 ];
 

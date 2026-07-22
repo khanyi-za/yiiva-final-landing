@@ -17,8 +17,8 @@ export default function ShopperCTA() {
             Shop homegrown, on YIIVA.
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-on-anchor-60)] leading-relaxed max-w-xl mx-auto">
-            Discover and buy from South Africa&apos;s best homegrown brands &mdash;
-            download the app and start shopping.
+            Discover and buy from South Africa&apos;s best homegrown brands.
+            Download the app and start shopping.
           </p>
           <div className="pt-2 flex justify-center">
             <AppStoreButtons variant="light-text" />

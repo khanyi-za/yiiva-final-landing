@@ -15,7 +15,7 @@ export default function WhoItsFor() {
         <p className="text-lg lg:text-xl text-[var(--color-ink-60)] leading-relaxed max-w-2xl mx-auto">
           Yiiva is for small, niche, homegrown South African brands that don&apos;t yet have
           the visibility they deserve. If you make something worth discovering, we help the
-          right people find it &mdash; and give you everything you need to sell once they do.
+          right people find it, and give you everything you need to sell once they do.
         </p>
       </div>
     </section>

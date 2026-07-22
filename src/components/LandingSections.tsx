@@ -52,7 +52,7 @@ export default function LandingSections() {
             side="left"
             eyebrow="Discover"
             heading="Find brands you won't see anywhere else"
-            body="Streetwear, skincare, art and more — discover niche South African brands and one-of-a-kind pieces, all in one app."
+            body="Streetwear, skincare, art and more. Discover niche South African brands and one-of-a-kind pieces, all in one app."
             video="/images/hero_media/6.mp4"
           />
           <CategoryTiles />
@@ -60,7 +60,7 @@ export default function LandingSections() {
             side="right"
             eyebrow="Support local"
             heading="Every order backs a homegrown maker"
-            body="Shop with purpose — your purchases go straight to small South African brands and the people behind them."
+            body="Shop with purpose. Your purchases go straight to small South African brands and the people behind them."
             video="/images/hero_media/1.mp4"
           />
           <WhyShopYiiva />
@@ -69,22 +69,22 @@ export default function LandingSections() {
             side="left"
             eyebrow="Shoppable reels"
             heading="Shop straight from the content you love"
-            body="Every post is a storefront. Watch a reel, tap what catches your eye, and buy it shipped to your door — like and save the pieces you're not ready to check out yet."
+            body="Every post is a storefront. Watch a reel, tap what catches your eye, and buy it shipped to your door. Like and save the pieces you're not ready to check out yet."
             video="/images/hero_media/7.mp4"
           />
           <PhoneFeature
             side="right"
             eyebrow="Every piece has a story"
             heading="See the detail behind every piece"
-            body="Tap through to the full story — from limited-run art with a certificate of authenticity to one-of-a-kind fashion, with the details that matter."
+            body="Tap through to the full story, from limited-run art with a certificate of authenticity to one-of-a-kind fashion, with the details that matter."
             image="/app-product.png"
-            alt="Yiiva app product page — a limited-run art piece"
+            alt="Yiiva app product page: a limited-run art piece"
           />
           <VideoFeature
             side="left"
             eyebrow="Delivery"
             heading="Shipped to your door, nationwide"
-            body="Secure checkout in-app and reliable delivery across South Africa — we handle the rest so your order just arrives."
+            body="Secure checkout in-app and reliable delivery across South Africa. We handle the rest so your order just arrives."
             video="/images/hero_media/10.mp4"
           />
           <HowDiscoveryWorks />

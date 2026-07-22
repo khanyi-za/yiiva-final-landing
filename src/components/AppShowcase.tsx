@@ -24,7 +24,7 @@ export default function AppShowcase() {
             The app
           </span>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-on-anchor)] leading-[1.08]">
-            Browse, discover and buy — all in one app
+            Browse, discover and buy, all in one app
           </h2>
           <div className="mt-12 flex justify-center items-start gap-4 lg:gap-8">
             {SHOTS.map((s) => (
@@ -39,7 +39,7 @@ export default function AppShowcase() {
                 <div className="relative w-[110px] sm:w-[150px] lg:w-[200px] aspect-[67/148] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src={s.src}
-                    alt={`Yiiva app — ${s.label}`}
+                    alt={`Yiiva app: ${s.label}`}
                     fill
                     sizes="200px"
                     className="object-cover object-top"

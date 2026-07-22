@@ -17,7 +17,7 @@ const FEATURES = [
   },
   {
     title: "Sales trends & insights",
-    body: "See what's selling, who's buying, and what's trending — right in your dashboard.",
+    body: "See what's selling, who's buying, and what's trending, right in your dashboard.",
     video: "/images/card_videos/8.mp4",
     offset: "lg:mt-0",
   },
@@ -33,7 +33,7 @@ export default function FeaturesSection() {
             The Mobile Commerce Platform Built For S.A. Brands
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
-            From streetwear to skincare, YIIVA helps South African brands sell smarter — get discovered by the right customers, take seamless payments, and ship fast nationwide.
+            From streetwear to skincare, YIIVA helps South African brands sell smarter: get discovered by the right customers, take seamless payments, and ship fast nationwide.
           </p>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
             We believe brands should focus more on growing and creating, not handling orders and deliveries.
@@ -69,7 +69,7 @@ export default function FeaturesSection() {
             So, What Is YIIVA?
           </h3>
           <p className="text-xl lg:text-2xl text-[var(--color-ink)] leading-relaxed font-medium">
-            YIIVA is where a brand becomes a business — a mobile commerce platform built for South Africa&apos;s creative economy. Think of it as Superbalist, but purpose-built for homegrown South African brands.
+            YIIVA is where a brand becomes a business: a mobile commerce platform built for South Africa&apos;s creative economy. Think of it as Superbalist, but purpose-built for homegrown South African brands.
           </p>
         </div>
       </div>
