@@ -1,17 +1,37 @@
 "use client";
 import Image from "next/image";
 
-// Shoppers "what you'll find" — real category photos with the label overlaid.
-// Uniform framing (hairline border + consistent gradient), static (no hover),
-// since categories aren't browsable pre-launch.
-const CATEGORIES = [
-  { name: "Streetwear", image: "/categories/hoodies.jpg" },
+// Shoppers "what you'll find" — bento layout: one large featured tile + a 2x2
+// of the rest. Static (categories aren't browsable pre-launch).
+const FEATURED = { name: "Streetwear", image: "/categories/hoodies.jpg" };
+const REST = [
   { name: "Dresses", image: "/categories/dresses.jpg" },
-  { name: "Art & prints", image: "/categories/art.jpg" },
   { name: "Footwear", image: "/categories/footwear.jpg" },
   { name: "Bags", image: "/categories/bags.jpg" },
   { name: "T-Shirts", image: "/categories/tees.jpg" },
 ];
+
+function Tile({
+  name,
+  image,
+  className,
+  big,
+}: {
+  name: string;
+  image: string;
+  className?: string;
+  big?: boolean;
+}) {
+  return (
+    <div className={`relative rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-sage)] ${className ?? ""}`}>
+      <Image src={image} alt={name} fill sizes={big ? "(max-width:1024px) 100vw, 50vw" : "(max-width:1024px) 50vw, 25vw"} className="object-cover object-center" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+      <span className={`absolute left-4 bottom-4 font-[family-name:var(--font-display)] font-semibold text-white drop-shadow-sm ${big ? "text-xl lg:text-3xl" : "text-lg lg:text-xl"}`}>
+        {name}
+      </span>
+    </div>
+  );
+}
 
 export default function CategoryTiles() {
   return (
@@ -29,24 +49,14 @@ export default function CategoryTiles() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-          {CATEGORIES.map((c) => (
-            <div
-              key={c.name}
-              className="relative aspect-[4/5] rounded-[var(--radius-md)] overflow-hidden border border-[var(--color-sage)]"
-            >
-              <Image
-                src={c.image}
-                alt={c.name}
-                fill
-                sizes="(max-width: 1024px) 50vw, 33vw"
-                className="object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <span className="absolute left-4 bottom-4 font-[family-name:var(--font-display)] text-lg lg:text-xl font-semibold text-white drop-shadow-sm">
-                {c.name}
-              </span>
-            </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+          <Tile
+            {...FEATURED}
+            big
+            className="col-span-2 lg:row-span-2 aspect-[4/5] lg:aspect-auto"
+          />
+          {REST.map((c) => (
+            <Tile key={c.name} {...c} className="aspect-square" />
           ))}
         </div>
       </div>
