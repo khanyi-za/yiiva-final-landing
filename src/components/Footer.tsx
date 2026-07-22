@@ -62,7 +62,7 @@ export default function Footer() {
       .catch((error) => {
         console.error('Footer signup error:', error);
         setIsSubmitting(false);
-        setError('Failed to join waitlist. Please try again.');
+        setError("Couldn't subscribe. Please try again.");
       });
   };
 
@@ -91,7 +91,8 @@ export default function Footer() {
                     if (error) setError("");
                   }}
                   placeholder="Enter your email address"
-                  className={`w-full px-4 py-3 rounded-full border-2 transition-all duration-200 text-[var(--color-ink)] placeholder:text-[var(--color-ink-60)] ${
+                  aria-label="Email address"
+                  className={`w-full px-4 py-3 rounded-full border bg-[var(--color-paper-2)] transition-all duration-200 text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/40 ${
                     error
                       ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                       : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
@@ -233,9 +234,12 @@ export default function Footer() {
         </div>
 
         {/* Bottom Copyright - Full Width */}
-        <div className="mt-12 pt-8 border-t border-[var(--color-sage)]">
-          <p className="text-[var(--color-ink-60)] text-sm text-center">
-            2025 YIIVA © All Rights Reserved.
+        <div className="mt-12 pt-8 border-t border-[var(--color-sage)] space-y-1 text-center">
+          <p className="text-[var(--color-ink-60)] text-sm">
+            © 2026 YIIVA. All rights reserved.
+          </p>
+          <p className="text-[var(--color-ink-60)] text-xs">
+            YIIVA is a product of Khaziimla Technology (Pty) Ltd.
           </p>
         </div>
       </div>
