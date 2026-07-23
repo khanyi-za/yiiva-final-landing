@@ -7,7 +7,6 @@ import ContentSection from "./ContentSection";
 import WhoItsFor from "./WhoItsFor";
 import FeatureDeepDives from "./FeatureDeepDives";
 import BrandsCTA from "./BrandsCTA";
-import WhyShopYiiva from "./WhyShopYiiva";
 import HowDiscoveryWorks from "./HowDiscoveryWorks";
 import VideoFeature from "./VideoFeature";
 import PhoneFeature from "./PhoneFeature";
@@ -63,7 +62,6 @@ export default function LandingSections() {
             body="Shop with purpose. Your purchases go straight to small South African brands and the people behind them."
             video="/images/hero_media/1.mp4"
           />
-          <WhyShopYiiva />
           <AppShowcase />
           <VideoFeature
             side="left"
