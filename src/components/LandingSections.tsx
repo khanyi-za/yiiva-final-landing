@@ -51,15 +51,15 @@ export default function LandingSections() {
             side="left"
             eyebrow="Discover"
             heading="Find brands you won't see anywhere else"
-            body="Streetwear, skincare, art and more. Discover niche South African brands and one-of-a-kind pieces, all in one app."
+            body="Streetwear, skincare, art and more. Discover niche independent brands and one-of-a-kind pieces, all in one app."
             video="/images/hero_media/6.mp4"
           />
           <CategoryTiles />
           <VideoFeature
             side="right"
-            eyebrow="Support local"
-            heading="Every order backs a homegrown maker"
-            body="Shop with purpose. Your purchases go straight to small South African brands and the people behind them."
+            eyebrow="Support makers"
+            heading="Every order backs an independent maker"
+            body="Shop with purpose. Your purchases go straight to small independent brands and the people behind them."
             video="/images/hero_media/1.mp4"
           />
           <AppShowcase />
@@ -81,8 +81,8 @@ export default function LandingSections() {
           <VideoFeature
             side="left"
             eyebrow="Delivery"
-            heading="Shipped to your door, nationwide"
-            body="Secure checkout in-app and reliable delivery across South Africa. We handle the rest so your order just arrives."
+            heading="Shipped to your door"
+            body="Secure checkout in-app and reliable delivery. We handle the rest so your order just arrives."
             video="/images/hero_media/10.mp4"
           />
           <HowDiscoveryWorks />

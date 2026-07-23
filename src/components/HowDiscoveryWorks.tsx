@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 
 const STEPS = [
-  { n: "01", title: "Browse homegrown brands", body: "Explore a curated feed of South African makers and their latest drops." },
+  { n: "01", title: "Browse independent brands", body: "Explore a curated feed of independent makers and their latest drops." },
   { n: "02", title: "Subscribe to what you love", body: "Subscribe to the brands you love and wishlist the pieces that catch your eye." },
-  { n: "03", title: "Buy, shipped to your door", body: "Check out securely in-app and we handle delivery nationwide." },
+  { n: "03", title: "Buy, shipped to your door", body: "Check out securely in-app and we handle delivery for you." },
 ];
 
 export default function HowDiscoveryWorks() {

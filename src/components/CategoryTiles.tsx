@@ -45,7 +45,7 @@ export default function CategoryTiles() {
             What you&apos;ll find
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
-            Homegrown South African brands across the things you actually shop for.
+            Independent brands across the things you actually shop for.
           </p>
         </div>
 

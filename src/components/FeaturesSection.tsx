@@ -15,10 +15,10 @@ export default function FeaturesSection() {
         {/* Centered title + intro */}
         <div className="max-w-3xl mx-auto text-center space-y-5">
           <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] leading-tight tracking-tight">
-            The Mobile Commerce Platform Built For S.A. Brands
+            The Mobile Commerce Platform Built For Independent Brands
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
-            From streetwear to skincare, YIIVA helps South African brands sell smarter: get discovered by the right customers, take seamless payments, and ship fast nationwide.
+            From streetwear to skincare, YIIVA helps independent brands sell smarter: get discovered by the right customers, take seamless payments, and ship fast.
           </p>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
             We believe brands should focus more on growing and creating, not handling orders and deliveries.
@@ -46,7 +46,7 @@ export default function FeaturesSection() {
             So, What Is YIIVA?
           </h3>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
-            YIIVA is where a homegrown brand becomes a business: the place to get discovered, sell, and reach customers across South Africa.
+            YIIVA is where an independent brand becomes a business: the place to get discovered, sell, and reach more customers.
           </p>
         </div>
       </div>

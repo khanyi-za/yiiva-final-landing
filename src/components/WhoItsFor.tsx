@@ -13,7 +13,7 @@ export default function WhoItsFor() {
           Built for the brands<br className="hidden sm:block" /> nobody&apos;s found yet.
         </h2>
         <p className="text-lg lg:text-xl text-[var(--color-ink-60)] leading-relaxed max-w-2xl mx-auto">
-          YIIVA is for small, niche, homegrown South African brands that don&apos;t yet have
+          YIIVA is for small, niche, independent brands that don&apos;t yet have
           the visibility they deserve. If you make something worth discovering, we help the
           right people find it, and give you everything you need to sell once they do.
         </p>

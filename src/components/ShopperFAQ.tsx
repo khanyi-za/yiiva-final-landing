@@ -9,15 +9,15 @@ const FAQS = [
   },
   {
     q: "How do I start shopping?",
-    a: "Download the YIIVA app on iOS or Android, browse homegrown brands, and check out securely in-app.",
+    a: "Download the YIIVA app on iOS or Android, browse independent brands, and check out securely in-app.",
   },
   {
     q: "How does delivery work?",
-    a: "Orders are delivered nationwide across South Africa, arranged for you through the app.",
+    a: "Orders are delivered to your door, arranged for you through the app.",
   },
   {
     q: "What kind of brands are on YIIVA?",
-    a: "Small, homegrown South African brands: streetwear, skincare, art and more.",
+    a: "Small, independent brands: streetwear, skincare, art and more.",
   },
 ];
 

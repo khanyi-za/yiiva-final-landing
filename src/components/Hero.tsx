@@ -16,9 +16,9 @@ const HERO_COPY = {
   shoppers: {
     eyebrow: "For shoppers",
     headingA: "Discover",
-    headingB: "homegrown SA brands",
+    headingB: "independent brands",
     paragraph:
-      "Find the niche South African brands you won't see anywhere else: streetwear, skincare, art and more, shipped nationwide. Shop local, discover something new.",
+      "Find the niche independent brands you won't see anywhere else: streetwear, skincare, art and more, delivered to your door. Discover something new.",
     appNote: "Free to download, available on iOS & Android.",
   },
 } as const;

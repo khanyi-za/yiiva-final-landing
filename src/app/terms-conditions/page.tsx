@@ -141,8 +141,8 @@ export default function TermsConditionsPage() {
               &ldquo;us&rdquo; or &ldquo;our&rdquo;).
             </Clause>
             <Clause n="1.2">
-              YIIVA is a mobile commerce platform that connects small, homegrown
-              South African brands (&ldquo;Brands&rdquo;) with shoppers
+              YIIVA is a mobile commerce platform that connects small,
+              independent brands (&ldquo;Brands&rdquo;) with shoppers
               (&ldquo;Shoppers&rdquo;), and provides tools for listing products,
               taking payments, and arranging delivery.
             </Clause>

@@ -17,8 +17,8 @@ export default function BrandsCTA() {
             Turn your brand into a business.
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-on-anchor-60)] leading-relaxed max-w-xl mx-auto">
-            Set up your store in minutes and start reaching customers across South
-            Africa, with payments, delivery and customer care handled for you.
+            Set up your store in minutes and start reaching new customers, with
+            payments, delivery and customer care handled for you.
           </p>
           <div className="pt-2">
             <a

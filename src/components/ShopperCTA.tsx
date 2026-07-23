@@ -14,10 +14,10 @@ export default function ShopperCTA() {
             For shoppers
           </span>
           <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-6xl font-bold tracking-tight text-[var(--color-on-anchor)] leading-[1.05]">
-            Shop homegrown, on YIIVA.
+            Shop the undiscovered, on YIIVA.
           </h2>
           <p className="text-base lg:text-xl text-[var(--color-on-anchor-60)] leading-relaxed max-w-xl mx-auto">
-            Discover and buy from South Africa&apos;s best homegrown brands.
+            Discover and buy from the best independent brands.
             Download the app and start shopping.
           </p>
           <div className="pt-2 flex justify-center">
