@@ -23,11 +23,6 @@ const HERO_COPY = {
   },
 } as const;
 
-const PHONES = [
-  { src: "/app-product.png", alt: "YIIVA app — a limited-run art piece" },
-  { src: "/app-brand.png", alt: "YIIVA app — a brand's storefront" },
-];
-
 export default function Hero() {
   const { audience } = useAudience();
   const copy = HERO_COPY[audience];
@@ -105,14 +100,14 @@ export default function Hero() {
       </motion.div>
 
       {/* Product visual — audience-aware, rises in on load */}
-      <motion.div
-        key={`${audience}-visual`}
-        className="hero-visual relative z-10 mt-12 lg:mt-16"
-        variants={visual}
-        initial="hidden"
-        animate="show"
-      >
-        {audience === "brands" ? (
+      {audience === "brands" && (
+        <motion.div
+          key="brands-visual"
+          className="hero-visual relative z-10 mt-12 lg:mt-16"
+          variants={visual}
+          initial="hidden"
+          animate="show"
+        >
           <div className="max-w-4xl mx-auto">
             <Image
               src="/yiiva-dashboard.png"
@@ -123,28 +118,8 @@ export default function Hero() {
               className="w-full h-auto rounded-2xl ring-1 ring-black/5 shadow-2xl shadow-black/15"
             />
           </div>
-        ) : (
-          <div className="flex justify-center items-end gap-4 sm:gap-6">
-            {PHONES.map((p, i) => (
-              <div
-                key={p.src}
-                className={`relative w-[40vw] max-w-[180px] aspect-[67/148] rounded-2xl overflow-hidden shadow-2xl shadow-black/15 ${
-                  i === 1 ? "mb-6 lg:mb-10" : ""
-                }`}
-              >
-                <Image
-                  src={p.src}
-                  alt={p.alt}
-                  fill
-                  sizes="180px"
-                  priority={i === 0}
-                  className="object-cover object-top"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-      </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 }
