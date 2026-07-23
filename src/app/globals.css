@@ -84,7 +84,7 @@ img {
   height: auto;
 }
 
-/* Hero backdrop — soft mono wash + faint grid (CSS only, no asset) */
+/* Hero backdrop — bold per-audience accent aurora across the top (no grid) */
 .hero-backdrop::before {
   content: "";
   position: absolute;
@@ -92,11 +92,42 @@ img {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(55% 48% at 50% 32%, oklch(0.99 0.012 85 / 0.95), transparent 72%),
-    repeating-linear-gradient(to right, oklch(0.19 0.006 80 / 0.045) 0 1px, transparent 1px 72px),
-    repeating-linear-gradient(to bottom, oklch(0.19 0.006 80 / 0.045) 0 1px, transparent 1px 72px);
-  -webkit-mask-image: radial-gradient(72% 62% at 50% 38%, #000, transparent 88%);
-  mask-image: radial-gradient(72% 62% at 50% 38%, #000, transparent 88%);
+    radial-gradient(55% 50% at 12% -8%, color-mix(in oklch, var(--color-accent) 32%, transparent), transparent 62%),
+    radial-gradient(50% 46% at 88% -6%, color-mix(in oklch, var(--color-accent) 24%, transparent), transparent 62%),
+    radial-gradient(95% 62% at 50% -20%, color-mix(in oklch, var(--color-accent) 16%, transparent), transparent 72%);
+}
+
+/* Accent halo behind the hero product visual */
+.hero-visual {
+  position: relative;
+}
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 92%;
+  height: 82%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklch, var(--color-accent) 34%, transparent),
+    transparent
+  );
+  filter: blur(60px);
+}
+
+/* Subtle film-grain texture over the page (tactile, kills flat white) */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 /* Brand-video marquee (available for a single ambient band if needed) */

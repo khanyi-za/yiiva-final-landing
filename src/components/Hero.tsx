@@ -107,7 +107,7 @@ export default function Hero() {
       {/* Product visual — audience-aware, rises in on load */}
       <motion.div
         key={`${audience}-visual`}
-        className="relative z-10 mt-12 lg:mt-16"
+        className="hero-visual relative z-10 mt-12 lg:mt-16"
         variants={visual}
         initial="hidden"
         animate="show"
