@@ -33,7 +33,7 @@ export default function FeatureCarousel({
   return (
     <section className="py-6 lg:py-10">
       <div className="relative mx-auto w-[90%] rounded-3xl bg-[var(--color-anchor)] overflow-hidden px-6 py-12 lg:py-20 text-center">
-        <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.25em] text-[var(--color-on-anchor-60)]">
+        <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.25em] text-[color-mix(in_oklch,var(--color-accent)_60%,white)]">
           No more
         </span>
         <div className="relative mt-4 min-h-[6rem] lg:min-h-[8rem]">
