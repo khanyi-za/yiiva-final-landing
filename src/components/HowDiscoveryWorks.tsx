@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const STEPS = [
   { n: "01", title: "Browse homegrown brands", body: "Explore a curated feed of South African makers and their latest drops." },
@@ -8,14 +8,12 @@ const STEPS = [
 ];
 
 export default function HowDiscoveryWorks() {
-  const reduce = useReducedMotion();
-
   const container = {
     hidden: {},
-    show: { transition: { staggerChildren: reduce ? 0 : 0.15, delayChildren: 0.15 } },
+    show: { transition: { staggerChildren: 0.15, delayChildren: 0.15 } },
   };
   const item = {
-    hidden: { opacity: 0, y: reduce ? 0 : 28 },
+    hidden: { opacity: 0, y: 28 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   };
 
@@ -40,7 +38,7 @@ export default function HowDiscoveryWorks() {
           <motion.div
             aria-hidden
             className="hidden md:block absolute top-7 left-[16.67%] right-[16.67%] h-px bg-[var(--color-sage)] origin-left"
-            initial={{ scaleX: reduce ? 1 : 0 }}
+            initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.35 }}
             viewport={{ once: true, amount: 0.3 }}

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useAudience } from "./AudienceContext";
 import AppStoreButtons from "./AppStoreButtons";
 import { MERCHANT_SIGNUP_URL, MERCHANT_LOGIN_URL } from "@/lib/links";
@@ -30,24 +30,23 @@ const PHONES = [
 
 export default function Hero() {
   const { audience } = useAudience();
-  const reduce = useReducedMotion();
   const copy = HERO_COPY[audience];
 
   const container = {
     hidden: {},
-    show: { transition: { staggerChildren: reduce ? 0 : 0.1, delayChildren: 0.05 } },
+    show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
   };
   const item = {
-    hidden: { opacity: 0, y: reduce ? 0 : 20 },
+    hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   };
   const visual = {
-    hidden: { opacity: 0, y: reduce ? 0 : 40, scale: reduce ? 1 : 0.98 },
+    hidden: { opacity: 0, y: 40, scale: 0.98 },
     show: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: reduce ? 0 : 0.3 },
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 },
     },
   };
 

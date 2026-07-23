@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface FeatureCarouselProps {
   words?: string[];
@@ -22,14 +22,13 @@ export default function FeatureCarousel({
   ];
 
   const [i, setI] = useState(0);
-  const reduce = useReducedMotion();
 
   useEffect(() => {
     const id = setInterval(() => setI((x) => (x + 1) % words.length), interval);
     return () => clearInterval(id);
   }, [words.length, interval]);
 
-  const y = reduce ? 0 : "0.5em";
+  const y = "0.5em";
 
   return (
     <section className="py-6 lg:py-10">
@@ -43,7 +42,7 @@ export default function FeatureCarousel({
               key={words[i]}
               initial={{ y, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: reduce ? 0 : "-0.5em", opacity: 0 }}
+              exit={{ y: "-0.5em", opacity: 0 }}
               transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 flex items-center justify-center text-center px-2 font-[family-name:var(--font-display)] font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight text-[var(--color-on-anchor)] [overflow-wrap:anywhere]"
             >

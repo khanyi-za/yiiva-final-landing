@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 
@@ -34,15 +34,19 @@ const DIVES = [
 
 function Dive({ dive, imageFirst }: { dive: (typeof DIVES)[number]; imageFirst: boolean }) {
   const reduce = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
   // Gentle parallax drift on the screenshot as the row passes through the viewport.
+  // Mount-gated (and skipped for reduced motion) so SSR/first render stays static.
   const drift = useTransform(scrollYProgress, [0, 1], [56, -56]);
-  const y = reduce ? 0 : drift;
-  const enterX = reduce ? 0 : imageFirst ? -48 : 48;
+  const y = mounted && !reduce ? drift : 0;
+  // Constant entry offset; MotionConfig reduces the animation for reduced-motion users.
+  const enterX = imageFirst ? -48 : 48;
 
   return (
     <div
