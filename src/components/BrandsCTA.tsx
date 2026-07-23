@@ -6,7 +6,7 @@ export default function BrandsCTA() {
   return (
     <section className="bg-[var(--color-paper)] pt-8">
       <div
-        className="bg-[var(--color-anchor)] px-6 py-20 lg:py-28"
+        className="bg-[var(--color-anchor)] px-6 py-16 lg:py-24"
         style={{ borderTopLeftRadius: "3rem", borderTopRightRadius: "3rem" }}
       >
         <div className="max-w-3xl mx-auto text-center space-y-6">

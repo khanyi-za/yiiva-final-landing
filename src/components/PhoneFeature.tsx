@@ -15,7 +15,7 @@ interface PhoneFeatureProps {
 export default function PhoneFeature({ eyebrow, heading, body, image, alt, side = "left" }: PhoneFeatureProps) {
   const imageFirst = side === "left";
   return (
-    <section className="bg-[var(--color-paper)] py-16 lg:py-24">
+    <section className="bg-[var(--color-paper)] py-12 lg:py-20">
       <motion.div
         className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         initial={{ opacity: 0, y: 40 }}

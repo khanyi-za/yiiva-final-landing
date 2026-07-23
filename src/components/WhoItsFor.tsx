@@ -4,7 +4,7 @@
 // brands without visibility). Refine later.
 export default function WhoItsFor() {
   return (
-    <section className="bg-[var(--color-paper)] py-20 lg:py-28">
+    <section className="bg-[var(--color-paper)] py-16 lg:py-24">
       <div className="max-w-5xl mx-auto px-6 text-center space-y-6">
         <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-accent)]">
           Who it&apos;s for

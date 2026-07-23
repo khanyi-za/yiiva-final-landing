@@ -23,7 +23,7 @@ const FAQS = [
 
 export default function ShopperFAQ() {
   return (
-    <section className="bg-[var(--color-paper)] py-16 lg:py-24">
+    <section className="bg-[var(--color-paper)] py-12 lg:py-20">
       <div className="max-w-3xl mx-auto px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)] text-center mb-10">
           Good to know

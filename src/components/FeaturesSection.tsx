@@ -40,7 +40,7 @@ export default function FeaturesSection() {
       </div>
 
       {/* Positioning line (centered) */}
-      <div className="px-6 pt-20 pb-2">
+      <div className="px-6 pt-14 pb-2">
         <div className="max-w-3xl mx-auto text-center space-y-5">
           <h3 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] tracking-tight">
             So, What Is YIIVA?

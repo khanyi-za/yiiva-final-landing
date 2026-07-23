@@ -101,8 +101,8 @@ function Dive({ dive, imageFirst }: { dive: (typeof DIVES)[number]; imageFirst: 
 
 export default function FeatureDeepDives() {
   return (
-    <section className="bg-[var(--color-paper)] py-16 lg:py-24">
-      <div className="max-w-6xl mx-auto px-6 space-y-16 lg:space-y-28">
+    <section className="bg-[var(--color-paper)] py-12 lg:py-20">
+      <div className="max-w-6xl mx-auto px-6 space-y-12 lg:space-y-20">
         {DIVES.map((d, i) => (
           <Dive key={d.heading} dive={d} imageFirst={i % 2 === 0} />
         ))}

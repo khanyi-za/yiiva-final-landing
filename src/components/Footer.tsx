@@ -54,7 +54,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="pt-32 lg:pt-10 pb-8 px-6 bg-[var(--color-paper)]">
+    <footer className="pt-16 lg:pt-10 pb-8 px-6 bg-[var(--color-paper)]">
       <div className="max-w-7xl mx-auto">
         {/* Intent columns: Sell · Shop · Stay in the loop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
