@@ -1,102 +1,103 @@
 "use client";
-import { useEffect, useState } from 'react';
-import Footer from './Footer';
+import { useEffect, useRef, useState } from "react";
+import { useReducedMotion } from "framer-motion";
+import Footer from "./Footer";
 
 interface RevealFooterProps {
   children: React.ReactNode;
 }
 
 export default function StickyFooterReveal({ children }: RevealFooterProps) {
+  const reduce = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const [contentTransform, setContentTransform] = useState(0);
-  const [footerHeight, setFooterHeight] = useState(450);
+  const [footerHeight, setFooterHeight] = useState(0);
+  const footerRef = useRef<HTMLDivElement>(null);
 
-  // Update footer height based on screen size
+  // Only switch behaviour after mount so the first render matches the server
+  // (avoids a hydration mismatch when reduced-motion changes the tree).
+  useEffect(() => setMounted(true), []);
+  const staticFooter = mounted && reduce;
+
+  // Measure the real footer height (updates on resize / content reflow) so the
+  // reveal translate matches it exactly — no seam or gap.
   useEffect(() => {
-    const updateFooterHeight = () => {
-      // Mobile gets taller footer due to stacked layout
-      if (window.innerWidth < 1024) {
-        setFooterHeight(1000); // Mobile: stacked columns + oversized wordmark + extra top padding
-      } else {
-        setFooterHeight(700); // Desktop: 3-column layout + oversized wordmark
-      }
+    if (staticFooter) return;
+    const el = footerRef.current;
+    if (!el) return;
+    const measure = () => setFooterHeight(el.offsetHeight);
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
     };
-
-    updateFooterHeight();
-    window.addEventListener('resize', updateFooterHeight);
-    return () => window.removeEventListener('resize', updateFooterHeight);
-  }, []);
+  }, [staticFooter]);
 
   useEffect(() => {
-    const updateScrollEffect = () => {
+    if (staticFooter || footerHeight === 0) return;
+
+    const update = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      
-      // Calculate how much we can scroll
-      const maxScroll = documentHeight - windowHeight;
-      
-      // Calculate scroll progress (0 to 1)
-      const progress = Math.min(scrollTop / maxScroll, 1);
-      
-      // Calculate how much to move the main content up
-      // Start revealing when 70% scrolled
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maxScroll > 0 ? Math.min(scrollTop / maxScroll, 1) : 0;
+
+      // Start revealing over the last 30% of the scroll.
       const startReveal = 0.7;
-      
       if (progress > startReveal) {
-        // Calculate reveal progress (0 to 1) for the reveal portion
         const revealProgress = (progress - startReveal) / (1 - startReveal);
-        
-        // Move content up by the footer height
-        const translateY = -footerHeight * revealProgress;
-        setContentTransform(translateY);
+        setContentTransform(-footerHeight * revealProgress);
       } else {
-        // Reset position when not in reveal zone
         setContentTransform(0);
       }
     };
 
-    // Throttle scroll events for performance
     let ticking = false;
-    const throttledScroll = () => {
+    const onScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
-          updateScrollEffect();
+          update();
           ticking = false;
         });
         ticking = true;
       }
     };
 
-    window.addEventListener('scroll', throttledScroll, { passive: true });
-    
-    // Initialize on mount
-    updateScrollEffect();
-    
-    return () => window.removeEventListener('scroll', throttledScroll);
-  }, [footerHeight]);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [staticFooter, footerHeight]);
+
+  // Reduced motion: no scroll-hijack — footer sits in normal flow below content.
+  if (staticFooter) {
+    return (
+      <>
+        {children}
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>
-      {/* Fixed footer behind content (lower z-index) */}
-      <div
-        className="fixed bottom-0 left-0 right-0"
-        style={{ zIndex: 1 }}
-      >
+      {/* Fixed footer behind content (lower z-index), measured via footerRef */}
+      <div ref={footerRef} className="fixed bottom-0 left-0 right-0" style={{ zIndex: 1 }}>
         <Footer />
       </div>
 
-      {/* Main content that slides up to reveal footer */}
+      {/* Main content that slides up to reveal the footer */}
       <div
         className="relative"
         style={{
           zIndex: 10,
           transform: `translateY(${contentTransform}px)`,
-          transition: contentTransform === 0 ? 'transform 0.1s ease-out' : 'none'
+          transition: contentTransform === 0 ? "transform 0.1s ease-out" : "none",
         }}
       >
         {children}
       </div>
-
     </>
   );
 }
