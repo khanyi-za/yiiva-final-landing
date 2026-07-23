@@ -1,11 +1,10 @@
 "use client";
 
-// Centered intro + a brand-energy strip (three homegrown-brand videos, no
-// operational labels) that illustrates who Yiiva is built for. Copy verbatim.
+// Centered intro + an auto-scrolling brand-video marquee, then positioning.
 const BRAND_CLIPS = [
-  { video: "/images/card_videos/6.mp4", offset: "lg:mt-0" },
-  { video: "/images/hero_media/3.mp4", offset: "lg:mt-12" },
-  { video: "/images/card_videos/8.mp4", offset: "lg:mt-0" },
+  "/images/card_videos/6.mp4",
+  "/images/hero_media/3.mp4",
+  "/images/card_videos/8.mp4",
 ];
 
 export default function FeaturesSection() {
@@ -24,14 +23,19 @@ export default function FeaturesSection() {
             We believe brands should focus more on growing and creating, not handling orders and deliveries.
           </p>
         </div>
+      </div>
 
-        {/* Brand-energy strip — horizontal swipe carousel on mobile, 3-up grid on sm+ */}
-        <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible lg:gap-8">
-          {BRAND_CLIPS.map((c) => (
-            <div key={c.video} className={`w-[72%] shrink-0 snap-center sm:w-auto sm:shrink ${c.offset}`}>
+      {/* Brand-energy strip — seamless auto-scrolling marquee (full-bleed) */}
+      <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]">
+        <div
+          className="yiiva-marquee flex w-max gap-4 lg:gap-6"
+          style={{ animationDuration: "32s" }}
+        >
+          {[...BRAND_CLIPS, ...BRAND_CLIPS].map((src, i) => (
+            <div key={i} className="w-[200px] sm:w-[240px] shrink-0" aria-hidden={i >= BRAND_CLIPS.length}>
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
-                  <source src={c.video} type="video/mp4" />
+                  <source src={src} type="video/mp4" />
                 </video>
               </div>
             </div>
