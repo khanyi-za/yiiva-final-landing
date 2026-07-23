@@ -29,21 +29,12 @@ export default function Navbar() {
           }`}
         >
           <div className="flex items-center shrink-0 pl-1">
-            {/* icon-only on mobile, full wordmark from sm up */}
             <Image
-              src="/logos/icon-white-mark.png"
+              src="/logos/wordmark-white.png"
               alt="YIIVA"
-              width={40}
-              height={40}
-              className="h-7 w-7 sm:hidden"
-              priority
-            />
-            <Image
-              src="/logos/ICON_WHITE.png"
-              alt="YIIVA"
-              width={128}
-              height={37}
-              className="hidden sm:block h-[30px] w-auto"
+              width={579}
+              height={249}
+              className="w-[36px] sm:w-14 h-auto"
               priority
             />
           </div>
