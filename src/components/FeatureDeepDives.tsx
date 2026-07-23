@@ -51,7 +51,7 @@ function Dive({ dive, imageFirst }: { dive: (typeof DIVES)[number]; imageFirst: 
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
+      className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-24 items-center"
     >
       {/* Screenshot — directional entry + parallax drift */}
       <motion.div
@@ -102,7 +102,7 @@ function Dive({ dive, imageFirst }: { dive: (typeof DIVES)[number]; imageFirst: 
 export default function FeatureDeepDives() {
   return (
     <section className="bg-[var(--color-paper)] py-12 lg:py-20">
-      <div className="max-w-6xl mx-auto px-6 space-y-12 lg:space-y-20">
+      <div className="w-[90%] mx-auto space-y-12 lg:space-y-20">
         {DIVES.map((d, i) => (
           <Dive key={d.heading} dive={d} imageFirst={i % 2 === 0} />
         ))}

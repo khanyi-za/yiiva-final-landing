@@ -5,7 +5,7 @@ import { MERCHANT_SIGNUP_URL } from "@/lib/links";
 export default function ContentSection() {
   return (
     <section className="py-16 bg-[var(--color-paper)]">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="w-[90%] mx-auto">
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="font-[family-name:var(--font-display)] text-4xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)]">

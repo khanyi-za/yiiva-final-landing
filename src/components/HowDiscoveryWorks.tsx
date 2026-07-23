@@ -19,7 +19,7 @@ export default function HowDiscoveryWorks() {
 
   return (
     <section className="bg-[var(--color-paper)] py-12 lg:py-20">
-      <div className="max-w-6xl mx-auto px-6 text-center">
+      <div className="w-[90%] mx-auto text-center">
         <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-ink-60)]">
           Getting started
         </span>

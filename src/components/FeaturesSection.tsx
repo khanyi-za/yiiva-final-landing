@@ -11,7 +11,7 @@ const BRAND_CLIPS = [
 export default function FeaturesSection() {
   return (
     <section className="pt-16 pb-0 bg-[var(--color-paper)]">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="w-[90%] mx-auto">
         {/* Centered title + intro */}
         <div className="max-w-3xl mx-auto text-center space-y-5">
           <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] leading-tight tracking-tight">

@@ -16,14 +16,14 @@ export default function VideoFeature({ eyebrow, heading, body, video, side = "le
   return (
     <section className="bg-[var(--color-paper)] py-12 lg:py-20">
       <motion.div
-        className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+        className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.3 }}
       >
-        <div className={imageFirst ? "lg:order-1" : "lg:order-2"}>
-          <div className="rounded-[var(--radius-lg)] overflow-hidden aspect-[4/5] w-full max-w-md mx-auto border border-[var(--color-ink)]/10">
+        <div className={`flex justify-center ${imageFirst ? "lg:order-1 lg:justify-start" : "lg:order-2 lg:justify-end"}`}>
+          <div className="rounded-[var(--radius-lg)] overflow-hidden aspect-[4/5] w-full max-w-md lg:max-w-lg border border-[var(--color-ink)]/10">
             <video autoPlay muted loop playsInline className="w-full h-full object-cover">
               <source src={video} type="video/mp4" />
             </video>
