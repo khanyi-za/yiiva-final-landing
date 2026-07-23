@@ -70,11 +70,11 @@ export default function PrivacyPolicyPage() {
         <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" aria-label="YIIVA home" className="flex items-center">
             <Image
-              src="/logos/ICON_BLACK.png"
+              src="/logos/wordmark-black.png"
               alt="YIIVA"
-              width={128}
-              height={37}
-              className="h-[26px] w-auto"
+              width={579}
+              height={164}
+              className="w-[68px] h-auto"
               priority
             />
           </Link>
