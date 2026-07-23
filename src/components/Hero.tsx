@@ -11,8 +11,7 @@ const HERO_COPY = {
     headingA: "Grow your brand,",
     headingB: "sell on YIIVA",
     paragraph:
-      "Reach more customers! YIIVA helps creative brands get discovered and sell effortlessly. Automate your operations, with built-in payments, delivery, and customer care so you can focus on creating, not managing.",
-    ctaNote: "Set up your store and start selling on YIIVA today.",
+      "YIIVA helps creative brands get discovered and sell effortlessly. Automate your operations, with built-in payments, delivery, and customer care so you can focus on creating, not managing.",
   },
   shoppers: {
     eyebrow: "For shoppers",
@@ -83,9 +82,6 @@ export default function Hero() {
         {/* Primary CTA — Brands: start selling on the dashboard · Shoppers: get the app */}
         {audience === "brands" ? (
           <motion.div variants={item} className="flex flex-col items-center gap-4">
-            <p className="text-[var(--color-ink)] font-medium text-sm">
-              {HERO_COPY.brands.ctaNote}
-            </p>
             <div className="flex items-center gap-5">
               <a
                 href={MERCHANT_SIGNUP_URL}

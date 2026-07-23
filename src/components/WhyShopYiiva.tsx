@@ -21,7 +21,7 @@ export default function WhyShopYiiva() {
     <section className="bg-[var(--color-paper)] py-16 lg:py-24">
       <div className="max-w-6xl mx-auto px-6">
         <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold tracking-tight text-[var(--color-ink)] mb-10 lg:mb-14 max-w-2xl">
-          Why shop <span className="text-[var(--color-accent)]">Yiiva</span>
+          Why shop <span className="text-[var(--color-accent)]">YIIVA</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {REASONS.map((r, i) => (

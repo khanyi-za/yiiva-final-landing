@@ -39,7 +39,7 @@ export default function AppShowcase() {
                 <div className="relative w-[110px] sm:w-[150px] lg:w-[200px] aspect-[67/148] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src={s.src}
-                    alt={`Yiiva app: ${s.label}`}
+                    alt={`YIIVA app: ${s.label}`}
                     fill
                     sizes="200px"
                     className="object-cover object-top"

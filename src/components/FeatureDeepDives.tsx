@@ -10,25 +10,25 @@ const DIVES = [
     heading: "Run your whole store from one dashboard",
     body: "Products, orders, collections and earnings: everything you need to run your brand, in one place.",
     image: "/yiiva-dashboard.png",
-    alt: "Yiiva merchant dashboard overview",
+    alt: "YIIVA merchant dashboard overview",
   },
   {
     heading: "Your whole catalogue, organised",
     body: "Add products, set variants and stock, and keep your storefront up to date, with images, prices and collections in one view.",
     image: "/merchant-products.png",
-    alt: "Product catalogue in the Yiiva merchant dashboard",
+    alt: "Product catalogue in the YIIVA merchant dashboard",
   },
   {
     heading: "Manage every order, start to finish",
     body: "Follow each order from payment to delivery (confirmed, dispatched, delivered), with returns handled in the same place.",
     image: "/merchant-orders.png",
-    alt: "Order management in the Yiiva merchant dashboard",
+    alt: "Order management in the YIIVA merchant dashboard",
   },
   {
     heading: "See what you earn, and get paid out",
     body: "A clear statement per order: sales and your payout. Shipping is on us, never your margin.",
     image: "/merchant-earnings.png",
-    alt: "Earnings and payouts in the Yiiva merchant dashboard",
+    alt: "Earnings and payouts in the YIIVA merchant dashboard",
   },
 ];
 

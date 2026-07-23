@@ -31,12 +31,12 @@ export default function LandingSections() {
           <FeaturesSection />
           <FeatureCarousel
             words={[
-              "Delivery Friction",
-              "Friction From Discovery To Purchase",
-              "Confusing DM Orders",
-              "Fragmented WhatsApp Orders",
-              "Lost Leads",
-              "Extra Costs",
+              "Confusing DM orders",
+              "Fragmented WhatsApp sales",
+              "Delivery headaches",
+              "Chasing payments",
+              "Lost leads",
+              "Hidden costs",
             ]}
             interval={1700}
             animationDuration={500}
@@ -78,7 +78,7 @@ export default function LandingSections() {
             heading="See the detail behind every piece"
             body="Tap through to the full story, from limited-run art with a certificate of authenticity to one-of-a-kind fashion, with the details that matter."
             image="/app-product.png"
-            alt="Yiiva app product page: a limited-run art piece"
+            alt="YIIVA app product page: a limited-run art piece"
           />
           <VideoFeature
             side="left"

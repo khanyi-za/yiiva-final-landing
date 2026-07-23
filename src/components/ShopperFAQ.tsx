@@ -4,8 +4,8 @@
 // Copy is honest pre-launch framing; refine later.
 const FAQS = [
   {
-    q: "Is Yiiva free to use?",
-    a: "Yes, browsing and buying on Yiiva is free. You only pay for the items you order.",
+    q: "Is YIIVA free to use?",
+    a: "Yes, browsing and buying on YIIVA is free. You only pay for the items you order.",
   },
   {
     q: "How do I start shopping?",
@@ -16,7 +16,7 @@ const FAQS = [
     a: "Orders are delivered nationwide across South Africa, arranged for you through the app.",
   },
   {
-    q: "What kind of brands are on Yiiva?",
+    q: "What kind of brands are on YIIVA?",
     a: "Small, homegrown South African brands: streetwear, skincare, art and more.",
   },
 ];

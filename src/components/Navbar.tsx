@@ -32,7 +32,7 @@ export default function Navbar() {
             {/* icon-only on mobile, full wordmark from sm up */}
             <Image
               src="/logos/icon-white-mark.png"
-              alt="Yiiva"
+              alt="YIIVA"
               width={40}
               height={40}
               className="h-7 w-7 sm:hidden"
@@ -40,7 +40,7 @@ export default function Navbar() {
             />
             <Image
               src="/logos/ICON_WHITE.png"
-              alt="Yiiva"
+              alt="YIIVA"
               width={128}
               height={37}
               className="hidden sm:block h-[30px] w-auto"

@@ -38,7 +38,7 @@ export default function FeatureCarousel({
           No more
         </span>
         <div className="relative mt-4 min-h-[6rem] lg:min-h-[8rem]">
-          <AnimatePresence>
+          <AnimatePresence mode="wait">
             <motion.span
               key={words[i]}
               initial={{ y, opacity: 0 }}

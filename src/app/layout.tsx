@@ -19,7 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yiiva - Where your brand becomes a business",
+  title: "YIIVA — Where your brand becomes a business",
   description: "Create content that inspires. We power the sales, fulfilment, and growth.",
 };
 

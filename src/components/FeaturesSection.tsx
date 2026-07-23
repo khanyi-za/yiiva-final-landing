@@ -46,7 +46,7 @@ export default function FeaturesSection() {
             So, What Is YIIVA?
           </h3>
           <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
-            YIIVA is where a brand becomes a business. Think of it as Superbalist, but purpose-built for homegrown South African brands.
+            YIIVA is where a homegrown brand becomes a business: the place to get discovered, sell, and reach customers across South Africa.
           </p>
         </div>
       </div>
