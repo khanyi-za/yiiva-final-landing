@@ -25,10 +25,10 @@ export default function FeaturesSection() {
           </p>
         </div>
 
-        {/* Brand-energy strip — the kind of homegrown brands Yiiva is built for */}
-        <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
+        {/* Brand-energy strip — horizontal swipe carousel on mobile, 3-up grid on sm+ */}
+        <div className="mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible lg:gap-8">
           {BRAND_CLIPS.map((c) => (
-            <div key={c.video} className={c.offset}>
+            <div key={c.video} className={`w-[72%] shrink-0 snap-center sm:w-auto sm:shrink ${c.offset}`}>
               <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
                 <video autoPlay muted loop playsInline className="w-full h-full object-cover">
                   <source src={c.video} type="video/mp4" />
