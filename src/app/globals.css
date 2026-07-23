@@ -9,8 +9,8 @@
 
 :root {
   /* Core palette — monochrome on warm-bone paper (no green/orange) */
-  --color-paper: oklch(0.965 0.011 85);      /* #F8F4EC warm bone page bg */
-  --color-paper-2: oklch(0.93 0.008 85);     /* slightly deeper card fill */
+  --color-paper: oklch(1 0 0);               /* #FFFFFF white page bg */
+  --color-paper-2: oklch(0.965 0 0);         /* light neutral card/input fill */
   --color-ink: oklch(0.19 0.006 80);         /* warm near-black text */
   --color-ink-60: oklch(0.44 0.005 80);      /* muted body text on paper (AA) */
   --color-accent: oklch(0.55 0.23 285);      /* YIIVA violet #6d28d9 (Brands default) */
