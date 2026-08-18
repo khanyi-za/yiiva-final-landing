@@ -27,7 +27,7 @@ export default function Toast({ message, type, isVisible, onClose, duration = 50
     switch (type) {
       case "success":
         return {
-          bg: "bg-gradient-to-r from-green-500 to-green-600",
+          bg: "bg-[var(--color-ink)]",
           icon: (
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -43,7 +43,7 @@ export default function Toast({ message, type, isVisible, onClose, duration = 50
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
+                d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
           ),
@@ -89,7 +89,7 @@ export default function Toast({ message, type, isVisible, onClose, duration = 50
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -50, scale: 0.9 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed top-4 right-4 z-[100] max-w-md"
+          className="fixed top-4 right-4 z-[10000] max-w-md"
         >
           <div className={`${styles.bg} text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-4`}>
             <div className="flex-shrink-0">{styles.icon}</div>

@@ -1,159 +1,59 @@
 "use client";
 
+// Centered intro + an auto-scrolling brand-video marquee, then positioning.
+const BRAND_CLIPS = [
+  "/images/card_videos/6.mp4",
+  "/images/hero_media/3.mp4",
+  "/images/card_videos/8.mp4",
+];
+
 export default function FeaturesSection() {
   return (
-    <section className="pt-16 pb-0" style={{backgroundColor: '#FAF9F6'}}>
-      {/* Horizontal line across full width */}
-      <div className="w-full border-t border-gray-300 mb-12"></div>
-
-      <div className="max-w-8xl mx-auto space-y-12 px-4 lg:px-8">
-        {/* Centered Title */}
-        <div className="flex justify-center lg:justify-start lg:pl-20">
-          <h2 className="text-2xl lg:text-5xl font-semibold text-black leading-tight px-6">
-            The Mobile Commerce Platform <br className="lg:hidden" />Built For S.A. Brands
+    <section className="pt-16 pb-0 bg-[var(--color-paper)]">
+      <div className="w-[90%] mx-auto">
+        {/* Centered title + intro */}
+        <div className="max-w-3xl mx-auto text-center space-y-5">
+          <h2 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] leading-tight tracking-tight">
+            The Mobile Commerce Platform Built For Independent Brands
           </h2>
-        </div>
-
-        <div className="grid grid-cols-12 gap-6 lg:gap-12 items-start">
-          {/* Left Content */}
-          <div className="col-span-12 lg:col-span-4 space-y-6 lg:space-y-8 px-2 lg:px-0">
-            <div className="space-y-4 lg:space-y-6">
-              <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
-                From streetwear to skincare, YIIVA helps South African brands sell smarter with AI-powered discovery and reach to audience, seamless payments, and fast nationwide delivery.
-              </p>
-              <p className="text-base lg:text-xl text-gray-600 leading-relaxed break-words">
-                We believe brands should focus more on growing and creating, not handling orders and deliveries.
-              </p>
-            </div>
-          </div>
-
-          {/* Right Cards Grid */}
-          <div className="col-span-12 lg:col-span-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-[4%] lg:px-0">
-              {/* Card 1 with description */}
-              <div>
-                <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
-                     style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
-                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
-                  {/* Video Background */}
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  >
-                    <source src="/images/card_videos/6.mp4" type="video/mp4" />
-                  </video>
-                  {/* Gradient Overlay */}
-                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
-                  {/* Title at top */}
-                  <div className="relative z-10 pt-4">
-                    <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
-                      Order Management
-                    </h3>
-                  </div>
-                  {/* Description at bottom */}
-                  <div className="relative z-10 pb-4">
-                    <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                      Track, manage, and fulfill every order in one simple dashboard.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 2 with description */}
-              <div>
-                <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
-                     style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
-                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
-                  {/* Video Background */}
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  >
-                    <source src="/images/card_videos/7.mp4" type="video/mp4" />
-                  </video>
-                  {/* Gradient Overlay */}
-                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
-                  {/* Title at top */}
-                  <div className="relative z-10 pt-4">
-                    <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
-                      Delivery & Shipping
-                    </h3>
-                  </div>
-                  {/* Description at bottom */}
-                  <div className="relative z-10 pb-4">
-                    <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                      Fast, reliable nationwide delivery. We handle logistics so you don&apos;t have to.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card 3 with description */}
-              <div>
-                <div className="relative rounded-2xl p-8 mx-2 flex flex-col justify-between transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden"
-                     style={{height: '423px', border: '1px solid #636363', boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'}}
-                     onMouseEnter={(e) => e.currentTarget.style.boxShadow = '0 15px 35px rgba(255, 165, 0, 0.4)'}
-                     onMouseLeave={(e) => e.currentTarget.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.3)'}>
-                  {/* Video Background */}
-                  <video
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="absolute inset-0 w-full h-full object-cover"
-                  >
-                    <source src="/images/card_videos/8.mp4" type="video/mp4" />
-                  </video>
-                  {/* Gradient Overlay */}
-                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-black/78 via-black/39 to-black/98"></div>
-                  {/* Title at top */}
-                  <div className="relative z-10 pt-4">
-                    <h3 className="text-xl font-semibold text-white text-center drop-shadow-lg">
-                      Real-time leads & sales trends
-                    </h3>
-                  </div>
-                  {/* Description at bottom */}
-                  <div className="relative z-10 pb-4">
-                    <p className="text-base text-white leading-relaxed text-center drop-shadow-lg">
-                      See what&apos;s selling, who&apos;s buying, and what&apos;s trending all in real time.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
+            From streetwear to skincare, YIIVA helps independent brands sell smarter: get discovered by the right customers, take seamless payments, and ship fast.
+          </p>
+          <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
+            We believe brands should focus more on growing and creating, not handling orders and deliveries.
+          </p>
         </div>
       </div>
 
-      {/* Horizontal line across full width */}
-      <div className="w-full border-t border-gray-300 mt-12"></div>
+      {/* Brand-energy strip — seamless auto-scrolling marquee (full-bleed) */}
+      <div className="mt-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,#000_6%,#000_94%,transparent)]">
+        <div
+          className="yiiva-marquee flex w-max gap-4 lg:gap-6"
+          style={{ animationDuration: "32s" }}
+        >
+          {[...BRAND_CLIPS, ...BRAND_CLIPS].map((src, i) => (
+            <div key={i} className="w-[200px] sm:w-[240px] shrink-0" aria-hidden={i >= BRAND_CLIPS.length}>
+              <div className="relative rounded-3xl overflow-hidden aspect-[4/5]">
+                <video autoPlay muted loop playsInline className="w-full h-full object-cover">
+                  <source src={src} type="video/mp4" />
+                </video>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-      {/* Spacer to extend vertical distance by additional 20% */}
-      <div className="h-12"></div>
-      
-      {/* How It Works text and description - positioned at bottom edge with no margin/padding */}
-      <div className="px-8 space-y-4">
-        <div className="max-w-8xl mx-auto flex justify-center lg:justify-start lg:pl-20">
-          <h3 className="text-4xl lg:text-5xl font-semibold text-black px-6 py-3" style={{fontFamily: 'Geist, sans-serif'}}>
+      {/* Positioning line (centered) */}
+      <div className="px-6 pt-14 pb-2">
+        <div className="max-w-3xl mx-auto text-center space-y-5">
+          <h3 className="font-[family-name:var(--font-display)] text-3xl lg:text-5xl font-bold text-[var(--color-ink)] tracking-tight">
             So, What Is YIIVA?
           </h3>
-        </div>
-        
-        {/* Paragraph text */}
-        <div className="max-w-8xl mx-auto flex justify-center lg:justify-start lg:pl-20">
-          <p className="text-xl lg:text-2xl text-black px-6 leading-relaxed font-medium" style={{fontFamily: 'Roboto, sans-serif'}}>
-            A mobile app online retailer that bridges the connection between Brand and customer. Think of YIIVA as Superbalist, but for homegrown South African Brands.
+          <p className="text-base lg:text-xl text-[var(--color-ink-60)] leading-relaxed">
+            YIIVA is where an independent brand becomes a business: the place to get discovered, sell, and reach more customers.
           </p>
         </div>
       </div>
     </section>
   );
-} 
+}
