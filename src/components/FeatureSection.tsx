@@ -182,7 +182,7 @@ export default function FeatureSection() {
 
       {/* ── Mobile: plain stacked blocks, no pinning ── */}
       <div className="lg:hidden w-[90%] mx-auto space-y-16">
-        {FEATURES.map((f, i) => (
+        {FEATURES.map((f) => (
           <div key={f.heading} className="space-y-6">
             <div className="relative w-full aspect-[4/5] flex items-center justify-center">
               <div className="relative" style={f.frame}>
