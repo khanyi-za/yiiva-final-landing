@@ -55,7 +55,8 @@ export default function Navbar() {
                 href={MERCHANT_SIGNUP_URL}
                 className="px-3 sm:px-5 py-2 rounded-full text-sm font-medium bg-[var(--color-paper)] text-[var(--color-anchor)] hover:bg-[var(--color-on-anchor-60)] transition-colors whitespace-nowrap"
               >
-                Sign Up
+                <span className="sm:hidden">Sell</span>
+                <span className="hidden sm:inline">Start selling</span>
               </a>
             ) : (
               <a

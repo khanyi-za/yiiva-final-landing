@@ -35,7 +35,7 @@ function Tile({
 
 export default function CategoryTiles() {
   return (
-    <section className="bg-[var(--color-paper)] py-12 lg:py-20">
+    <section className="bg-[var(--color-paper)] pt-6 lg:pt-8 pb-12 lg:pb-20">
       <div className="w-[90%] mx-auto">
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-12">
           <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-ink-60)]">

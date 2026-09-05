@@ -7,8 +7,8 @@ import AppStoreButtons from "./AppStoreButtons";
 // All phones render in a uniform fixed-ratio frame (object-cover, top-aligned)
 // so they're the same size regardless of source dimensions.
 const SHOTS = [
-  { src: "/app-explore.png", label: "Browse" },
-  { src: "/app-brand.png", label: "Discover brands" },
+  { src: "/browse_shopper.png", label: "Browse" },
+  { src: "/discover_shopper.png", label: "Discover brands" },
   { src: "/app-track.png", label: "Track" },
 ];
 

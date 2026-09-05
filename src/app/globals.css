@@ -19,6 +19,7 @@
   --color-sage: oklch(0.86 0.004 80);        /* neutral hairlines/dividers on paper */
   --color-on-anchor: oklch(0.96 0.006 85);   /* paper-tint text on dark bands */
   --color-on-anchor-60: oklch(0.75 0.006 85); /* muted text on dark bands (AA) */
+  --color-lime: oklch(0.88 0.22 125);        /* vivid yellow-green — VerticalsShowcase colour field */
 
   /* Back-compat aliases (existing components reference these) */
   --background: var(--color-paper);
@@ -57,6 +58,7 @@
   --color-sage: var(--color-sage);
   --color-on-anchor: var(--color-on-anchor);
   --color-on-anchor-60: var(--color-on-anchor-60);
+  --color-lime: var(--color-lime);
 
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);

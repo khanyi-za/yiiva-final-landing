@@ -54,7 +54,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="pt-16 lg:pt-10 pb-8 px-6 bg-[var(--color-paper)]">
+    <footer className="pt-28 lg:pt-32 pb-8 px-6 bg-[var(--color-paper)]">
       <div className="max-w-7xl mx-auto">
         {/* Intent columns: Sell · Shop · Stay in the loop */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
@@ -171,6 +171,7 @@ export default function Footer() {
             <div className="flex items-center gap-4 text-sm text-[var(--color-ink-60)]">
               <a href="/privacy-policy" className="hover:text-[var(--color-ink)] transition-colors">Privacy</a>
               <a href="/terms-conditions" className="hover:text-[var(--color-ink)] transition-colors">Terms</a>
+              <a href="/returns-refunds" className="hover:text-[var(--color-ink)] transition-colors">Returns</a>
               <button onClick={() => setIsContactModalOpen(true)} className="hover:text-[var(--color-ink)] transition-colors">Contact</button>
             </div>
             <div className="flex gap-3">

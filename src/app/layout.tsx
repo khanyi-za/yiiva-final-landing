@@ -20,8 +20,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "YIIVA — Where your brand becomes a business",
-  description: "Create content that inspires. We power the sales, fulfilment, and growth.",
+  title: "YIIVA — Where brands get discovered",
+  description:
+    "Reach new customers beyond your existing audience. YIIVA gives your brand a new sales channel, with payments, delivery and customer care handled for you.",
 };
 
 export default function RootLayout({

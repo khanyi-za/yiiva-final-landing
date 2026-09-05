@@ -19,6 +19,13 @@ const AudienceContext = createContext<AudienceContextValue | null>(null);
 export function AudienceProvider({ children }: { children: ReactNode }) {
   const [audience, setAudience] = useState<Audience>("brands");
 
+  // Shareable/testable deep link: ?audience=shoppers presets the toggle.
+  // Applied post-mount (not as initial state) so SSR and hydration agree.
+  useEffect(() => {
+    const param = new URLSearchParams(window.location.search).get("audience");
+    if (param === "shoppers" || param === "brands") setAudience(param);
+  }, []);
+
   useEffect(() => {
     const { accent, hover } = ACCENTS[audience];
     const root = document.documentElement;

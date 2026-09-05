@@ -4,7 +4,7 @@ import AppStoreButtons from "./AppStoreButtons";
 // Shoppers closing CTA — stitch-style gradient card (accent fading to white).
 export default function ShopperCTA() {
   return (
-    <section className="bg-[var(--color-paper)] py-12 lg:py-20">
+    <section id="get-the-app" className="bg-[var(--color-paper)] py-12 lg:py-20">
       <div
         className="w-[90%] mx-auto rounded-[2.5rem] px-6 py-16 lg:py-24 text-center overflow-hidden"
         style={{
