@@ -1,5 +1,12 @@
 "use client";
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  ReactNode,
+} from "react";
 
 export type Audience = "brands" | "shoppers";
 
@@ -17,13 +24,24 @@ interface AudienceContextValue {
 const AudienceContext = createContext<AudienceContextValue | null>(null);
 
 export function AudienceProvider({ children }: { children: ReactNode }) {
-  const [audience, setAudience] = useState<Audience>("brands");
+  const [audience, setAudienceState] = useState<Audience>("brands");
+
+  // Switching audience swaps the entire page content, so it should read as a
+  // fresh page: jump to the very top (hero + navbar), never mid-scroll into
+  // whatever section happened to be at the old scroll offset.
+  const setAudience = useCallback((next: Audience) => {
+    setAudienceState((prev) => {
+      if (prev !== next) window.scrollTo({ top: 0, behavior: "instant" });
+      return next;
+    });
+  }, []);
 
   // Shareable/testable deep link: ?audience=shoppers presets the toggle.
   // Applied post-mount (not as initial state) so SSR and hydration agree.
+  // Uses the raw setter — a deep-linked load is already at the top.
   useEffect(() => {
     const param = new URLSearchParams(window.location.search).get("audience");
-    if (param === "shoppers" || param === "brands") setAudience(param);
+    if (param === "shoppers" || param === "brands") setAudienceState(param);
   }, []);
 
   useEffect(() => {
