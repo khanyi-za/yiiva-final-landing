@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YIIVA Investor Brief</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+  :root {
+    --paper: #FBFAFC;
+    --ink: #17151F;
+    --muted: #5D5768;
+    --accent: #6D28D9;
+    --hairline: #E7E3EF;
+    --panel: #F3EFFA;
+    --placeholder: #B45309;
+    --placeholder-bg: #FEF3E2;
+  }
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #141218;
+      --ink: #ECE9F1;
+      --muted: #A49DB2;
+      --accent: #A78BFA;
+      --hairline: #2A2733;
+      --panel: #1E1930;
+      --placeholder: #FBBF24;
+      --placeholder-bg: #33260E;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #141218;
+    --ink: #ECE9F1;
+    --muted: #A49DB2;
+    --accent: #A78BFA;
+    --hairline: #2A2733;
+    --panel: #1E1930;
+    --placeholder: #FBBF24;
+    --placeholder-bg: #33260E;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, "Times New Roman", serif;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    margin: 0;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .page { max-width: 42rem; margin: 0 auto; }
+
+  /* Letterhead */
+  .letterhead {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1rem;
+  }
+  .wordmark {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 800; font-size: 1.5rem; letter-spacing: 0.18em;
+  }
+  .doc-label {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600; font-size: 0.75rem; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .meta {
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.8125rem; color: var(--muted);
+    padding-top: 0.6rem; margin-bottom: 2.5rem;
+  }
+
+  /* Thesis */
+  .thesis {
+    font-size: 1.1875rem; line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+  .thesis strong { font-weight: 600; }
+  .thesis-kicker {
+    margin: 0 0 2.25rem;
+    color: var(--muted);
+  }
+
+  /* Sections */
+  section { margin-top: 2.5rem; }
+  h2 {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700; font-size: 1.0625rem; letter-spacing: 0.02em;
+    text-transform: uppercase;
+    display: flex; align-items: baseline; gap: 0.75rem;
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem; margin: 0 0 0.9rem;
+    text-wrap: balance;
+  }
+  h2 .n {
+    color: var(--accent);
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+  }
+  p { margin: 0 0 0.9rem; }
+  ul { margin: 0 0 0.9rem; padding-left: 1.2rem; }
+  li { margin-bottom: 0.45rem; }
+  li::marker { color: var(--accent); }
+  .aside {
+    font-size: 0.9375rem; color: var(--muted);
+  }
+
+  /* Status strip */
+  .status {
+    border-left: 3px solid var(--accent);
+    padding: 0.15rem 0 0.15rem 1rem;
+    margin: 1.2rem 0 0.9rem;
+  }
+  .status p { margin-bottom: 0.4rem; }
+  .status .doc-label { color: var(--accent); }
+
+  /* Ask panel */
+  .ask {
+    background: var(--panel);
+    border-radius: 6px;
+    padding: 1.4rem 1.6rem;
+    margin-top: 2.75rem;
+  }
+  .ask h2 { border-top: none; padding-top: 0; }
+  .fill {
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600; font-size: 0.9em;
+    color: var(--placeholder);
+    background: var(--placeholder-bg);
+    border-radius: 3px;
+    padding: 0.05em 0.4em;
+    white-space: nowrap;
+  }
+
+  /* Sign-off */
+  .signoff {
+    margin-top: 3rem;
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+    font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.9rem; line-height: 1.7; color: var(--muted);
+  }
+  .signoff .name { color: var(--ink); font-weight: 600; font-size: 1rem; }
+  .contact { white-space: nowrap; }
+  .ci {
+    width: 0.85em; height: 0.85em;
+    vertical-align: -0.08em;
+    margin-right: 0.35em;
+    color: var(--accent);
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  @page { margin: 16mm 14mm; }
+  @media print {
+    body { padding: 0.5rem 0 0; font-size: 0.875rem; line-height: 1.55; }
+    .thesis { font-size: 1.0625rem; }
+    section { margin-top: 1.5rem; }
+    h2 { padding-top: 1rem; }
+    .meta { margin-bottom: 1.5rem; }
+    .status, .ask, .signoff { break-inside: avoid; }
+    .ask { margin-top: 1.75rem; }
+    .signoff { margin-top: 1.75rem; padding-top: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <div class="letterhead">
+      <span class="wordmark">YIIVA</span>
+      <span class="doc-label">Investor Brief</span>
+    </div>
+    <div class="meta">
+      <span>Khaziimla Technology (Pty) Ltd</span>
+      <span>September 2026 · Private &amp; confidential</span>
+    </div>
+  </header>
+
+  <p class="thesis"><strong>YIIVA is the home of South African premium wear</strong>: the
+  country's best independent brands, together in one app, where a shopper fills one cart,
+  pays once, and the platform handles delivery and returns end to end.</p>
+  <p class="thesis-kicker">This is not a deck-stage idea. The platform is built and running in
+  production today, and the mobile app is in app-store launch preparation.</p>
+
+  <section>
+    <h2><span class="n">1</span> The problem &amp; the market opportunity</h2>
+    <p>South Africa has a deep bench of independent fashion and lifestyle brands (over 200
+    of them) with real products and real followings, and no infrastructure built for them.
+    They sell through
+    Instagram DMs and isolated web stores: discovery is accidental, checkout is friction-heavy,
+    and every brand solves payments, delivery and returns alone. The large marketplaces are
+    built for mass retail; a premium local label doesn't belong there, and the economics are
+    hostile when it tries.</p>
+    <p>Buyers feel the same gap from the other side. The appetite for local premium wear is
+    visibly growing, but shopping it means hopping between a dozen brand accounts and hoping
+    checkout works. There is no destination. There is no central access point.</p>
+    <p>The backdrop: South African online retail has grown past an estimated R90&nbsp;billion a
+    year and continues to grow at double-digit rates, while still holding only a single-digit
+    share of total retail. The structural runway is long, and fashion is consistently among
+    the largest online categories. And the specific position is unclaimed: <em>local premium
+    brands, one place, one checkout</em>.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Our solution</h2>
+    <p><strong>For buyers:</strong> the app is a digital mall: the central access point for
+    premium local wear across every category. Shoppers walk in through a video-led discovery
+    feed that mixes brands the way a great mall mixes storefronts, subscribe to the labels
+    they love, fill one cart across many brands, and pay once. Delivery runs on a national
+    courier network with stage-by-stage tracking; a 30-day returns process and platform-level
+    buyer protection stand behind every order.</p>
+    <p><strong>For brands:</strong> onboarding measured in minutes, not weeks. A brand connects
+    its Shopify store and its full catalogue imports automatically, then stays in sync as
+    prices and stock change. The brand gets a management dashboard on web and mobile, and the
+    platform handles payments, courier collection and delivery end to end. Money never sits
+    with us: every sale is split at the moment of payment and the brand's share settles
+    directly to its own bank account on the next business day.</p>
+    <div class="status">
+      <p class="doc-label">Where it stands today</p>
+      <p class="aside">Buyer app, merchant dashboards and admin operations are live in
+      production. Payments are verified end-to-end with split settlement through Paystack;
+      courier integration with The Courier Guy is live; the payment provider's compliance
+      review is in its final stage; and we aim to launch the app this month on both the
+      Google Play and Apple App Stores. As a proof of
+      onboarding speed, we have imported the complete public catalogues of 28 real South
+      African brands into our demonstration environment; importing an entire Shopify
+      catalogue takes minutes.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> The revenue model</h2>
+    <ul>
+      <li><strong>Commission on every sale.</strong> Our launch rate is a deliberately low
+      2.5%, an early-adopter offer to win the first wave of brands, with a standard rate of
+      around 5.5% on the roadmap as the network establishes.</li>
+      <li><strong>Delivery.</strong> Charged to the buyer at cost today; a margin line as
+      volume brings courier rates down.</li>
+      <li><strong>Platform fee.</strong> Within the next 12 months, once our market presence
+      is established, we aim to introduce a monthly platform fee of $43 (≈R690) per brand,
+      comparable to what these brands already pay for standalone store tooling, but with the
+      marketplace's audience included.</li>
+      <li><strong>Built, not yet monetized.</strong> Promoted brand placement already exists
+      inside the product (a weighting system in the discovery feed), and premium merchant
+      tooling is a natural subscription tier once brands trade actively.</li>
+    </ul>
+    <p class="aside">The cost base is software-margin: payments, courier and hosting scale
+    with volume, and the platform runs lean by design.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span> Go-to-market</h2>
+    <p><strong>Brands first, personally.</strong> Before we pitch a brand, we import its real
+    catalogue into a demonstration environment, so the first thing a founder sees is their own
+    store, live inside YIIVA. Combined with minutes-long Shopify onboarding and the 2.5%
+    early-adopter rate, the cost of saying yes is close to zero.</p>
+    <p><strong>Buyers arrive with the brands.</strong> Each label that joins brings its social
+    following with it: the app's subscribe mechanic is built to convert a brand's Instagram
+    audience into a shopping audience. Video-first discovery matches how this audience already
+    finds fashion.</p>
+    <p><strong>Beachhead:</strong> South Africa's premium streetwear and design labels,
+    concentrated in Cape Town and Johannesburg, then widening by category. The consumer app
+    launches on the Google Play and Apple App Stores; the platform is live at
+    <a href="https://yiiva.co.za">yiiva.co.za</a>.</p>
+  </section>
+
+  <div class="ask">
+    <h2>The ask</h2>
+    <p>We are raising <strong>R200&nbsp;000</strong> to take YIIVA from launch-ready to
+    trading at scale: funding the app-store launch, the acquisition of our first
+    <strong>60 brands</strong>, and <strong>six months</strong> of operating runway.</p>
+    <p class="aside">A live walkthrough of the product (buyer app and brand dashboard) takes
+    fifteen minutes, and we would welcome the chance to show it.</p>
+  </div>
+
+  <div class="signoff">
+    <p class="name">Khanyi Mthamo</p>
+    <p>Founder, YIIVA · Khaziimla Technology (Pty)&nbsp;Ltd<br>
+    <span class="contact"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg><a href="mailto:Khanyi@yiiva.co.za">Khanyi@yiiva.co.za</a></span> ·
+    <span class="contact"><svg class="ci" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><a href="https://wa.me/27634489940">063 448 9940</a></span> ·
+    <span class="contact"><svg class="ci" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg><a href="https://yiiva.co.za">https://yiiva.co.za</a></span></p>
+  </div>
+</div>
+
+</body>
+</html>
