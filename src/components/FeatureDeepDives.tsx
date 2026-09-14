@@ -35,7 +35,7 @@ const DIVES = [
   {
     eyebrow: "Handle Business Operations",
     heading: "Your whole operation in one dashboard.",
-    body: "Products, stock, collections, sales, returns, team and earnings, in one place. Next: AI-driven demand insight into what shoppers search for and what no one yet sells, and auto-tagging that makes imported products discoverable from day one.",
+    body: "Products, stock, collections, sales, returns, team and earnings, in one place. AI-driven demand insight, built from real shopper behaviour, turns your sales metrics and search analytics into smart reports that reveal what customers want and where unmet demand sits, so you stock to the market rather than guess.",
     image: "/brand_hero.png",
     alt: "The YIIVA merchant web dashboard",
     baseSize: { width: 3010, height: 1554 },
