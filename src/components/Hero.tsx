@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useAudience } from "./AudienceContext";
 import AppStoreButtons from "./AppStoreButtons";
-import { MERCHANT_SIGNUP_URL, MERCHANT_LOGIN_URL } from "@/lib/links";
+import MerchantLink from "./MerchantLink";
 
 const HERO_COPY = {
   brands: {
@@ -191,18 +191,18 @@ export default function Hero() {
         {/* Primary CTA — start selling on the dashboard */}
         <motion.div variants={item} className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-5">
-            <a
-              href={MERCHANT_SIGNUP_URL}
+            <MerchantLink
+              intent="signup"
               className="px-8 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white rounded-full font-medium transition-colors"
             >
               Start selling
-            </a>
-            <a
-              href={MERCHANT_LOGIN_URL}
+            </MerchantLink>
+            <MerchantLink
+              intent="login"
               className="text-sm font-medium text-[var(--color-ink-60)] hover:text-[var(--color-ink)] transition-colors"
             >
               Log in
-            </a>
+            </MerchantLink>
           </div>
         </motion.div>
       </motion.div>

@@ -1,5 +1,5 @@
 "use client";
-import { MERCHANT_SIGNUP_URL } from "@/lib/links";
+import MerchantLink from "./MerchantLink";
 
 // Brands closing CTA — stitch-style gradient card (accent fading to white).
 export default function BrandsCTA() {
@@ -24,12 +24,12 @@ export default function BrandsCTA() {
             payments, delivery and customer care handled for you.
           </p>
           <div className="pt-2">
-            <a
-              href={MERCHANT_SIGNUP_URL}
+            <MerchantLink
+              intent="signup"
               className="inline-block px-8 py-3 bg-[var(--color-anchor)] text-white rounded-full font-medium hover:bg-[var(--color-ink)] transition-colors"
             >
               Start selling
-            </a>
+            </MerchantLink>
           </div>
         </div>
       </div>

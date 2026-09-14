@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import ContactModal from "./ContactModal";
 import AudienceToggle from "./AudienceToggle";
 import { useAudience } from "./AudienceContext";
-import { MERCHANT_SIGNUP_URL } from "@/lib/links";
+import MerchantLink from "./MerchantLink";
 
 export default function Navbar() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -51,13 +51,13 @@ export default function Navbar() {
               Contact
             </button>
             {audience === "brands" ? (
-              <a
-                href={MERCHANT_SIGNUP_URL}
+              <MerchantLink
+                intent="signup"
                 className="px-3 sm:px-5 py-2 rounded-full text-sm font-medium bg-[var(--color-paper)] text-[var(--color-anchor)] hover:bg-[var(--color-on-anchor-60)] transition-colors whitespace-nowrap"
               >
                 <span className="sm:hidden">Sell</span>
                 <span className="hidden sm:inline">Start selling</span>
-              </a>
+              </MerchantLink>
             ) : (
               <a
                 href="#the-app"

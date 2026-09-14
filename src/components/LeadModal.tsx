@@ -3,27 +3,50 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
 
-// "Notify me when the app is live" — opened by the app-store buttons while the
-// app is not yet listed (2026-09-13). Captures name + email as a launch lead
-// via /api/waitlist (source "app-store-button", platform ios|android). When the
-// store listings exist, AppStoreButtons switches back to real links and this
-// modal can be retired.
+// Shared pre-launch lead-capture modal (2026-09-13/14). Used by:
+//   - AppStoreButtons  — app not yet listed          → source "app-store-button"
+//   - MerchantLink     — brand onboarding not yet open → source "brand-signup" | "brand-login"
+// Posts { name, email, brand?, website(honeypot), source, ...meta } to /api/waitlist.
+// Copy is passed in by the caller; the shell, validation and a11y live here.
 
-export type StorePlatform = "ios" | "android";
-
-interface AppNotifyModalProps {
+interface LeadModalProps {
   isOpen: boolean;
-  platform: StorePlatform | null;
   onClose: () => void;
+  eyebrow: string;
+  title: string;
+  description: string;
+  /** Ask for a brand/store name as well (merchant leads). */
+  askBrand?: boolean;
+  source: string;
+  /** Extra fields merged into the POST body (e.g. platform, intent). */
+  meta?: Record<string, string | null | undefined>;
+  submitLabel?: string;
+  footnote?: string;
+  successTitle: string;
+  successBody: (firstName: string, email: string) => React.ReactNode;
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyModalProps) {
+export default function LeadModal({
+  isOpen,
+  onClose,
+  eyebrow,
+  title,
+  description,
+  askBrand = false,
+  source,
+  meta,
+  submitLabel = "Notify me",
+  footnote,
+  successTitle,
+  successBody,
+}: LeadModalProps) {
   const [name, setName] = useState("");
+  const [brand, setBrand] = useState("");
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — stays empty for real users
-  const [errors, setErrors] = useState<{ name?: string; email?: string; form?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; brand?: string; email?: string; form?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -33,6 +56,7 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
 
   const reset = () => {
     setName("");
+    setBrand("");
     setEmail("");
     setWebsite("");
     setErrors({});
@@ -49,9 +73,10 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
     e.preventDefault();
     const next: typeof errors = {};
     if (name.trim().length < 2) next.name = "Please enter your name";
+    if (askBrand && brand.trim().length < 2) next.brand = "Please enter your brand name";
     if (!EMAIL_RE.test(email)) next.email = "Please enter a valid email address";
     setErrors(next);
-    if (next.name || next.email) return;
+    if (next.name || next.brand || next.email) return;
 
     setIsSubmitting(true);
     try {
@@ -61,16 +86,17 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
         body: JSON.stringify({
           name: name.trim(),
           email: email.trim(),
+          ...(askBrand ? { brand: brand.trim() } : {}),
           website,
-          source: "app-store-button",
-          platform,
+          source,
+          ...(meta ?? {}),
         }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Failed to sign up");
       setSubmitted(true);
     } catch {
-      setErrors({ form: "Couldn't sign you up. Please try again." });
+      setErrors({ form: "Couldn't send your details. Please try again." });
     } finally {
       setIsSubmitting(false);
     }
@@ -111,7 +137,7 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
     };
   }, [isOpen, handleClose]);
 
-  // Autofocus the name field once the enter animation has mounted the form.
+  // Autofocus the first field once the enter animation has mounted the form.
   useEffect(() => {
     if (!isOpen || submitted) return;
     const t = setTimeout(() => {
@@ -122,14 +148,39 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
 
   if (!mounted) return null;
 
-  const storeName = platform === "ios" ? "the App Store" : platform === "android" ? "Google Play" : "the app stores";
-
   const inputClass = (invalid: boolean) =>
     `w-full px-4 py-3 rounded-xl border bg-[var(--color-paper-2)] text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/40 transition-all duration-200 focus:outline-none ${
       invalid
         ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
         : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
     }`;
+
+  const field = (
+    id: string,
+    label: string,
+    value: string,
+    setValue: (v: string) => void,
+    errKey: "name" | "brand" | "email",
+    inputProps: React.InputHTMLAttributes<HTMLInputElement>
+  ) => (
+    <div>
+      <label htmlFor={id} className="block text-sm font-medium text-[var(--color-ink)] mb-2">
+        {label}
+      </label>
+      <input
+        id={id}
+        name={errKey}
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value);
+          if (errors[errKey]) setErrors((er) => ({ ...er, [errKey]: undefined }));
+        }}
+        className={inputClass(!!errors[errKey])}
+        {...inputProps}
+      />
+      {errors[errKey] && <p className="text-red-500 text-sm mt-1">{errors[errKey]}</p>}
+    </div>
+  );
 
   return createPortal(
     <AnimatePresence>
@@ -148,12 +199,12 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
               ref={modalRef}
               role="dialog"
               aria-modal="true"
-              aria-labelledby="app-notify-title"
+              aria-labelledby="lead-modal-title"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="bg-[var(--color-paper)] rounded-3xl shadow-2xl w-full max-w-md overflow-hidden pointer-events-auto"
+              className="bg-[var(--color-paper)] rounded-3xl shadow-2xl w-full max-w-md max-h-[92vh] overflow-y-auto pointer-events-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -168,18 +219,15 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
                   </svg>
                 </button>
                 <span className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-on-anchor-60)]">
-                  Coming soon
+                  {eyebrow}
                 </span>
                 <h2
-                  id="app-notify-title"
+                  id="lead-modal-title"
                   className="mt-2 font-[family-name:var(--font-display)] text-2xl sm:text-3xl font-bold text-[var(--color-on-anchor)] leading-tight"
                 >
-                  YIIVA isn&apos;t on {storeName} yet.
+                  {title}
                 </h2>
-                <p className="text-[var(--color-on-anchor-60)] mt-2">
-                  We&apos;re launching on iOS and Android shortly. Leave your details and we&apos;ll
-                  email you the day it goes live.
-                </p>
+                <p className="text-[var(--color-on-anchor-60)] mt-2">{description}</p>
               </div>
 
               {submitted ? (
@@ -190,12 +238,10 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
                     </svg>
                   </div>
                   <h3 className="mt-5 font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-ink)]">
-                    You&apos;re on the list
+                    {successTitle}
                   </h3>
                   <p className="mt-2 text-[var(--color-ink-60)] max-w-xs mx-auto">
-                    Thanks, {name.trim().split(" ")[0]}. We&apos;ll email{" "}
-                    <span className="font-medium text-[var(--color-ink)]">{email}</span> as soon as
-                    the app is live.
+                    {successBody(name.trim().split(" ")[0], email)}
                   </p>
                   <button
                     type="button"
@@ -217,45 +263,23 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
                     aria-hidden="true"
                     className="hidden"
                   />
-                  <div>
-                    <label htmlFor="app-notify-name" className="block text-sm font-medium text-[var(--color-ink)] mb-2">
-                      Name
-                    </label>
-                    <input
-                      id="app-notify-name"
-                      name="name"
-                      type="text"
-                      autoComplete="name"
-                      value={name}
-                      onChange={(e) => {
-                        setName(e.target.value);
-                        if (errors.name) setErrors((er) => ({ ...er, name: undefined }));
-                      }}
-                      placeholder="Your name"
-                      className={inputClass(!!errors.name)}
-                    />
-                    {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-                  </div>
-                  <div>
-                    <label htmlFor="app-notify-email" className="block text-sm font-medium text-[var(--color-ink)] mb-2">
-                      Email
-                    </label>
-                    <input
-                      id="app-notify-email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      inputMode="email"
-                      value={email}
-                      onChange={(e) => {
-                        setEmail(e.target.value);
-                        if (errors.email) setErrors((er) => ({ ...er, email: undefined }));
-                      }}
-                      placeholder="you@example.com"
-                      className={inputClass(!!errors.email)}
-                    />
-                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
-                  </div>
+                  {field("lead-name", "Name", name, setName, "name", {
+                    type: "text",
+                    autoComplete: "name",
+                    placeholder: "Your name",
+                  })}
+                  {askBrand &&
+                    field("lead-brand", "Brand", brand, setBrand, "brand", {
+                      type: "text",
+                      autoComplete: "organization",
+                      placeholder: "Your brand or store name",
+                    })}
+                  {field("lead-email", "Email", email, setEmail, "email", {
+                    type: "email",
+                    autoComplete: "email",
+                    inputMode: "email",
+                    placeholder: "you@example.com",
+                  })}
                   {errors.form && <p className="text-red-500 text-sm">{errors.form}</p>}
                   <div className="pt-1">
                     <button
@@ -263,11 +287,11 @@ export default function AppNotifyModal({ isOpen, platform, onClose }: AppNotifyM
                       disabled={isSubmitting}
                       className="w-full px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      {isSubmitting ? "Sending…" : "Notify me"}
+                      {isSubmitting ? "Sending…" : submitLabel}
                     </button>
-                    <p className="mt-3 text-center text-xs text-[var(--color-ink-60)]">
-                      One email when we launch. No newsletters unless you ask.
-                    </p>
+                    {footnote && (
+                      <p className="mt-3 text-center text-xs text-[var(--color-ink-60)]">{footnote}</p>
+                    )}
                   </div>
                 </form>
               )}

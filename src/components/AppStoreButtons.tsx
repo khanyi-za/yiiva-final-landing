@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
-import AppNotifyModal, { type StorePlatform } from "./AppNotifyModal";
+import LeadModal from "./LeadModal";
+
+type StorePlatform = "ios" | "android";
 
 // Custom app-store buttons (no official badge assets bundled).
 //
 // PRE-LAUNCH BEHAVIOUR (2026-09-13): the app is not yet listed, so both
-// buttons open the "notify me" modal (name + email → /api/waitlist) instead of
+// buttons open the shared LeadModal (name + email → /api/waitlist) instead of
 // linking anywhere. When the listings go live, set the two URLs below and the
 // buttons become plain links again — no other changes needed.
 const APP_STORE_URL: string | null = null; // e.g. "https://apps.apple.com/za/app/yiiva/id…"
@@ -100,7 +102,25 @@ export default function AppStoreButtons({
         </StoreButton>
       </div>
 
-      <AppNotifyModal isOpen={platform !== null} platform={platform} onClose={() => setPlatform(null)} />
+      <LeadModal
+        isOpen={platform !== null}
+        onClose={() => setPlatform(null)}
+        eyebrow="Coming soon"
+        title={`YIIVA isn't on ${platform === "ios" ? "the App Store" : "Google Play"} yet.`}
+        description="We're launching on iOS and Android shortly. Leave your details and we'll email you the day it goes live."
+        source="app-store-button"
+        meta={{ platform }}
+        submitLabel="Notify me"
+        footnote="One email when we launch. No newsletters unless you ask."
+        successTitle="You're on the list"
+        successBody={(first, email) => (
+          <>
+            Thanks, {first}. We&apos;ll email{" "}
+            <span className="font-medium text-[var(--color-ink)]">{email}</span> as soon as the app
+            is live.
+          </>
+        )}
+      />
     </>
   );
 }

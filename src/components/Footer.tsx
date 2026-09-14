@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import ContactModal from "./ContactModal";
-import { MERCHANT_SIGNUP_URL, MERCHANT_LOGIN_URL } from "@/lib/links";
+import MerchantLink from "./MerchantLink";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -65,14 +65,14 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5">
               <li>
-                <a href={MERCHANT_SIGNUP_URL} className="text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">
+                <MerchantLink intent="signup" className="text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">
                   Start selling
-                </a>
+                </MerchantLink>
               </li>
               <li>
-                <a href={MERCHANT_LOGIN_URL} className="text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">
+                <MerchantLink intent="login" className="text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors">
                   Merchant log in
-                </a>
+                </MerchantLink>
               </li>
             </ul>
           </nav>

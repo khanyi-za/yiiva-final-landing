@@ -3,7 +3,8 @@ import { Resend } from 'resend';
 
 // Waitlist / launch-lead capture. Two callers:
 //   - Footer "Stay in the loop" form           → source "footer"   (email only)
-//   - AppNotifyModal (app-store buttons)        → source "app-store-button" (name + email + platform)
+//   - LeadModal via AppStoreButtons             → source "app-store-button" (name + email + platform)
+//   - LeadModal via MerchantLink                → source "brand-signup" | "brand-login" (name + brand + email)
 // Both send an internal notification to RESEND_TO_EMAIL and a confirmation to the
 // subscriber. Copy branches on source so app leads get launch-specific wording.
 
@@ -47,10 +48,11 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { email, source, name, platform, website } = body as {
+    const { email, source, name, brand, platform, website } = body as {
       email?: string;
       source?: string;
       name?: string;
+      brand?: string;
       platform?: string;
       website?: string;
     };
@@ -69,11 +71,17 @@ export async function POST(request: NextRequest) {
     }
 
     const isAppLead = source === 'app-store-button';
+    const isBrandLead = source === 'brand-signup' || source === 'brand-login';
     const cleanName = typeof name === 'string' ? name.trim().slice(0, 120) : '';
-    if (isAppLead && cleanName.length < 2) {
+    const cleanBrand = typeof brand === 'string' ? brand.trim().slice(0, 120) : '';
+    if ((isAppLead || isBrandLead) && cleanName.length < 2) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 });
     }
+    if (isBrandLead && cleanBrand.length < 2) {
+      return NextResponse.json({ error: 'Brand name is required' }, { status: 400 });
+    }
     const platformLabel = (platform && PLATFORM_LABEL[platform]) || 'not specified';
+    const brandIntent = source === 'brand-signup' ? 'Start selling' : 'Log in';
 
     // Instantiate Resend lazily so a missing key doesn't crash the route at import
     if (!process.env.RESEND_API_KEY) {
@@ -86,6 +94,7 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     const safeName = escapeHtml(cleanName);
+    const safeBrand = escapeHtml(cleanBrand);
     const safeEmail = escapeHtml(email);
 
     // ── Internal notification ────────────────────────────────────────────────
@@ -93,9 +102,11 @@ export async function POST(request: NextRequest) {
       from: process.env.RESEND_FROM_EMAIL!,
       to: process.env.RESEND_TO_EMAIL!,
       replyTo: email,
-      subject: isAppLead
-        ? `App launch lead: ${cleanName} (${platformLabel})`
-        : 'New newsletter signup - YIIVA',
+      subject: isBrandLead
+        ? `Brand lead: ${cleanName} — ${cleanBrand} (${brandIntent})`
+        : isAppLead
+          ? `App launch lead: ${cleanName} (${platformLabel})`
+          : 'New newsletter signup - YIIVA',
       html: `
         <!DOCTYPE html>
         <html>
@@ -115,20 +126,24 @@ export async function POST(request: NextRequest) {
           <body>
             <div class="container">
               <div class="header">
-                <h2 style="margin: 0;">${isAppLead ? 'New app launch lead' : 'New newsletter signup'}</h2>
+                <h2 style="margin: 0;">${isBrandLead ? 'New brand lead' : isAppLead ? 'New app launch lead' : 'New newsletter signup'}</h2>
                 <p style="margin: 5px 0 0 0;">YIIVA landing page</p>
               </div>
               <div class="content">
                 ${cleanName ? `<div class="field"><span class="label">Name:</span><span class="value">${safeName}</span></div>` : ''}
+                ${isBrandLead ? `<div class="field"><span class="label">Brand:</span><span class="value">${safeBrand}</span></div>` : ''}
                 <div class="field"><span class="label">Email:</span><span class="value">${safeEmail}</span></div>
                 ${isAppLead ? `<div class="field"><span class="label">Store tapped:</span><span class="value">${platformLabel}</span></div>` : ''}
+                ${isBrandLead ? `<div class="field"><span class="label">Button tapped:</span><span class="value">${brandIntent}</span></div>` : ''}
                 <div class="field"><span class="label">Source:</span><span class="badge">${escapeHtml(source || 'unknown')}</span></div>
                 <div class="field"><span class="label">Timestamp:</span><span class="value">${new Date().toLocaleString('en-ZA', { timeZone: 'Africa/Johannesburg' })} (SAST)</span></div>
                 <div class="footer">
                   ${
-                    isAppLead
-                      ? '<p>This person tapped an app-store button and asked to be told when the app is live. Add them to the launch list.</p>'
-                      : '<p>This person subscribed from the footer form.</p>'
+                    isBrandLead
+                      ? '<p>A brand tapped a merchant button and asked to be told when onboarding opens. Follow up personally — this is a sales lead.</p>'
+                      : isAppLead
+                        ? '<p>This person tapped an app-store button and asked to be told when the app is live. Add them to the launch list.</p>'
+                        : '<p>This person subscribed from the footer form.</p>'
                   }
                 </div>
               </div>
@@ -143,7 +158,11 @@ export async function POST(request: NextRequest) {
     await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!,
       to: email,
-      subject: isAppLead ? "You're on the list for the YIIVA app" : "You're subscribed to YIIVA",
+      subject: isBrandLead
+        ? `You're on the list to sell on YIIVA${cleanBrand ? ` — ${cleanBrand}` : ''}`
+        : isAppLead
+          ? "You're on the list for the YIIVA app"
+          : "You're subscribed to YIIVA",
       html: `
         <!DOCTYPE html>
         <html>
@@ -167,8 +186,18 @@ export async function POST(request: NextRequest) {
               </div>
               <div class="content">
                 ${
-                  isAppLead
+                  isBrandLead
                     ? `
+                <h1>You're on the list</h1>
+                <p>${greeting}</p>
+                <p>Thanks for your interest in selling ${safeBrand ? `<strong>${safeBrand}</strong> ` : ''}on YIIVA. We're completing payment activation with our provider before the first brands go live, and you'll get one email from us the day brand onboarding opens, with a link to set up your store.</p>
+                <div class="highlight">
+                  <strong>What YIIVA gives your brand</strong>
+                  <p style="margin: 8px 0 0;">A new sales channel to reach customers beyond your existing base, with payments, delivery and customer care handled for you. Already on Shopify? Your catalogue imports in minutes.</p>
+                </div>
+                <p>If you'd like to talk before then, just reply to this email.</p>`
+                    : isAppLead
+                      ? `
                 <h1>You're on the list</h1>
                 <p>${greeting}</p>
                 <p>Thanks for your interest in the YIIVA app. We're launching on iOS and Android shortly, and you'll get one email from us the day it's live on ${platformLabel === 'not specified' ? 'the app stores' : platformLabel.replace(/ \(.*\)/, '')}.</p>
@@ -177,7 +206,7 @@ export async function POST(request: NextRequest) {
                   <p style="margin: 8px 0 0;">One app for premium South African brands: subscribe to the labels you love, fill one cart across many brands, pay once, and track delivery to your door.</p>
                 </div>
                 <p>Until then, there's nothing you need to do.</p>`
-                    : `
+                      : `
                 <h1>You're subscribed</h1>
                 <p>${greeting}</p>
                 <p>Thanks for signing up. We'll send you new brands and drops on YIIVA, and let you know when the app is live on iOS and Android.</p>
