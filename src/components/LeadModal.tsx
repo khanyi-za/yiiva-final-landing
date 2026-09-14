@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 // Shared pre-launch lead-capture modal (2026-09-13/14). Used by:
 //   - AppStoreButtons  — app not yet listed          → source "app-store-button"
 //   - MerchantLink     — brand onboarding not yet open → source "brand-signup" | "brand-login"
-// Posts { name, email, brand?, website(honeypot), source, ...meta } to /api/waitlist.
+// Posts { name, email, brand?, storeUrl?, website(honeypot), source, ...meta } to /api/waitlist.
 // Copy is passed in by the caller; the shell, validation and a11y live here.
 
 interface LeadModalProps {
@@ -17,6 +17,8 @@ interface LeadModalProps {
   description: string;
   /** Ask for a brand/store name as well (merchant leads). */
   askBrand?: boolean;
+  /** Ask for the brand's store website / Instagram link (optional field; merchant leads). */
+  askStoreUrl?: boolean;
   source: string;
   /** Extra fields merged into the POST body (e.g. platform, intent). */
   meta?: Record<string, string | null | undefined>;
@@ -28,6 +30,22 @@ interface LeadModalProps {
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+// Accepts "yourbrand.co.za", "www.yourbrand.com/shop", "https://…", or an
+// Instagram handle/URL. Returns the normalised https URL, or null if unusable.
+function normaliseStoreUrl(raw: string): string | null {
+  let v = raw.trim();
+  if (!v) return null;
+  if (/^@[\w.]+$/.test(v)) v = `https://instagram.com/${v.slice(1)}`;
+  if (!/^https?:\/\//i.test(v)) v = `https://${v}`;
+  try {
+    const u = new URL(v);
+    if (!/^[a-z0-9-]+(\.[a-z0-9-]+)+$/i.test(u.hostname)) return null;
+    return u.toString();
+  } catch {
+    return null;
+  }
+}
+
 export default function LeadModal({
   isOpen,
   onClose,
@@ -35,6 +53,7 @@ export default function LeadModal({
   title,
   description,
   askBrand = false,
+  askStoreUrl = false,
   source,
   meta,
   submitLabel = "Notify me",
@@ -44,9 +63,10 @@ export default function LeadModal({
 }: LeadModalProps) {
   const [name, setName] = useState("");
   const [brand, setBrand] = useState("");
+  const [storeUrl, setStoreUrl] = useState("");
   const [email, setEmail] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — stays empty for real users
-  const [errors, setErrors] = useState<{ name?: string; brand?: string; email?: string; form?: string }>({});
+  const [errors, setErrors] = useState<{ name?: string; brand?: string; storeUrl?: string; email?: string; form?: string }>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -57,6 +77,7 @@ export default function LeadModal({
   const reset = () => {
     setName("");
     setBrand("");
+    setStoreUrl("");
     setEmail("");
     setWebsite("");
     setErrors({});
@@ -74,9 +95,11 @@ export default function LeadModal({
     const next: typeof errors = {};
     if (name.trim().length < 2) next.name = "Please enter your name";
     if (askBrand && brand.trim().length < 2) next.brand = "Please enter your brand name";
+    const cleanStoreUrl = askStoreUrl && storeUrl.trim() ? normaliseStoreUrl(storeUrl) : null;
+    if (askStoreUrl && storeUrl.trim() && !cleanStoreUrl) next.storeUrl = "Please enter a valid link (e.g. yourbrand.co.za)";
     if (!EMAIL_RE.test(email)) next.email = "Please enter a valid email address";
     setErrors(next);
-    if (next.name || next.brand || next.email) return;
+    if (next.name || next.brand || next.storeUrl || next.email) return;
 
     setIsSubmitting(true);
     try {
@@ -87,6 +110,7 @@ export default function LeadModal({
           name: name.trim(),
           email: email.trim(),
           ...(askBrand ? { brand: brand.trim() } : {}),
+          ...(askStoreUrl ? { storeUrl: cleanStoreUrl ?? "" } : {}),
           website,
           source,
           ...(meta ?? {}),
@@ -157,10 +181,10 @@ export default function LeadModal({
 
   const field = (
     id: string,
-    label: string,
+    label: React.ReactNode,
     value: string,
     setValue: (v: string) => void,
-    errKey: "name" | "brand" | "email",
+    errKey: "name" | "brand" | "storeUrl" | "email",
     inputProps: React.InputHTMLAttributes<HTMLInputElement>
   ) => (
     <div>
@@ -274,6 +298,23 @@ export default function LeadModal({
                       autoComplete: "organization",
                       placeholder: "Your brand or store name",
                     })}
+                  {askStoreUrl &&
+                    field(
+                      "lead-store-url",
+                      <>
+                        Store website{" "}
+                        <span className="font-normal text-[var(--color-ink-60)]">(or Instagram)</span>
+                      </>,
+                      storeUrl,
+                      setStoreUrl,
+                      "storeUrl",
+                      {
+                        type: "text",
+                        autoComplete: "url",
+                        inputMode: "url",
+                        placeholder: "yourbrand.co.za or @yourbrand",
+                      }
+                    )}
                   {field("lead-email", "Email", email, setEmail, "email", {
                     type: "email",
                     autoComplete: "email",

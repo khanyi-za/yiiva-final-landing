@@ -57,6 +57,7 @@ export default function MerchantLink({
         title={copy.title}
         description={copy.description}
         askBrand
+        askStoreUrl
         source={intent === "signup" ? "brand-signup" : "brand-login"}
         submitLabel="Keep me posted"
         footnote="One email when onboarding opens. No newsletters unless you ask."

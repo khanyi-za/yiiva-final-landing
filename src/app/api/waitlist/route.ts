@@ -4,7 +4,7 @@ import { Resend } from 'resend';
 // Waitlist / launch-lead capture. Two callers:
 //   - Footer "Stay in the loop" form           → source "footer"   (email only)
 //   - LeadModal via AppStoreButtons             → source "app-store-button" (name + email + platform)
-//   - LeadModal via MerchantLink                → source "brand-signup" | "brand-login" (name + brand + email)
+//   - LeadModal via MerchantLink                → source "brand-signup" | "brand-login" (name + brand + storeUrl? + email)
 // Both send an internal notification to RESEND_TO_EMAIL and a confirmation to the
 // subscriber. Copy branches on source so app leads get launch-specific wording.
 
@@ -48,11 +48,12 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json();
-    const { email, source, name, brand, platform, website } = body as {
+    const { email, source, name, brand, storeUrl, platform, website } = body as {
       email?: string;
       source?: string;
       name?: string;
       brand?: string;
+      storeUrl?: string;
       platform?: string;
       website?: string;
     };
@@ -74,6 +75,16 @@ export async function POST(request: NextRequest) {
     const isBrandLead = source === 'brand-signup' || source === 'brand-login';
     const cleanName = typeof name === 'string' ? name.trim().slice(0, 120) : '';
     const cleanBrand = typeof brand === 'string' ? brand.trim().slice(0, 120) : '';
+    // Optional; only keep it if it parses as an http(s) URL.
+    let cleanStoreUrl = '';
+    if (typeof storeUrl === 'string' && storeUrl.trim()) {
+      try {
+        const u = new URL(storeUrl.trim());
+        if (u.protocol === 'https:' || u.protocol === 'http:') cleanStoreUrl = u.toString().slice(0, 500);
+      } catch {
+        /* ignore unparseable links — the field is optional */
+      }
+    }
     if ((isAppLead || isBrandLead) && cleanName.length < 2) {
       return NextResponse.json({ error: 'Name is required' }, { status: 400 });
     }
@@ -95,6 +106,7 @@ export async function POST(request: NextRequest) {
 
     const safeName = escapeHtml(cleanName);
     const safeBrand = escapeHtml(cleanBrand);
+    const safeStoreUrl = escapeHtml(cleanStoreUrl);
     const safeEmail = escapeHtml(email);
 
     // ── Internal notification ────────────────────────────────────────────────
@@ -132,6 +144,7 @@ export async function POST(request: NextRequest) {
               <div class="content">
                 ${cleanName ? `<div class="field"><span class="label">Name:</span><span class="value">${safeName}</span></div>` : ''}
                 ${isBrandLead ? `<div class="field"><span class="label">Brand:</span><span class="value">${safeBrand}</span></div>` : ''}
+                ${isBrandLead ? `<div class="field"><span class="label">Store website:</span><span class="value">${cleanStoreUrl ? `<a href="${safeStoreUrl}">${safeStoreUrl}</a>` : 'not provided'}</span></div>` : ''}
                 <div class="field"><span class="label">Email:</span><span class="value">${safeEmail}</span></div>
                 ${isAppLead ? `<div class="field"><span class="label">Store tapped:</span><span class="value">${platformLabel}</span></div>` : ''}
                 ${isBrandLead ? `<div class="field"><span class="label">Button tapped:</span><span class="value">${brandIntent}</span></div>` : ''}
