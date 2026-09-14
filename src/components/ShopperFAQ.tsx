@@ -9,7 +9,7 @@ const FAQS = [
   },
   {
     q: "How do I start shopping?",
-    a: "Download the YIIVA app on iOS or Android, browse independent brands, and check out securely in-app.",
+    a: "The YIIVA app is launching soon on iOS and Android. Tap either store button to leave your details and we'll email you the day it's live. Then browse, subscribe to the brands you love, and check out securely in-app.",
   },
   {
     q: "How does delivery work?",

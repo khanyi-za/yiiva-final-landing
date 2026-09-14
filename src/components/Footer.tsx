@@ -174,6 +174,9 @@ export default function Footer() {
               <a href="/returns-refunds" className="hover:text-[var(--color-ink)] transition-colors">Returns</a>
               <button onClick={() => setIsContactModalOpen(true)} className="hover:text-[var(--color-ink)] transition-colors">Contact</button>
             </div>
+            {/* Social links — commented out until the YIIVA social accounts exist
+                (2026-09-13). Restore this block and swap the # hrefs for the real URLs.
+
             <div className="flex gap-3">
               <a href="#" aria-label="YIIVA on Facebook" className="w-10 h-10 bg-[var(--color-ink)] rounded-lg flex items-center justify-center hover:bg-[var(--color-accent)] transition-colors">
                 <svg className="w-5 h-5 text-[var(--color-paper)]" fill="currentColor" viewBox="0 0 24 24">
@@ -191,6 +194,8 @@ export default function Footer() {
                 </svg>
               </a>
             </div>
+
+            */}
           </div>
         </div>
       </div>

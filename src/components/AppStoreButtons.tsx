@@ -1,9 +1,15 @@
 "use client";
+import { useState } from "react";
+import AppNotifyModal, { type StorePlatform } from "./AppNotifyModal";
 
 // Custom app-store buttons (no official badge assets bundled).
-// TODO: replace the placeholder hrefs with the real store listing URLs.
-const APP_STORE_URL = "#"; // TODO: App Store link
-const PLAY_STORE_URL = "#"; // TODO: Google Play link
+//
+// PRE-LAUNCH BEHAVIOUR (2026-09-13): the app is not yet listed, so both
+// buttons open the "notify me" modal (name + email → /api/waitlist) instead of
+// linking anywhere. When the listings go live, set the two URLs below and the
+// buttons become plain links again — no other changes needed.
+const APP_STORE_URL: string | null = null; // e.g. "https://apps.apple.com/za/app/yiiva/id…"
+const PLAY_STORE_URL: string | null = null; // e.g. "https://play.google.com/store/apps/details?id=…"
 
 function AppleIcon() {
   return (
@@ -21,6 +27,34 @@ function PlayIcon() {
   );
 }
 
+function StoreButton({
+  href,
+  onClick,
+  ariaLabel,
+  className,
+  children,
+}: {
+  href: string | null;
+  onClick: () => void;
+  ariaLabel: string;
+  className: string;
+  children: React.ReactNode;
+}) {
+  // Live listing → real link. Not yet listed → button that opens the modal.
+  if (href) {
+    return (
+      <a href={href} aria-label={ariaLabel} className={className}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <button type="button" onClick={onClick} aria-label={ariaLabel} className={className}>
+      {children}
+    </button>
+  );
+}
+
 export default function AppStoreButtons({
   variant = "dark-text",
   className = "",
@@ -29,26 +63,44 @@ export default function AppStoreButtons({
   variant?: "dark-text" | "light-text";
   className?: string;
 }) {
+  const [platform, setPlatform] = useState<StorePlatform | null>(null);
+
   const style =
     variant === "light-text"
       ? "bg-[var(--color-paper)] text-[var(--color-anchor)] hover:bg-[var(--color-on-anchor-60)]"
       : "bg-[var(--color-ink)] text-white hover:bg-[var(--color-accent-hover)]";
+  const base = `inline-flex items-center gap-3 rounded-xl px-5 py-2.5 transition-colors cursor-pointer ${style}`;
+
   return (
-    <div className={`flex flex-wrap items-center gap-3 ${className}`}>
-      <a href={APP_STORE_URL} aria-label="Download on the App Store" className={`inline-flex items-center gap-3 rounded-xl px-5 py-2.5 transition-colors ${style}`}>
-        <AppleIcon />
-        <span className="text-left leading-tight">
-          <span className="block text-[10px] opacity-70">Download on the</span>
-          <span className="block text-base font-semibold -mt-0.5 font-[family-name:var(--font-display)]">App Store</span>
-        </span>
-      </a>
-      <a href={PLAY_STORE_URL} aria-label="Get it on Google Play" className={`inline-flex items-center gap-3 rounded-xl px-5 py-2.5 transition-colors ${style}`}>
-        <PlayIcon />
-        <span className="text-left leading-tight">
-          <span className="block text-[10px] opacity-70">Get it on</span>
-          <span className="block text-base font-semibold -mt-0.5 font-[family-name:var(--font-display)]">Google Play</span>
-        </span>
-      </a>
-    </div>
+    <>
+      <div className={`flex flex-wrap items-center gap-3 ${className}`}>
+        <StoreButton
+          href={APP_STORE_URL}
+          onClick={() => setPlatform("ios")}
+          ariaLabel="Download on the App Store"
+          className={base}
+        >
+          <AppleIcon />
+          <span className="text-left leading-tight">
+            <span className="block text-[10px] opacity-70">Download on the</span>
+            <span className="block text-base font-semibold -mt-0.5 font-[family-name:var(--font-display)]">App Store</span>
+          </span>
+        </StoreButton>
+        <StoreButton
+          href={PLAY_STORE_URL}
+          onClick={() => setPlatform("android")}
+          ariaLabel="Get it on Google Play"
+          className={base}
+        >
+          <PlayIcon />
+          <span className="text-left leading-tight">
+            <span className="block text-[10px] opacity-70">Get it on</span>
+            <span className="block text-base font-semibold -mt-0.5 font-[family-name:var(--font-display)]">Google Play</span>
+          </span>
+        </StoreButton>
+      </div>
+
+      <AppNotifyModal isOpen={platform !== null} platform={platform} onClose={() => setPlatform(null)} />
+    </>
   );
 }
