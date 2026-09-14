@@ -7,13 +7,13 @@ interface RevealFooterProps {
   children: React.ReactNode;
 }
 
-// The footer must clear the floating navbar when fully revealed; a fixed
-// element can never show more than one viewport of itself, so if the footer
-// is taller than (viewport − this clearance) the reveal is impossible and we
-// fall back to a normal-flow footer. On phones the stacked footer (~875px) is
-// always taller than the screen, so they always take the static path
-// (measured 2026-09-13: 63–327px of the footer was unreachable before this).
-const NAV_CLEARANCE_PX = 96;
+// A fixed element can never show more than one viewport of itself, so if the
+// footer is taller than the viewport the reveal can't complete and we fall
+// back to a normal-flow footer. On phones the stacked footer (~875px) is
+// always taller than the screen, so they take the static path (measured
+// 2026-09-13: 63–327px of the footer was unreachable before this). Desktop
+// keeps the reveal — the footer's own top padding already clears the navbar,
+// so no extra allowance is subtracted here.
 
 export default function StickyFooterReveal({ children }: RevealFooterProps) {
   const reduce = useReducedMotion();
@@ -48,7 +48,7 @@ export default function StickyFooterReveal({ children }: RevealFooterProps) {
   }, [mounted]);
 
   const fitsViewport =
-    footerHeight > 0 && viewportHeight > 0 && footerHeight <= viewportHeight - NAV_CLEARANCE_PX;
+    footerHeight > 0 && viewportHeight > 0 && footerHeight <= viewportHeight;
   const staticFooter = mounted && (!!reduce || !fitsViewport);
 
   useEffect(() => {
