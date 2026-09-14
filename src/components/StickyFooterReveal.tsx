@@ -7,25 +7,36 @@ interface RevealFooterProps {
   children: React.ReactNode;
 }
 
+// The footer must clear the floating navbar when fully revealed; a fixed
+// element can never show more than one viewport of itself, so if the footer
+// is taller than (viewport − this clearance) the reveal is impossible and we
+// fall back to a normal-flow footer. On phones the stacked footer (~875px) is
+// always taller than the screen, so they always take the static path
+// (measured 2026-09-13: 63–327px of the footer was unreachable before this).
+const NAV_CLEARANCE_PX = 96;
+
 export default function StickyFooterReveal({ children }: RevealFooterProps) {
   const reduce = useReducedMotion();
   const [mounted, setMounted] = useState(false);
   const [contentTransform, setContentTransform] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
+  const [viewportHeight, setViewportHeight] = useState(0);
   const footerRef = useRef<HTMLDivElement>(null);
 
   // Only switch behaviour after mount so the first render matches the server
   // (avoids a hydration mismatch when reduced-motion changes the tree).
   useEffect(() => setMounted(true), []);
-  const staticFooter = mounted && reduce;
 
-  // Measure the real footer height (updates on resize / content reflow) so the
-  // reveal translate matches it exactly — no seam or gap.
+  // Measure the real footer height and the viewport (both update on resize /
+  // content reflow) so the reveal translate matches exactly — no seam or gap —
+  // and so we know whether the reveal can physically complete.
   useEffect(() => {
-    if (staticFooter) return;
     const el = footerRef.current;
     if (!el) return;
-    const measure = () => setFooterHeight(el.offsetHeight);
+    const measure = () => {
+      setFooterHeight(el.offsetHeight);
+      setViewportHeight(window.innerHeight);
+    };
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
@@ -34,10 +45,17 @@ export default function StickyFooterReveal({ children }: RevealFooterProps) {
       ro.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, [staticFooter]);
+  }, [mounted]);
+
+  const fitsViewport =
+    footerHeight > 0 && viewportHeight > 0 && footerHeight <= viewportHeight - NAV_CLEARANCE_PX;
+  const staticFooter = mounted && (!!reduce || !fitsViewport);
 
   useEffect(() => {
-    if (staticFooter || footerHeight === 0) return;
+    if (staticFooter || footerHeight === 0) {
+      setContentTransform(0);
+      return;
+    }
 
     const update = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -70,12 +88,16 @@ export default function StickyFooterReveal({ children }: RevealFooterProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, [staticFooter, footerHeight]);
 
-  // Reduced motion: no scroll-hijack — footer sits in normal flow below content.
+  // Static: no scroll-hijack — footer sits in normal flow below content.
+  // Taken for reduced-motion users and whenever the footer can't fit under
+  // the viewport (all phones, short desktop windows).
   if (staticFooter) {
     return (
       <>
         {children}
-        <Footer />
+        <div ref={footerRef}>
+          <Footer />
+        </div>
       </>
     );
   }
