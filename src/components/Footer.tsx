@@ -54,10 +54,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="pt-28 lg:pt-32 pb-8 px-6 bg-[var(--color-paper)]">
+    // Phone layout is deliberately compact so the footer fits under a phone
+    // viewport and the StickyFooterReveal slide-up can complete (was 875px on a
+    // 375px phone — taller than any phone screen; now ~510px). md+ is unchanged.
+    <footer className="pt-20 md:pt-28 lg:pt-32 pb-6 md:pb-8 px-6 bg-[var(--color-paper)]">
       <div className="max-w-7xl mx-auto">
-        {/* Intent columns: Sell · Shop · Stay in the loop */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+        {/* Intent columns: Sell · Shop · Stay in the loop.
+            Phones: Sell and Shop share a row, newsletter spans below. */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-7 md:gap-10 lg:gap-16">
           {/* Sell on YIIVA */}
           <nav aria-label="For brands" className="space-y-4">
             <h4 className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-ink-60)]">
@@ -100,14 +104,15 @@ export default function Footer() {
           </nav>
 
           {/* Stay in the loop */}
-          <div className="space-y-4">
+          <div className="col-span-2 md:col-span-1 space-y-3 md:space-y-4">
             <h4 className="font-[family-name:var(--font-mono)] text-xs uppercase tracking-[0.2em] text-[var(--color-ink-60)]">
               Stay in the loop
             </h4>
-            <p className="text-[var(--color-ink-60)] text-sm">
+            <p className="hidden md:block text-[var(--color-ink-60)] text-sm">
               New brands and drops, straight to your inbox.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-3">
+            {/* Phones: input + round arrow button in one row. md+: stacked as before. */}
+            <form onSubmit={handleSubmit} className="flex flex-wrap items-center gap-2 md:block md:space-y-3">
               <input
                 type="email"
                 value={email}
@@ -117,7 +122,7 @@ export default function Footer() {
                 }}
                 placeholder="Enter your email address"
                 aria-label="Email address"
-                className={`w-full px-4 py-3 rounded-full border bg-[var(--color-paper-2)] transition-all duration-200 text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/40 ${
+                className={`flex-1 min-w-0 md:w-full px-4 py-3 rounded-full border bg-[var(--color-paper-2)] transition-all duration-200 text-[var(--color-ink)] placeholder:text-[var(--color-ink)]/40 ${
                   error
                     ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
                     : "border-[var(--color-sage)] focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[var(--color-accent)]/20"
@@ -125,7 +130,7 @@ export default function Footer() {
                 disabled={isSubmitting}
               />
               {error && (
-                <p className="text-red-500 text-sm flex items-center gap-1">
+                <p className="basis-full order-last md:order-none text-red-500 text-sm flex items-center gap-1">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                   </svg>
@@ -133,7 +138,7 @@ export default function Footer() {
                 </p>
               )}
               {showSuccess && (
-                <p className="text-[var(--color-ink)] text-sm flex items-center gap-1 font-medium">
+                <p className="basis-full order-last md:order-none text-[var(--color-ink)] text-sm flex items-center gap-1 font-medium">
                   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
@@ -143,9 +148,13 @@ export default function Footer() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full px-6 py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                aria-label="Subscribe"
+                className="shrink-0 w-12 h-12 md:w-full md:h-auto md:px-6 md:py-3 bg-[var(--color-accent)] text-white rounded-full font-medium hover:bg-[var(--color-accent-hover)] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                {isSubmitting ? "Subscribing…" : "Subscribe"}
+                <span className="hidden md:inline">{isSubmitting ? "Subscribing…" : "Subscribe"}</span>
+                <svg className="w-5 h-5 md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </button>
             </form>
             <p className="text-[var(--color-ink-60)] text-xs">
@@ -155,17 +164,18 @@ export default function Footer() {
         </div>
 
         {/* Oversized wordmark signature */}
-        <div className="mt-16 lg:mt-24" aria-hidden="true">
-          <span className="block select-none font-[family-name:var(--font-display)] font-extrabold tracking-tight leading-[0.8] text-[var(--color-ink)] text-[20vw] lg:text-[15vw]">
+        <div className="mt-8 md:mt-16 lg:mt-24" aria-hidden="true">
+          <span className="block select-none font-[family-name:var(--font-display)] font-extrabold tracking-tight leading-[0.8] text-[var(--color-ink)] text-[18vw] lg:text-[15vw]">
             YIIVA
           </span>
         </div>
 
         {/* Baseline */}
-        <div className="mt-8 pt-6 border-t border-[var(--color-sage)] flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-5 md:mt-8 pt-4 md:pt-6 border-t border-[var(--color-sage)] flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div className="text-center sm:text-left text-[var(--color-ink-60)] text-xs space-y-1">
-            <p>© 2026 YIIVA. All rights reserved.</p>
-            <p>YIIVA is a product of Khaziimla Technology (Pty) Ltd.</p>
+            <p className="md:hidden">© 2026 YIIVA · Khaziimla Technology (Pty) Ltd</p>
+            <p className="hidden md:block">© 2026 YIIVA. All rights reserved.</p>
+            <p className="hidden md:block">YIIVA is a product of Khaziimla Technology (Pty) Ltd.</p>
           </div>
           <div className="flex flex-col items-center sm:items-end gap-4">
             <div className="flex items-center gap-4 text-sm text-[var(--color-ink-60)]">

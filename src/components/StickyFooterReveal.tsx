@@ -35,7 +35,10 @@ export default function StickyFooterReveal({ children }: RevealFooterProps) {
     if (!el) return;
     const measure = () => {
       setFooterHeight(el.offsetHeight);
-      setViewportHeight(window.innerHeight);
+      // Mobile browsers grow innerHeight as the URL bar collapses; deciding on
+      // the smallest height seen keeps the mode stable instead of flipping
+      // between reveal and static mid-scroll.
+      setViewportHeight((prev) => (prev > 0 ? Math.min(prev, window.innerHeight) : window.innerHeight));
     };
     measure();
     const ro = new ResizeObserver(measure);
