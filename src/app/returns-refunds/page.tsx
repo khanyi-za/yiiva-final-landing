@@ -248,10 +248,10 @@ export default function ReturnsRefundsPage() {
             <Clause n="9.1">
               Email us at{" "}
               <a
-                href="mailto:support@yiiva.co.za"
+                href="mailto:khanyi@yiiva.co.za"
                 className="text-[var(--color-accent)] hover:underline"
               >
-                support@yiiva.co.za
+                khanyi@yiiva.co.za
               </a>{" "}
               with your order number and we&rsquo;ll take it from there.
             </Clause>
