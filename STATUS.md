@@ -5,6 +5,53 @@ durable project guide.
 
 ---
 
+## 2026-09-11 → 16 — Investor brief · pre-launch lead gates · phone footer · favicon
+
+All committed and pushed (HEAD dfd25bc). Vercel = main. Verified with headless
+Chromium at 360×640 → 1440×900; `npm run build` clean.
+
+**Investor brief** (`public/invest-2eab56.html`, unlinked + noindex): ask
+R750 000 / first 60 brands / twelve months; §1 "The synopsis" rewritten on
+sourced figures (`docs/market-figures.md` — Stats SA, World Wide Worx, ECDB);
+§2 AI use cases (personalised feed + intent search; auto-tagging + demand
+insight); solution paragraphs trimmed; launch "October 2026"; GTM "15 brands
+pitched, all positive"; "acquisition" → "onboarding"; sign-off = Khanyi +
+co-founder Brendon Dlamini (email / WhatsApp / LinkedIn each). Letterhead
+still "September 2026".
+
+**Pre-launch lead gates** (neither audience can transact yet — app unlisted,
+brands wait on Paystack live-mode):
+- `LeadModal.tsx` — shared modal (name, optional brand + store website/Instagram,
+  email; honeypot; a11y) → `/api/waitlist`. Route now takes name/brand/storeUrl/
+  platform, rate-limits, sends a per-source internal notification (subject
+  "App launch lead: …" or "Brand lead: … (Start selling|Log in)", reply-to =
+  lead) + an on-brand confirmation (old green "brand becomes a business"
+  template gone).
+- `AppStoreButtons.tsx` — both store buttons open the modal. **Go-live:** set
+  `APP_STORE_URL` / `PLAY_STORE_URL` at the top of the file.
+- `MerchantLink.tsx` — all 6 merchant entry points (hero ×2, navbar, BrandsCTA,
+  footer ×2). **Go-live:** `MERCHANT_ONBOARDING_OPEN = true` in `src/lib/links.ts`.
+- Footer social icons commented out (no accounts). FAQ "launching soon".
+
+**Footer:** phone layout compacted 875 → ~505px (Sell|Shop side by side,
+one-row newsletter form with arrow button, smaller wordmark, one-line
+copyright) so `StickyFooterReveal` completes on every phone; static fallback
+only when footer > viewport (decided on the smallest innerHeight seen — mobile
+URL-bar collapse can't flip the mode).
+
+**Favicon:** white wordmark on dark rounded tile (`src/app/icon.png`) +
+`apple-icon.png`. **Brands deep-dive** operations paragraph condensed;
+"orders" → "sales"; AI-driven demand insight sentence.
+
+**▶ NEXT:** (1) copy backlog — "independent" ×5 on shopper track, BrandsCTA
+"Turn your brand into a business", "50+" vs 28 logos, WooCommerce claim,
+logo permissions; (2) privacy policy: name third-party processors (Paystack,
+Cloudinary, PostHog, Expo, Resend, TCG) + account-deletion section (Apple
+needs it); (3) OG image / robots / sitemap; (4) delete dead components
+(ContentSection, FeatureCarousel, PhoneFeature, VideoFeature, WhoItsFor) +
+unused marquee CSS, shrink the 3–4MB phone PNGs; (5) brands feature refresh
+on the 5 agreed value props; (6) on go-live flip the two gate flags above.
+
 ## 2026-08-27 — Shopper hero settled; feature-section verticals agreed
 
 **▶ NEXT (agreed direction, not yet built):**

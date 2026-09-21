@@ -16,8 +16,28 @@ restart the dev server after building.
 
 - **nuwa** — NestJS + Prisma backend API (Railway). Read `nuwa/STATUS.md` for platform state.
 - **athena** — Next.js merchant dashboard/admin = `merchant.yiiva.co.za`. "Start selling" CTAs deep-link to `/register` there (root `/` is just a login redirect; `?intent=sell` is NOT implemented).
-- **maya** — Expo buyer app. **Not in app stores yet** — hence "Coming soon to iOS & Android"; `AppStoreButtons` hrefs are `#` placeholders.
-- Central external links live in `src/lib/links.ts`.
+- **maya** — Expo buyer app. **Not in app stores yet** (target October 2026) — the store buttons open a lead modal; set `APP_STORE_URL`/`PLAY_STORE_URL` in `AppStoreButtons.tsx` on listing.
+- Central external links live in `src/lib/links.ts`, including the `MERCHANT_ONBOARDING_OPEN` gate flag.
+
+## Pre-launch lead gates (2026-09)
+
+Neither audience can transact yet (app unlisted; brands wait on Paystack
+live-mode), so every conversion point captures a lead instead of linking out:
+- `LeadModal.tsx` — shared modal (name, optional brand + store website/Instagram,
+  email, honeypot) → `POST /api/waitlist` → Resend: internal notification with a
+  per-source subject ("App launch lead: …" / "Brand lead: … (Start selling|Log in)")
+  + on-brand confirmation to the lead. Footer newsletter form uses the same route.
+- `AppStoreButtons.tsx` (3 placements) → modal until the two URL constants are set.
+- `MerchantLink.tsx` wraps ALL merchant entry points (hero ×2, navbar, BrandsCTA,
+  footer ×2) → modal until `MERCHANT_ONBOARDING_OPEN = true`. Never add a raw
+  `<a href={MERCHANT_*_URL}>` — route it through `MerchantLink`.
+- Footer social icons are commented out (no accounts yet).
+
+## Investor brief
+
+`public/invest-2eab56.html` — static, unlinked, `noindex`; the slug is the only
+access control. Figures + sources in `docs/market-figures.md`. Sign-off lists
+Khanyi + co-founder Brendon Dlamini. Letterhead date is hardcoded — bump on resend.
 
 ## Page architecture
 
@@ -37,8 +57,15 @@ pass) → `FeatureDeepDives` (dashboard screenshots, `id="how-it-works"`) →
 
 **Shoppers track:** dark full-viewport Hero (brand film at native
 1064:1684 aspect, left-anchored, fading into the dark band via nested CSS
-masks; uppercase headline right) → Discover `VideoFeature` → `CategoryTiles`
-→ `AppShowcase` → `HowDiscoveryWorks` → `ShopperFAQ` → `ShopperCTA`.
+masks; uppercase headline right) → `BrandCarousel` (28 demo-brand logos)
+→ `FeatureSection` (Stitch-style scrollytelling: sticky image swaps as text
+blocks cross mid-viewport) → `CategoryTiles` → `AppShowcase` →
+`HowDiscoveryWorks` → `ShopperFAQ` → `ShopperCTA` (`id="get-the-app"`).
+
+**Footer:** `StickyFooterReveal` slides the page up over a fixed footer on all
+devices. The phone layout is deliberately compact (~505px) so the reveal can
+complete; a static normal-flow fallback kicks in only if the footer is taller
+than the viewport. Keep phone footer additions minimal or the reveal breaks.
 
 ## Design system
 
@@ -74,12 +101,16 @@ brands ("21,000+ SA Shopify stores").
 ## Media assets
 
 - `public/shopper_hero.mp4` — 21MB CRF-18 film-tuned transcode of the owner's master (`YIIVA landing site inspo/shopper_hero.mov`, 84MB — keep OUT of public/). Poster: `shopper_hero_poster.jpg`. Panels `hero-panel-left/right.jpg` are frame-grabs (16s / 31s).
-- `public/feature-hand.png` — Stitch hand-holding-phone cutout, checkerboard programmatically removed. ⚠ Stitch's photography + non-YIIVA screen UI — needs rights/replacement before launch.
+- `public/feature-hand-new.png` — hand-holding-phone cutout showing the maya merchant dashboard (replaced the Stitch-sourced `feature-hand.png` in the 2026-09-01 rebuild). Originals in `YIIVA landing site inspo/`.
+- `src/app/icon.png` + `apple-icon.png` — favicon = white wordmark on the dark navbar colour (rounded tile / square).
 - `YIIVA landing site inspo/` — owner's reference screenshots (Stitch-style).
 
 ## Verification workflow
 
-Playwright is installed in the session scratchpad (not the repo). Pattern:
-`npm run dev` in background → headless Chromium screenshots at 1440×900 and
-375×812 → check desktop + mobile + reduced motion → `npm run build` last →
-restart dev server. Shoppers view needs `page.click('button:has-text("Shoppers")')`.
+Playwright is installed in the session scratchpad (not the repo):
+`npm i playwright@1.49.1 && npx playwright install chromium`. Pattern:
+`npm run dev` in background → headless Chromium screenshots at 1440×900,
+375×812 and 360×640 (+ 375×548 for the footer) → check desktop + mobile +
+reduced motion → `npm run build` last → restart dev server. Use
+`?audience=shoppers` for the shopper view. Stub `/api/waitlist` with
+`page.route` when exercising the lead modals so no email is sent.
